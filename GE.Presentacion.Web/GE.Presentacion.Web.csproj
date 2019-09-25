@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GE.Aplicacion.CadenaConexion\GE.Aplicacion.CadenaConexion.csproj" />
+    <ProjectReference Include="..\GE.Dominio.Base\GE.Dominio.Base.csproj" />
+    <ProjectReference Include="..\GE.Dominio.Entity\GE.Dominio.Entity.csproj" />
+    <ProjectReference Include="..\GE.Infraestructura.Context\GE.Infraestructura.Context.csproj" />
+    <ProjectReference Include="..\GE.Repositorio.Base\GE.Repositorio.Base.csproj" />
+    <ProjectReference Include="..\GE.Repositorio\GE.Repositorio.csproj" />
+  </ItemGroup>
+
+</Project>

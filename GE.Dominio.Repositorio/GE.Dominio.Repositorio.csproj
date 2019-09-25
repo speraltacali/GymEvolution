@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GE.Dominio.Base\GE.Dominio.Base.csproj" />
+    <ProjectReference Include="..\GE.Dominio.Entity\GE.Dominio.Entity.csproj" />
+    <ProjectReference Include="..\GE.Infraestructura.Context\GE.Infraestructura.Context.csproj" />
+    <ProjectReference Include="..\GE.Repositorio.Base\GE.Repositorio.Base.csproj" />
+    <ProjectReference Include="..\GE.Repositorio\GE.Repositorio.csproj" />
+  </ItemGroup>
+
+</Project>
