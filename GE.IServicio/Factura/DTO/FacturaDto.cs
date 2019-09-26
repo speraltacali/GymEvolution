@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GE.Servicio.Base;
 
 namespace GE.IServicio.Factura.DTO
 {
-    public class FacturaDto
+    public class FacturaDto : BaseDto
     {
         public string NumeroFactura { get; set; }
 

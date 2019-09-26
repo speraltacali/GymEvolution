@@ -7,7 +7,7 @@ using GE.Dominio.Entity.Enums;
 
 namespace GE.Dominio.Entity
 {
-    [Table("Cliente")]
+    [Table("Persona_Cliente")]
     public class Cliente : Persona
     {
 

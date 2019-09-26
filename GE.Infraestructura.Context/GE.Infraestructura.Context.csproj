@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20190916224058_PruebaDemo.cs" />
+    <Compile Remove="Migrations\20190917031559_Initial.cs" />
+    <Compile Remove="Migrations\20190917031559_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

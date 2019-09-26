@@ -4,38 +4,54 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class Initial : Migration
+    public partial class DemoUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Cliente",
+                table: "Cliente");
+
+            migrationBuilder.RenameTable(
+                name: "Cliente",
+                newName: "Persona");
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "FechaDeIngreso",
-                table: "Cliente",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                table: "Persona",
+                nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "FechaVencimineto",
-                table: "Cliente",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<byte[]>(
-                name: "Foto",
-                table: "Cliente",
+                table: "Persona",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "GrupoSanguineo",
-                table: "Cliente",
+                table: "Persona",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Discriminator",
+                table: "Persona",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<byte[]>(
+                name: "Foto",
+                table: "Persona",
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "Sexo",
-                table: "Cliente",
+                table: "Persona",
                 nullable: false,
                 defaultValue: 0);
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Persona",
+                table: "Persona",
+                column: "Id");
 
             migrationBuilder.CreateTable(
                 name: "ClienteControl",
@@ -51,9 +67,9 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     table.PrimaryKey("PK_ClienteControl", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ClienteControl_Cliente_ClienteId",
+                        name: "FK_ClienteControl_Persona_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Cliente",
+                        principalTable: "Persona",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -69,15 +85,16 @@ namespace GE.Infraestructura.Context.Migrations
                     FechaOperacion = table.Column<DateTime>(nullable: false),
                     SubTotal = table.Column<decimal>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: false),
                     ClienteId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Factura", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Factura_Cliente_ClienteId",
+                        name: "FK_Factura_Persona_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Cliente",
+                        principalTable: "Persona",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -94,9 +111,9 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     table.PrimaryKey("PK_Cliente_Factura", x => new { x.ClienteId, x.FacturaId });
                     table.ForeignKey(
-                        name: "FK_Cliente_Factura_Cliente_ClienteId",
+                        name: "FK_Cliente_Factura_Persona_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Cliente",
+                        principalTable: "Persona",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -134,25 +151,42 @@ namespace GE.Infraestructura.Context.Migrations
             migrationBuilder.DropTable(
                 name: "Factura");
 
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Persona",
+                table: "Persona");
+
             migrationBuilder.DropColumn(
                 name: "FechaDeIngreso",
-                table: "Cliente");
+                table: "Persona");
 
             migrationBuilder.DropColumn(
                 name: "FechaVencimineto",
-                table: "Cliente");
-
-            migrationBuilder.DropColumn(
-                name: "Foto",
-                table: "Cliente");
+                table: "Persona");
 
             migrationBuilder.DropColumn(
                 name: "GrupoSanguineo",
-                table: "Cliente");
+                table: "Persona");
+
+            migrationBuilder.DropColumn(
+                name: "Discriminator",
+                table: "Persona");
+
+            migrationBuilder.DropColumn(
+                name: "Foto",
+                table: "Persona");
 
             migrationBuilder.DropColumn(
                 name: "Sexo",
-                table: "Cliente");
+                table: "Persona");
+
+            migrationBuilder.RenameTable(
+                name: "Persona",
+                newName: "Cliente");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Cliente",
+                table: "Cliente",
+                column: "Id");
         }
     }
 }

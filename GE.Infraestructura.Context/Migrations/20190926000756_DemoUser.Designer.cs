@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190917031559_Initial")]
-    partial class Initial
+    [Migration("20190926000756_DemoUser")]
+    partial class DemoUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,45 +20,6 @@ namespace GE.Infraestructura.Context.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("GE.Dominio.Entity.Cliente", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Apellido");
-
-                    b.Property<string>("Dni");
-
-                    b.Property<string>("Domicilio");
-
-                    b.Property<DateTime>("FechaDeIngreso");
-
-                    b.Property<DateTime>("FechaNacimiento");
-
-                    b.Property<DateTime>("FechaVencimineto");
-
-                    b.Property<byte[]>("Foto");
-
-                    b.Property<int>("GrupoSanguineo");
-
-                    b.Property<string>("Mail");
-
-                    b.Property<string>("Nombre");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
-                    b.Property<int>("Sexo");
-
-                    b.Property<string>("Telefono");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cliente");
-                });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClienteControl", b =>
                 {
@@ -104,6 +65,8 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<long?>("ClienteId");
 
+                    b.Property<decimal>("Descuento");
+
                     b.Property<DateTime>("FechaOperacion");
 
                     b.Property<string>("NumeroFactura");
@@ -121,6 +84,59 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Factura");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Persona", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Apellido");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("Dni");
+
+                    b.Property<string>("Domicilio");
+
+                    b.Property<DateTime>("FechaNacimiento");
+
+                    b.Property<byte[]>("Foto");
+
+                    b.Property<string>("Mail");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<int>("Sexo");
+
+                    b.Property<string>("Telefono");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Persona");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Cliente", b =>
+                {
+                    b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
+
+                    b.Property<DateTime>("FechaDeIngreso");
+
+                    b.Property<DateTime>("FechaVencimineto");
+
+                    b.Property<int>("GrupoSanguineo");
+
+                    b.ToTable("Cliente");
+
+                    b.HasDiscriminator().HasValue("Cliente");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClienteControl", b =>

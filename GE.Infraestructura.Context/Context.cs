@@ -37,6 +37,10 @@ namespace GE.Infraestructura.Context
         }
 
         public DbSet<Cliente> Cliente { get; set; }
+        
+        public DbSet<Empleado> Empleado { get; set; }
+
+        public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<Factura> Factura { get; set; }
 

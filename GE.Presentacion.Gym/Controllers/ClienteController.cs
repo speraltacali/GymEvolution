@@ -44,7 +44,7 @@ namespace GE.Presentacion.Gym.Controllers
 
         public ActionResult Update(long id)
         {
-            var cliente = _clienteRepositorio.ObtenerTodoPorId(id);
+            var cliente = _clienteRepositorio.ObtenerPorId(id);
 
             return View(cliente);
         }
@@ -60,7 +60,7 @@ namespace GE.Presentacion.Gym.Controllers
 
         public ActionResult Delete(long id)
         {
-            var cliente = _clienteRepositorio.ObtenerTodoPorId(id);
+            var cliente = _clienteRepositorio.ObtenerPorId(id);
 
             return View(cliente);
         }

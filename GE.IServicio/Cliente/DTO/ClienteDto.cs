@@ -2,29 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GE.IServicio.Persona.DTO;
 
 namespace GE.IServicio.Cliente.DTO
 {
-    public  class ClienteDto
+    public  class ClienteDto : PersonaDto
     {
-        public long Id { get; set; }
-
-        public string Apellido { get; set; }
-
-        public string Nombre { get; set; }
-
-        public string Dni { get; set; }
-
-        public string Telefono { get; set; }
-
-        public string Domicilio { get; set; }
-
-        public string Mail { get; set; }
-
-        public DateTime FechaNacimiento { get; set; }
-
-        public Sexo Sexo { get; set; }
-
         public GrupoSanguineo GrupoSanguineo { get; set; }
 
         public DateTime FechaDeIngreso { get; set; }

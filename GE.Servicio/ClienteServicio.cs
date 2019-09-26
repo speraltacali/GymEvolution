@@ -15,9 +15,9 @@ namespace GE.Servicio
     {
         private readonly IClienteRepositorio _clienteServicio;
 
-        public ClienteServicio(ClienteRepositorio clienteRepositorio)
+        public ClienteServicio()
         {
-            _clienteServicio = clienteRepositorio;
+            _clienteServicio = new ClienteRepositorio();
         }
 
         public ClienteDto Agregar(ClienteDto dto)
@@ -88,7 +88,7 @@ namespace GE.Servicio
             _clienteServicio.Guardar();
         }
 
-        public ClienteDto ObtenerTodoPorId(long id)
+        public ClienteDto ObtenerPorId(long id)
         {
             var cliente = _clienteServicio.ObtenerPorId(id);
 
