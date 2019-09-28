@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29209.62
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentacion", "1-Presentacion", "{F6D24094-C09A-4004-A088-74489414195C}"
 EndProject
@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Infraestructura.Reposito
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Servicio.Base", "GE.Servicio.Base\GE.Servicio.Base.csproj", "{A4CAC223-A87D-4718-8BC9-3BF46C3D3BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GE.Presentacion.GymEvolution", "GE.Presentacion.GymEvolution\GE.Presentacion.GymEvolution.csproj", "{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Presentacion.GymEvolution", "GE.Presentacion.GymEvolution\GE.Presentacion.GymEvolution.csproj", "{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -27,7 +27,6 @@ namespace GE.Servicio
                 Password = empleado.Dni,
                 EstaBloqueado = false,
                 EmpleadoId = empleado.Id,
-                Empleado = empleado
             };
 
             _usuarioServicio.Agregar(usuario);
@@ -38,7 +37,7 @@ namespace GE.Servicio
                 UserName = usuario.UserName,
                 Password = usuario.Password,
                 EstaBloqueado = false,
-                EmpleadoId = usuario.Empleado.Id
+                EmpleadoId = usuario.EmpleadoId
             };
         }
 

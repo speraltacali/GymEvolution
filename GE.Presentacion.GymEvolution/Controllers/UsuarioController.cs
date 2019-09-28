@@ -25,11 +25,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return View();
         }
 
-
-        [HttpPost]
-        public ActionResult Create(long id)
+        public ActionResult Login()
         {
-            var User = _usuarioServicio.Agregar(id);
+            return View();
+        }
+
+       
+        [HttpPost]
+        public ActionResult Create(UsuarioDto user)
+        {
+            if (_usuarioServicio.VerificarAcceso(user.UserName, user.Password))
+            {
+
+            }
+
+            //var User = _usuarioServicio.Agregar(id);
 
             return RedirectToAction("Index");
         }

@@ -36,19 +36,19 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return RedirectToAction("Index");
         }
 
-
-        public ActionResult CreateUser()
+        public ActionResult CreateUsuario(long id )
         {
-            return View();
+            var empleado = _empleadoServicio.ObtenerPorId(id);
+
+            return View(empleado);
         }
 
-
         [HttpPost]
-        public ActionResult CreateUser(long id)
+        public ActionResult CreateUsuario(EmpleadoDto dto)
         {
-            var User = _usuarioServicio.Agregar(id);
+            var User = _usuarioServicio.Agregar(dto.Id);
 
-            return View(User);
+            return RedirectToAction("Index");
         }
 
 
