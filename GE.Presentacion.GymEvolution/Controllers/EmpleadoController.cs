@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
+using GE.IServicio.Usuario;
 using GE.Servicio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,13 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class EmpleadoController : Controller
     {
-        private IEmpleadoServicio _empleadoServicio = new EmpleadoServicio();
-
+        private readonly IEmpleadoServicio _empleadoServicio = new EmpleadoServicio();
+        private readonly IUsuarioServicio _usuarioServicio = new UsuarioServicio();
         // GET: Cliente
         public ActionResult Index()
         {
-            var cliente = _empleadoServicio.ObtenerTodo();
-            return View(cliente);
+            var empleado = _empleadoServicio.ObtenerTodo();
+            return View(empleado);
         }
 
         public ActionResult Create()
@@ -30,16 +31,32 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
         {
-            var Cliente = _empleadoServicio.Agregar(empleado);
+            var Empleado = _empleadoServicio.Agregar(empleado);
 
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateUser(long id)
+        {
+            var User = _usuarioServicio.Agregar(id);
+
+            return View(User);
+        }
+
+
         public ActionResult Update(long id)
         {
-            var empleado = _empleadoServicio.ObtenerPorId(id);
+            var Empleado = _empleadoServicio.ObtenerPorId(id);
 
-            return View(empleado);
+            return View(Empleado);
         }
 
 
@@ -53,9 +70,9 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult Delete(long id)
         {
-            var empleado = _empleadoServicio.ObtenerPorId(id);
+            var Empleado = _empleadoServicio.ObtenerPorId(id);
 
-            return View(empleado);
+            return View(Empleado);
         }
 
         [HttpPost]
