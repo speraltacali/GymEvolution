@@ -4,7 +4,7 @@ namespace GE.Aplicacion.CadenaConexion
 {
     public class CadenaConexion
     {
-        public const string DataBase = "GymVersion3";
+        public const string DataBase = "GymVersion5";
 
         public const string Server = @"DESKTOP-066FGIK\SQLEXPRESS";
         /*

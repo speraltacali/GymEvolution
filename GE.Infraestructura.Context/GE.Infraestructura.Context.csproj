@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190915224233_CrearMigracion.cs" />
     <Compile Remove="Migrations\20190916224058_PruebaDemo.cs" />
     <Compile Remove="Migrations\20190917031559_Initial.cs" />
     <Compile Remove="Migrations\20190917031559_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190926000756_DemoUser.cs" />
+    <Compile Remove="Migrations\20190927172442_VistaUsuario.cs" />
+    <Compile Remove="Migrations\20190928035533_Herencia.cs" />
+    <Compile Remove="Migrations\20190928054046_ahorasi.cs" />
   </ItemGroup>
 
   <ItemGroup>

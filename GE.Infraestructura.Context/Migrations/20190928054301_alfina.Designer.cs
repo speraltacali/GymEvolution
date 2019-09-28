@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190927172442_VistaUsuario")]
-    partial class VistaUsuario
+    [Migration("20190928054301_alfina")]
+    partial class alfina
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
