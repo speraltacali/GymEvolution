@@ -29,7 +29,6 @@ namespace GE.Servicio
                 Dni = dto.Dni,
                 Domicilio = dto.Domicilio,
                 Telefono = dto.Telefono,
-                Mail = dto.Mail,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
                 GrupoSanguineo = dto.GrupoSanguineo,
@@ -54,7 +53,6 @@ namespace GE.Servicio
                     Domicilio = x.Domicilio,
                     Telefono = x.Telefono,
                     FechaNacimiento = x.FechaNacimiento,
-                    Mail = x.Mail,
                     Sexo = x.Sexo,
                     GrupoSanguineo = x.GrupoSanguineo,
                     FechaDeIngreso = x.FechaDeIngreso,
@@ -71,7 +69,6 @@ namespace GE.Servicio
             cliente.Domicilio = clienteDto.Domicilio;
             cliente.Telefono = clienteDto.Telefono;
             cliente.FechaNacimiento = clienteDto.FechaNacimiento;
-            cliente.Mail = clienteDto.Mail;
             cliente.Sexo = clienteDto.Sexo;
             cliente.GrupoSanguineo = clienteDto.GrupoSanguineo;
             cliente.FechaDeIngreso = clienteDto.FechaDeIngreso;
@@ -101,7 +98,6 @@ namespace GE.Servicio
                 Domicilio = cliente.Domicilio,
                 Telefono = cliente.Telefono,
                 FechaNacimiento = cliente.FechaNacimiento,
-                Mail = cliente.Mail,
                 Sexo = cliente.Sexo,
                 GrupoSanguineo = cliente.GrupoSanguineo,
                 FechaDeIngreso = cliente.FechaDeIngreso

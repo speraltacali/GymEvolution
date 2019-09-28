@@ -13,7 +13,7 @@ namespace GE.Infraestructura.Context
 
         public Context()
         {
-            
+
         }
 
         public Context(DbContextOptions<Context> Option) : base(Option)
@@ -29,23 +29,28 @@ namespace GE.Infraestructura.Context
             }
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Cliente_Factura>().HasKey(x => new {x.ClienteId, x.FacturaId});
-
-            base.OnModelCreating(modelBuilder);
-        }
 
         public DbSet<Cliente> Cliente { get; set; }
-        
+
         public DbSet<Empleado> Empleado { get; set; }
 
         public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<Factura> Factura { get; set; }
 
-        public  DbSet<ClienteControl> ClienteControl { get; set; }
+        public DbSet<ClienteControl> ClienteControl { get; set; }
 
         public DbSet<Persona> Persona { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente_Factura>().HasKey(x => new {x.ClienteId, x.FacturaId});
+            modelBuilder.Entity<Persona>().ToTable("Persona");
+            modelBuilder.Entity<Cliente>().ToTable("Persona_Cliente");
+            modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<Empleado>().ToTable("Persona_Empleado");
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
