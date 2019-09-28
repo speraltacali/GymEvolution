@@ -84,7 +84,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Domicilio)
                                 </td>
-                                <td>
+                                <td class="tdgrupo">
                                     @Html.DisplayFor(modelItem => item.FechaNacimiento)
                                 </td>
                                 <td>
@@ -97,8 +97,8 @@
                                     @Html.DisplayFor(modelItem => item.FechaDeIngreso)
                                 </td>
                                 <td>
-                                   <!--- <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>--->
+                                   <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             }
