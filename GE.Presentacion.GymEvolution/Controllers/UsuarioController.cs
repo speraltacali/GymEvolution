@@ -27,9 +27,14 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(long id)
+        public ActionResult Create(UsuarioDto user)
         {
-            var User = _usuarioServicio.Agregar(id);
+            if (_usuarioServicio.VerificarAcceso(user.UserName, user.Password))
+            {
+
+            }
+
+            //var User = _usuarioServicio.Agregar(id);
 
             return RedirectToAction("Index");
         }
