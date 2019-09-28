@@ -3,51 +3,42 @@
 @{
     ViewData["Title"] = "CreateUsuario";
 }
-
-<h1>Crear Usuario para Empleado</h1>
-
-
-
-<div>
-    <h4>Esta seguro de crear usuario para el empleado :</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Legajo)
-        </dt>
-        <dd class = "col-sm-10">
+<body>
+    <h1>Crear Usuario para Empleado</h1>
+    <div class="datosalmediouser">
+        <h3>Esta seguro de crear usuario para el empleado :</h3>
+        <div class="col-almedio">
+            @Html.DisplayNameFor(model => model.Legajo) :
             @Html.DisplayFor(model => model.Legajo)
-        </dd>
+            <br />
 
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd class = "col-sm-10">
+            @Html.DisplayNameFor(model => model.Apellido) :
             @Html.DisplayFor(model => model.Apellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
+            <br />
+
+            @Html.DisplayNameFor(model => model.Nombre) :
             @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dni)
-        </dt>
-        <dd class = "col-sm-10">
+            <br />
+
+            @Html.DisplayNameFor(model => model.Dni) :
             @Html.DisplayFor(model => model.Dni)
-        </dd>
-        <div class="row">
-            <div class="col-md-4">
+
+            <br />
+            <div>
+                <br />
                 <form asp-action="CreateUsuario">
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Crear Usuario" class="btn btn-primary" />
+                    </div>
+                    <br />
+                    <div>
+                        |
+                        <a asp-action="Index" class="btn btn-danger">Volver</a>
                     </div>
                 </form>
             </div>
+
         </div>
-    </dl>
-</div>
-<div>|
-    <a asp-action="Index">Back to List</a>
-</div>
+    </div>
+
+</body>
