@@ -69,6 +69,7 @@ namespace GE.Servicio
         {
             return _empleadoServicio.ObtenerTodo().Select(x => new EmpleadoDto()
             {
+                Id = x.Id,
                 Apellido = x.Apellido,
                 Nombre = x.Nombre,
                 Dni = x.Dni,
@@ -86,6 +87,7 @@ namespace GE.Servicio
 
             return new EmpleadoDto()
             {
+                Id = empleado.Id,
                 Apellido = empleado.Apellido,
                 Nombre = empleado.Nombre,
                 Dni = empleado.Dni,
