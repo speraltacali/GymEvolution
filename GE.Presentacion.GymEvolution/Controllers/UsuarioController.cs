@@ -25,7 +25,12 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
 
+       
         [HttpPost]
         public ActionResult Create(UsuarioDto user)
         {
