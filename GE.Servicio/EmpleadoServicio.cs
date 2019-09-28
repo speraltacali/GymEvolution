@@ -22,7 +22,6 @@ namespace GE.Servicio
                 Dni = dto.Dni,
                 Domicilio = dto.Domicilio,
                 Telefono = dto.Telefono,
-                Mail = dto.Mail,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
                 Legajo = dto.Legajo
@@ -44,7 +43,6 @@ namespace GE.Servicio
             empleado.Dni = dto.Dni;
             empleado.Domicilio = dto.Domicilio;
             empleado.Telefono = dto.Telefono;
-            empleado.Mail = dto.Mail;
             empleado.FechaNacimiento = dto.FechaNacimiento;
             empleado.Sexo = dto.Sexo;
             empleado.Legajo = dto.Legajo;
@@ -76,7 +74,6 @@ namespace GE.Servicio
                 Dni = x.Dni,
                 Domicilio = x.Domicilio,
                 Telefono = x.Telefono,
-                Mail = x.Mail,
                 FechaNacimiento = x.FechaNacimiento,
                 Sexo = x.Sexo,
                 Legajo = x.Legajo
@@ -94,7 +91,6 @@ namespace GE.Servicio
                 Dni = empleado.Dni,
                 Domicilio = empleado.Domicilio,
                 Telefono = empleado.Telefono,
-                Mail = empleado.Mail,
                 FechaNacimiento = empleado.FechaNacimiento,
                 Sexo = empleado.Sexo,
                 Legajo = empleado.Legajo
