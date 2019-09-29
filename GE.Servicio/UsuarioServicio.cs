@@ -146,6 +146,8 @@ namespace GE.Servicio
             bool aux = false;
 
             var usuarios = _usuarioServicio.ObtenerTodo();
+
+            return aux;
         }
     }
 }
