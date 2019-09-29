@@ -19,29 +19,31 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return View(cliente);
         }
 
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         public ActionResult Login()
         {
-            return View();
+            if (_usuarioServicio.VerificarExisteUsuario())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Create", "Empleado");
+            }
         }
 
-       
         [HttpPost]
-        public ActionResult Create(UsuarioDto user)
+        public ActionResult Login(UsuarioDto user)
         {
             if (_usuarioServicio.VerificarAcceso(user.UserName, user.Password))
             {
-
+                return RedirectToAction("Index", "Cliente");
             }
+            else
+            {
 
-            //var User = _usuarioServicio.Agregar(id);
-
-            return RedirectToAction("Index");
+                ViewBag.Messege = "Usuario o contraseña incorrectos , reintentar";
+                return View();
+            }
         }
     }
 }

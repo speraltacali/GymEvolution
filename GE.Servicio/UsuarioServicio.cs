@@ -89,6 +89,19 @@ namespace GE.Servicio
             };
         }
 
+        public UsuarioDto ObtenerPorIdEmpleado(long id)
+        {
+            var usuario = _usuarioServicio.ObtenerPorFiltro(x => x.EmpleadoId == id);
+
+            return new UsuarioDto()
+            {
+                UserName = usuario.FirstOrDefault().UserName,
+                Password = usuario.FirstOrDefault().Password,
+                EstaBloqueado = usuario.FirstOrDefault().EstaBloqueado,
+                EmpleadoId = usuario.FirstOrDefault().EmpleadoId
+            };
+        }
+
         public void Bloquear(long id)
         {
             var usuario = _usuarioServicio.ObtenerPorId(id);
@@ -101,15 +114,38 @@ namespace GE.Servicio
 
         public bool VerificarAcceso(string user, string pass)
         {
+            bool aux = false;
+
             var validacion = _usuarioServicio.ObtenerPorFiltro(x =>
                 x.UserName == user && x.Password == pass && x.EstaBloqueado == false);
 
-            if (validacion != null)
+            if (validacion.Count() >= 1)
             {
-                return true;
+                aux = true;
             }
 
-            return false;
+            return aux;
+        }
+
+        public bool VerificarExisteUsuario()
+        {
+            bool aux = false;
+
+            var usuarios = _usuarioServicio.ObtenerTodo();
+
+            if (usuarios.Count() >= 1)
+            {
+                aux = true;
+            }
+
+            return aux;
+        }
+
+        public bool VerificarEmpleadoUsuario(long id)
+        {
+            bool aux = false;
+
+            var usuarios = _usuarioServicio.ObtenerTodo();
         }
     }
 }

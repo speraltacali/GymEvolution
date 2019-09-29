@@ -33,7 +33,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             var Empleado = _empleadoServicio.Agregar(empleado);
 
-            return RedirectToAction("Index");
+            if (!_usuarioServicio.VerificarExisteUsuario())
+            {
+                _usuarioServicio.Agregar(Empleado.Id);
+
+                return RedirectToAction("Login","Usuario");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult CreateUsuario(long id )

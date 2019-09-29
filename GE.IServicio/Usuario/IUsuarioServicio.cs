@@ -20,5 +20,11 @@ namespace GE.IServicio.Usuario
         void Bloquear(long id);
 
         bool VerificarAcceso(string user, string pass);
+
+        bool VerificarExisteUsuario();
+
+        bool VerificarEmpleadoUsuario(long id);
+
+        UsuarioDto ObtenerPorIdEmpleado(long id)
     }
 }
