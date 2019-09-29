@@ -25,6 +25,6 @@ namespace GE.IServicio.Usuario
 
         bool VerificarEmpleadoUsuario(long id);
 
-        UsuarioDto ObtenerPorIdEmpleado(long id)
+        UsuarioDto ObtenerPorIdEmpleado(long id);
     }
 }
