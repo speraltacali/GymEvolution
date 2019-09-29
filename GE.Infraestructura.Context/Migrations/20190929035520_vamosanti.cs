@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class alfina : Migration
+    public partial class vamosanti : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -13,6 +13,9 @@
     <Compile Remove="Migrations\20190927172442_VistaUsuario.cs" />
     <Compile Remove="Migrations\20190928035533_Herencia.cs" />
     <Compile Remove="Migrations\20190928054046_ahorasi.cs" />
+    <Compile Remove="Migrations\20190928054301_alfina.cs" />
+    <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
+    <Compile Remove="Migrations\20190929035401_asd33.cs" />
   </ItemGroup>
 
   <ItemGroup>
