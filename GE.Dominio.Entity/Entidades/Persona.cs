@@ -24,6 +24,10 @@ namespace GE.Dominio.Entity.Entidades
 
         public DateTime FechaNacimiento { get; set; }
 
+        public string NombreFoto { get; set; }
+
+        public int TamañoFoto { get; set; }
+
         public byte[] Foto { get; set;}
 
         public Sexo Sexo { get; set; }

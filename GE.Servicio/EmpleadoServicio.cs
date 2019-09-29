@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Empleado;
@@ -14,7 +16,11 @@ namespace GE.Servicio
     {
         private readonly IEmpleadoRepositorio _empleadoServicio = new EmpleadoRepositorio();
         public EmpleadoDto Agregar(EmpleadoDto dto)
-        {
+        {/*
+            BinaryReader reader = new BinaryReader(Foto.PostedFile.InputStream);
+            byte[] image = reader.ReadBytes(Foto.PostedFile.ContentLength);
+            string filename = Foto.QueryString["filename"].ToString();*/
+
             var empleado = new Empleado()
             {
                 Apellido = dto.Apellido,
@@ -25,7 +31,9 @@ namespace GE.Servicio
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
                 Legajo = dto.Legajo,
-                Foto = dto.Foto
+                Foto = dto.Foto,
+                NombreFoto = dto.NombreFoto,
+                TamañoFoto = dto.TamañoFoto
             };
 
             _empleadoServicio.Agregar(empleado);

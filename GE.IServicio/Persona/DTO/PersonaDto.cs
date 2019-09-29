@@ -42,5 +42,8 @@ namespace GE.IServicio.Persona.DTO
 
         public byte[] Foto { get; set; }
 
+        public string NombreFoto { get; set; }
+
+        public int TamañoFoto { get; set; }
     }
 }

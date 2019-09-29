@@ -16,6 +16,7 @@
     <Compile Remove="Migrations\20190928054301_alfina.cs" />
     <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
     <Compile Remove="Migrations\20190929035401_asd33.cs" />
+    <Compile Remove="Migrations\20190929053113_foto.cs" />
   </ItemGroup>
 
   <ItemGroup>

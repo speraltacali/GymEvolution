@@ -80,6 +80,16 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Foto)
+
+                                    <asp:TemplateField HeaderText="Nombre Archivo">
+                                        <ItemTemplate>
+                                            <asp:HyperLink ID="nombre" runat="server" NavigateUrl='<%# Eval("Name", "~/files/{0}") %>'
+                                                           Text='<%# Eval("Name") %>'>
+                                            </asp:HyperLink>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Length" HeaderText="Tamaño" />                                    
+
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Sexo)

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
 using GE.IServicio.Usuario;
 using GE.Servicio;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,8 +27,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Create()
         {
             return View();
-        }
-
+        }   
 
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
