@@ -5,12 +5,12 @@
 }
 <body>
     <h1>Create</h1>
-
+    
     <h4>Empleado</h4>
     <hr />
     <div class="row">
         <div class="datosalmedio">
-            <form asp-action="Create">
+            <form asp-action="Create" runat="server" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Legajo" class="control-label"></label>
@@ -53,9 +53,10 @@
                     <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+
                     <label asp-for="Foto" class="control-label"></label>
-                    <input asp-for="Foto" class="form-control" />
-                    <span asp-validation-for="Foto" class="text-danger"></span>
+                    <input asp-for="Foto" type="file" runat="server" accept=".jpg">
+                    
                 </div>
                 <div class="form-group">
                     <label asp-for="Sexo" class="control-label"></label>

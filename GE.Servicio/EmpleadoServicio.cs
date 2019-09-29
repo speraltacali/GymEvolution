@@ -24,11 +24,14 @@ namespace GE.Servicio
                 Telefono = dto.Telefono,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
-                Legajo = dto.Legajo
+                Legajo = dto.Legajo,
+                Foto = dto.Foto
             };
 
             _empleadoServicio.Agregar(empleado);
             _empleadoServicio.Guardar();
+
+            dto.Id = empleado.Id;
 
             return dto;
 
