@@ -5,19 +5,16 @@ using System.Threading.Tasks;
 using GE.IServicio.Usuario;
 using GE.IServicio.Usuario.DTO;
 using GE.Servicio;
+using GE.Servicio.DatosEstaticos.Session;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Session;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class UsuarioController : Controller
     {
         private readonly IUsuarioServicio _usuarioServicio = new UsuarioServicio();
-
-        public IActionResult Index()
-        {
-            var cliente = _usuarioServicio.ObtenerTodo();
-            return View(cliente);
-        }
 
         public ActionResult Login()
         {
@@ -36,6 +33,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (_usuarioServicio.VerificarAcceso(user.UserName, user.Password))
             {
+                HttpContext.Session.SetString("Session", SessionActiva.ApyNom);
                 return RedirectToAction("Index", "Cliente");
             }
             else

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cliente.DTO;
 using GE.Servicio;
+using GE.Servicio.DatosEstaticos.Session;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -17,8 +19,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            var cliente = _clienteRepositorio.ObtenerTodo();
-            return View(cliente);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Mensaje = HttpContext.Session.GetString("Session");
+                var cliente = _clienteRepositorio.ObtenerTodo();
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         public ActionResult Create()

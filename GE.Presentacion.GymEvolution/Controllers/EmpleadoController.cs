@@ -8,6 +8,7 @@ using GE.IServicio.Usuario;
 using GE.Servicio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
@@ -18,13 +19,34 @@ namespace GE.Presentacion.GymEvolution.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            var empleado = _empleadoServicio.ObtenerTodo();
-            return View(empleado);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var empleado = _empleadoServicio.ObtenerTodo();
+                return View(empleado);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
-        public ActionResult Create()
+        public ActionResult Create(long id)
         {
-            return View();
+            if (!_usuarioServicio.VerificarExisteUsuario())
+            {
+                return View();
+            }
+            else
+            {
+                if (HttpContext.Session.GetString("Session") == null)
+                {
+                    return RedirectToAction("Login", "Usuario");
+                }
+                else
+                {
+                    return View();
+                }
+            }
         }
 
 
@@ -47,9 +69,17 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult CreateUsuario(long id )
         {
-            var empleado = _empleadoServicio.ObtenerPorId(id);
 
-            return View(empleado);
+            if (_usuarioServicio.VerificarEmpleadoUsuario(id))
+            {
+                TempData["Advertencia"] = "El Usuario ya existe en el sistema";
+                return RedirectToAction("Index", "Empleado");
+            }
+            else
+            {
+                var empleado = _empleadoServicio.ObtenerPorId(id);
+                return View();
+            }
         }
 
         [HttpPost]
