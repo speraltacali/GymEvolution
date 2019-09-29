@@ -30,6 +30,8 @@ namespace GE.Servicio
             _empleadoServicio.Agregar(empleado);
             _empleadoServicio.Guardar();
 
+            dto.Id = empleado.Id;
+
             return dto;
 
         }
