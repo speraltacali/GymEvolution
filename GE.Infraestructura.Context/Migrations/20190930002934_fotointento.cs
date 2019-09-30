@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class vamosanti : Migration
+    public partial class fotointento : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

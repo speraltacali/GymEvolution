@@ -107,15 +107,11 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.Property<string>("NombreFoto");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<int>("Sexo");
-
-                    b.Property<int>("TamañoFoto");
 
                     b.Property<string>("Telefono");
 

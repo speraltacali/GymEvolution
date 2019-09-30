@@ -9,17 +9,25 @@ using GE.Dominio.Repositorio.Empleado;
 using GE.Infraestructura.Repositorio.Empleado;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
+using GE.IServicio.Foto;
+using Microsoft.AspNetCore.Http;
 
 namespace GE.Servicio
 {
     public class EmpleadoServicio : IEmpleadoServicio
     {
         private readonly IEmpleadoRepositorio _empleadoServicio = new EmpleadoRepositorio();
+        private byte[] GetByteArrayFromImage(IFormFile file)
+        {
+            using (var target = new MemoryStream())
+            {
+                file.CopyTo(target);
+                return target.ToArray();
+            }
+        }
         public EmpleadoDto Agregar(EmpleadoDto dto)
-        {/*
-            BinaryReader reader = new BinaryReader(Foto.PostedFile.InputStream);
-            byte[] image = reader.ReadBytes(Foto.PostedFile.ContentLength);
-            string filename = Foto.QueryString["filename"].ToString();*/
+        {
+            var img = GetByteArrayFromImage(dto.Foto);
 
             var empleado = new Empleado()
             {
@@ -31,9 +39,9 @@ namespace GE.Servicio
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
                 Legajo = dto.Legajo,
-                Foto = dto.Foto,
-                NombreFoto = dto.NombreFoto,
-                TamañoFoto = dto.TamañoFoto
+                Foto = img,
+                DescripcionFoto = dto.DescripcionFoto,
+                ImageCaption = dto.ImageCaption
             };
 
             _empleadoServicio.Agregar(empleado);

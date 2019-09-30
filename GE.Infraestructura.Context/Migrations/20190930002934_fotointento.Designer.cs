@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190929053212_foto02")]
-    partial class foto02
+    [Migration("20190930002934_fotointento")]
+    partial class fotointento
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,15 +109,11 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<string>("Nombre");
 
-                    b.Property<string>("NombreFoto");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<int>("Sexo");
-
-                    b.Property<int>("TamañoFoto");
 
                     b.Property<string>("Telefono");
 
