@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using GE.Dominio.Base;
 using GE.Dominio.Entity.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace GE.Dominio.Entity.Entidades
 {
@@ -24,9 +25,8 @@ namespace GE.Dominio.Entity.Entidades
 
         public DateTime FechaNacimiento { get; set; }
 
-        public byte[] Foto { get; set;}
-
         public Sexo Sexo { get; set; }
 
+        public byte[] Foto { get; set; }
     }
 }

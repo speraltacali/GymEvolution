@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GE.IServicio\GE.IServicio.csproj" />
-    <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.DatosEstaticos.csproj" />
+    <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj" />
     <ProjectReference Include="..\GE.Servicio\GE.Servicio.csproj" />
   </ItemGroup>
 

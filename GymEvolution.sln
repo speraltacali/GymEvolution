@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Servicio.Base", "GE.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Presentacion.GymEvolution", "GE.Presentacion.GymEvolution\GE.Presentacion.GymEvolution.csproj", "{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GE.Servicio.DatosEstaticos", "GE.Servicio.DatosEstaticos\GE.Servicio.DatosEstaticos.csproj", "{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Servicio.Helpers", "GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj", "{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

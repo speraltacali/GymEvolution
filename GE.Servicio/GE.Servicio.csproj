@@ -18,7 +18,7 @@
     <ProjectReference Include="..\GE.Infraestructura.Repositorio\GE.Infraestructura.Repositorio.csproj" />
     <ProjectReference Include="..\GE.IServicio\GE.IServicio.csproj" />
     <ProjectReference Include="..\GE.Repositorio\GE.Repositorio.csproj" />
-    <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.DatosEstaticos.csproj" />
+    <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

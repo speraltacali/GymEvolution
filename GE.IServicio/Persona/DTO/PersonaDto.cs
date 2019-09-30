@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using GE.Dominio.Entity.Enums;
 using GE.Servicio.Base;
+using Microsoft.AspNetCore.Http;
 
 namespace GE.IServicio.Persona.DTO
 {
@@ -41,6 +42,5 @@ namespace GE.IServicio.Persona.DTO
         public Sexo Sexo { get; set; }
 
         public byte[] Foto { get; set; }
-
     }
 }
