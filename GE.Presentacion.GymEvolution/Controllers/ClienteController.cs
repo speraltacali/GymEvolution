@@ -21,7 +21,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                ViewBag.Mensaje = HttpContext.Session.GetString("Session");
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 var cliente = _clienteRepositorio.ObtenerTodo();
                 return View(cliente);
             }
@@ -33,39 +34,75 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
 
         [HttpPost]
         public ActionResult Create(ClienteDto cliente)
         {
-            var Cliente = _clienteRepositorio.Agregar(cliente);
+            if (ModelState.IsValid)
+            {
+                var Cliente = _clienteRepositorio.Agregar(cliente);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Update(long id)
         {
-            var cliente = _clienteRepositorio.ObtenerPorId(id);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var cliente = _clienteRepositorio.ObtenerPorId(id);
 
-            return View(cliente);
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
 
         [HttpPost]
         public ActionResult Update(ClienteDto clienteDto)
         {
-            _clienteRepositorio.Modificar(clienteDto);
+            if (ModelState.IsValid)
+            {
+                _clienteRepositorio.Modificar(clienteDto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Delete(long id)
         {
-            var cliente = _clienteRepositorio.ObtenerPorId(id);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var cliente = _clienteRepositorio.ObtenerPorId(id);
 
-            return View(cliente);
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
         }
 
         [HttpPost]

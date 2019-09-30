@@ -21,6 +21,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 var empleado = _empleadoServicio.ObtenerTodo();
                 return View(empleado);
             }
@@ -57,9 +59,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             if (!_usuarioServicio.VerificarExisteUsuario())
             {
-                _usuarioServicio.Agregar(Empleado.Id);
+                if (ModelState.IsValid)
+                {
+                    _usuarioServicio.Agregar(Empleado.Id);
 
-                return RedirectToAction("Login","Usuario");
+                    return RedirectToAction("Login", "Usuario");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
@@ -69,16 +78,22 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult CreateUsuario(long id )
         {
-
-            if (_usuarioServicio.VerificarEmpleadoUsuario(id))
+            if (HttpContext.Session.GetString("Session") != null)
             {
-                TempData["Advertencia"] = "El Usuario ya existe en el sistema";
-                return RedirectToAction("Index", "Empleado");
+                if (_usuarioServicio.VerificarEmpleadoUsuario(id))
+                {
+                    TempData["Advertencia"] = "El Usuario ya existe en el sistema";
+                    return RedirectToAction("Index", "Empleado");
+                }
+                else
+                {
+                    var empleado = _empleadoServicio.ObtenerPorId(id);
+                    return View(empleado);
+                }
             }
             else
             {
-                var empleado = _empleadoServicio.ObtenerPorId(id);
-                return View();
+                return RedirectToAction("Login", "Usuario");
             }
         }
 
@@ -93,33 +108,48 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult Update(long id)
         {
-            var Empleado = _empleadoServicio.ObtenerPorId(id);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
 
-            return View(Empleado);
+                var Empleado = _empleadoServicio.ObtenerPorId(id);
+
+                return View(Empleado);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
 
         [HttpPost]
         public ActionResult Update(EmpleadoDto empleadoDto)
         {
-            _empleadoServicio.Modificar(empleadoDto);
+            if (ModelState.IsValid)
+            {
+                _empleadoServicio.Modificar(empleadoDto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public ActionResult Delete(long id)
-        {
-            var Empleado = _empleadoServicio.ObtenerPorId(id);
+        //public ActionResult Delete(long id)
+        //{
+        //    var Empleado = _empleadoServicio.ObtenerPorId(id);
 
-            return View(Empleado);
-        }
+        //    return View(Empleado);
+        //}
 
-        [HttpPost]
-        public ActionResult Delete(EmpleadoDto empleadoDto)
-        {
-            _empleadoServicio.Eliminar(empleadoDto.Id);
+        //[HttpPost]
+        //public ActionResult Delete(EmpleadoDto empleadoDto)
+        //{
+        //    _empleadoServicio.Eliminar(empleadoDto.Id);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

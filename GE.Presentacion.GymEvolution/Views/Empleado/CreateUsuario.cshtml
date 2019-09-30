@@ -5,34 +5,29 @@
 }
 <body>
     <h1>Crear Usuario para Empleado</h1>
-    <div class="datosalmediouser">
-        <h3>Esta seguro de crear usuario para el empleado :</h3>
+    <div align="center" style="color:white " class="datosalmediouser">
+        <h5>Esta seguro de crear usuario para el empleado :</h5>
         <div class="col-almedio">
+
             @Html.DisplayNameFor(model => model.Legajo) :
             @Html.DisplayFor(model => model.Legajo)
-            <br />
 
             @Html.DisplayNameFor(model => model.Apellido) :
             @Html.DisplayFor(model => model.Apellido)
-            <br />
 
             @Html.DisplayNameFor(model => model.Nombre) :
             @Html.DisplayFor(model => model.Nombre)
-            <br />
 
             @Html.DisplayNameFor(model => model.Dni) :
             @Html.DisplayFor(model => model.Dni)
-
-            <br />
             <div>
-                <br />
+                <br/>
                 <form asp-action="CreateUsuario">
                     <div class="form-group">
-                        <input type="submit" value="Crear Usuario" class="btn btn-primary" />
+                        <input type="submit" value="Crear Usuario" class="btn btn-primary"/>
                     </div>
-                    <br />
+                    <br/>
                     <div>
-                        |
                         <a asp-action="Index" class="btn btn-danger">Volver</a>
                     </div>
                 </form>

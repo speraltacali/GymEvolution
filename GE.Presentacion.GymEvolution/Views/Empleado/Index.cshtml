@@ -1,15 +1,18 @@
-﻿@model IEnumerable<GE.IServicio.Empleado.DTO.EmpleadoDto>
+﻿@using Microsoft.AspNetCore.Http
+@model IEnumerable<GE.IServicio.Empleado.DTO.EmpleadoDto>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Consulta Empleado</h1>
+<u><h1>Consulta Empleado</h1></u>
+<h2 style="color: white">User : @ViewBag.Session</h2>
 
 <p align="right">
-    <a asp-action="Create" class="btn btn-primary">Nuevo Empleado</a>
-    <h1>@TempData["Advertencia"]</h1>
+    <a asp-action="Create" class="btn btn-primary">Nuevo Empleado</a>   
 </p>
+
+<h4 style="color:yellow">@TempData["Advertencia"]</h4>
 
 <div class="col-md-12">
     <div class="container-table100">

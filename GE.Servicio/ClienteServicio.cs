@@ -39,6 +39,8 @@ namespace GE.Servicio
             _clienteServicio.Agregar(cliente);
             _clienteServicio.Guardar();
 
+            dto.Id = cliente.Id;
+
             return dto;
         }
 

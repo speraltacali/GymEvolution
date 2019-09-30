@@ -20,7 +20,15 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (_usuarioServicio.VerificarExisteUsuario())
             {
-                return View();
+                if (HttpContext.Session.GetString("Session") != null)
+                {
+                    HttpContext.Session.Remove("Session");
+                    return View();
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
@@ -31,9 +39,11 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Login(UsuarioDto user)
         {
+
             if (_usuarioServicio.VerificarAcceso(user.UserName, user.Password))
             {
                 HttpContext.Session.SetString("Session", SessionActiva.ApyNom);
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 return RedirectToAction("Index", "Cliente");
             }
             else
