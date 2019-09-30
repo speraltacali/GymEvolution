@@ -55,24 +55,25 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
         {
-            var Empleado = _empleadoServicio.Agregar(empleado);
-
-            if (!_usuarioServicio.VerificarExisteUsuario())
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var Empleado = _empleadoServicio.Agregar(empleado);
+
+                if (!_usuarioServicio.VerificarExisteUsuario())
                 {
+
                     _usuarioServicio.Agregar(Empleado.Id);
 
                     return RedirectToAction("Login", "Usuario");
                 }
                 else
                 {
-                    return View();
+                    return RedirectToAction("Index");
                 }
             }
             else
             {
-                return RedirectToAction("Index");
+                return View();
             }
         }
 
