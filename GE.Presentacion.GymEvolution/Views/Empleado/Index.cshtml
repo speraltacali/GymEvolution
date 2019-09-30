@@ -78,17 +78,10 @@
                                 <td class="tdgrupo">
                                     @Html.DisplayFor(modelItem => item.FechaNacimiento)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Foto)
-
-                                    <asp:TemplateField HeaderText="Nombre Archivo">
-                                        <ItemTemplate>
-                                            <asp:HyperLink ID="nombre" runat="server" NavigateUrl='<%# Eval("Name", "~/files/{0}") %>'
-                                                           Text='<%# Eval("Name") %>'>
-                                            </asp:HyperLink>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:BoundField DataField="Length" HeaderText="Tamaño" />                                    
+                                <td>                                    
+                                    <input type="file" asp-for="@Html.DisplayFor(modelItem => item.Foto)">
+                                    <input type="text" asp-for="@Html.DisplayFor(modelItem => item.ImageCaption)">
+                                    <input type="text" asp-for="@Html.DisplayFor(modelItem => item.DescripcionFoto)">
 
                                 </td>
                                 <td>

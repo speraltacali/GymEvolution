@@ -44,6 +44,6 @@ namespace GE.IServicio.Persona.DTO
         public string ImageCaption { get; set; }
         public string DescripcionFoto { get; set; }
         public IFormFile Foto { get; set; }
-
+        public byte[] Fotobyte { get; set; }
     }
 }

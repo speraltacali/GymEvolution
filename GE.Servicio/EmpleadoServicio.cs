@@ -9,8 +9,10 @@ using GE.Dominio.Repositorio.Empleado;
 using GE.Infraestructura.Repositorio.Empleado;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
+using System.Drawing;
 using GE.IServicio.Foto;
 using Microsoft.AspNetCore.Http;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GE.Servicio
 {
@@ -86,7 +88,9 @@ namespace GE.Servicio
 
         public IEnumerable<EmpleadoDto> ObtenerTodo()
         {
-            return _empleadoServicio.ObtenerTodo().Select(x => new EmpleadoDto()
+            
+
+            var emple = _empleadoServicio.ObtenerTodo().Select(x => new EmpleadoDto()
             {
                 Id = x.Id,
                 Apellido = x.Apellido,
@@ -96,9 +100,18 @@ namespace GE.Servicio
                 Telefono = x.Telefono,
                 FechaNacimiento = x.FechaNacimiento,
                 Sexo = x.Sexo,
-                Legajo = x.Legajo
-            }).ToList();
+                Legajo = x.Legajo,
+                DescripcionFoto = x.DescripcionFoto,
+                Fotobyte = x.Foto,
+                ImageCaption = x.ImageCaption
+
+            });
+
+            return emple.ToList();
+
         }
+
+        
 
         public EmpleadoDto ObtenerPorId(long id)
         {

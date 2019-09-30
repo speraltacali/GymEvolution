@@ -92,6 +92,8 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<string>("DescripcionFoto");
+
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
@@ -102,6 +104,8 @@ namespace GE.Infraestructura.Context.Migrations
                     b.Property<DateTime>("FechaNacimiento");
 
                     b.Property<byte[]>("Foto");
+
+                    b.Property<string>("ImageCaption");
 
                     b.Property<string>("Mail");
 

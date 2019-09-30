@@ -8,11 +8,14 @@ using GE.IServicio.Empleado.DTO;
 using GE.IServicio.Foto;
 using GE.IServicio.Usuario;
 using GE.Servicio;
+using System.Drawing;
 using System.Web;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net.Http.Headers;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
@@ -29,10 +32,22 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Index()
         {
             var empleado = _empleadoServicio.ObtenerTodo();
+            
+
+            foreach (var item in empleado)
+            {
+                var filename = ContentDispositionHeaderValue.Parse(item.Foto.ContentDisposition).FileName.Trim('"');
+
+               // item.Foto = filename.b;
+
+            }
+
             return View(empleado);
         }
 
-        public ActionResult Create()
+   
+
+    public ActionResult Create()
         {
             return View();
         }
