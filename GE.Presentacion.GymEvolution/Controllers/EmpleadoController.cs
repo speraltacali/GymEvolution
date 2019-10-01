@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
 using GE.IServicio.Foto;
@@ -14,7 +13,6 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
-using static System.Net.Mime.MediaTypeNames;
 using System.Net.Http.Headers;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -32,14 +30,24 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Index()
         {
             var empleado = _empleadoServicio.ObtenerTodo();
-            
+            //List<Bitmap> lista = new List<Bitmap>();
 
             foreach (var item in empleado)
             {
-                var filename = ContentDispositionHeaderValue.Parse(item.Foto.ContentDisposition).FileName.Trim('"');
+                
+                MemoryStream ms = new MemoryStream(item.Fotobyte);
+                Bitmap bm = null;
+                /*
+                Image image = Image.FromFile(item.DescripcionFoto);
+                Image newImage = image.GetThumbnailImage(32, 32, null, new IntPtr());     */
 
-               // item.Foto = filename.b;
+                bm = new Bitmap(ms);
 
+                var bx = bm.GetThumbnailImage(32, 32, null, new IntPtr());
+
+
+                item.Bitmap = bx;
+                
             }
 
             return View(empleado);
@@ -69,6 +77,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             var fileName = Path.GetFileName(empleado.Foto.FileName);
             var contentType = empleado.Foto.ContentType;
+
+            //empleado.Foto.FileName = fileName;
 
             var empleadoAgregar = new EmpleadoDto
             {

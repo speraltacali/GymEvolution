@@ -78,10 +78,11 @@
                                 <td class="tdgrupo">
                                     @Html.DisplayFor(modelItem => item.FechaNacimiento)
                                 </td>
-                                <td>                                    
-                                    <input type="file" asp-for="@Html.DisplayFor(modelItem => item.Foto)">
-                                    <input type="text" asp-for="@Html.DisplayFor(modelItem => item.ImageCaption)">
-                                    <input type="text" asp-for="@Html.DisplayFor(modelItem => item.DescripcionFoto)">
+                                <td>
+                                    
+                                    <input id="inputFile" type="file" accept="image/*" onchange="@item.Bitmap" />
+                                    <input type="text" asp-for="@item.ImageCaption">
+                                    <input type="text" asp-for="@item.DescripcionFoto">
 
                                 </td>
                                 <td>

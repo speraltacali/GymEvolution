@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Text;
 using GE.Dominio.Entity.Enums;
 using GE.Servicio.Base;
@@ -45,5 +46,17 @@ namespace GE.IServicio.Persona.DTO
         public string DescripcionFoto { get; set; }
         public IFormFile Foto { get; set; }
         public byte[] Fotobyte { get; set; }
+
+        public Image Bitmap { get; set; }
+        /*
+        public Image Getbitmap()
+        {
+            return bitmap1;
+        }
+
+        public void Setbitmap(Image value)
+        {
+            bitmap1 = value;
+        }*/
     }
 }

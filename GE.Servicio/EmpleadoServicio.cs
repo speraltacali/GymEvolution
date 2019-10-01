@@ -13,6 +13,7 @@ using System.Drawing;
 using GE.IServicio.Foto;
 using Microsoft.AspNetCore.Http;
 using static System.Net.Mime.MediaTypeNames;
+using System.Net.Http.Headers;
 
 namespace GE.Servicio
 {
@@ -27,29 +28,75 @@ namespace GE.Servicio
                 return target.ToArray();
             }
         }
+
+        private byte[] GetByteArrayFromImage2(IFormFile file)
+        {
+            string sTemp = Path.GetTempFileName();
+            FileStream fs = new FileStream(sTemp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            /*
+            String fileName = file.FileName;
+            Stream IconStream = System.IO.File.OpenWrite(fileName);*/
+           
+            /*
+            System.Drawing.Image image = System.Drawing.Image.FromFile(file.FileName);
+            System.Drawing.Image newImage = image.GetThumbnailImage(32, 32, null, new IntPtr());
+
+            newImage.Save(fs, System.Drawing.Imaging.ImageFormat.Png);*/
+            fs.Position = 0;
+
+            int imgLength = Convert.ToInt32(fs.Length);
+            byte[] bytes = new byte[imgLength];
+            fs.Read(bytes, 0, imgLength);
+            fs.Close();
+            return bytes;
+        }
+
         public EmpleadoDto Agregar(EmpleadoDto dto)
         {
-            var img = GetByteArrayFromImage(dto.Foto);
-
-            var empleado = new Empleado()
+           
+            using (var reader = new StreamReader(dto.Foto.OpenReadStream()))
             {
-                Apellido = dto.Apellido,
-                Nombre = dto.Nombre,
-                Dni = dto.Dni,
-                Domicilio = dto.Domicilio,
-                Telefono = dto.Telefono,
-                FechaNacimiento = dto.FechaNacimiento,
-                Sexo = dto.Sexo,
-                Legajo = dto.Legajo,
-                Foto = img,
-                DescripcionFoto = dto.DescripcionFoto,
-                ImageCaption = dto.ImageCaption
-            };
+                var fileContent = reader.ReadToEnd();
+                var parsedContentDisposition = ContentDispositionHeaderValue.Parse(dto.Foto.ContentDisposition);
 
-            _empleadoServicio.Agregar(empleado);
-            _empleadoServicio.Guardar();
+                var img = GetByteArrayFromImage(dto.Foto);
+                string imagecapttion = "";
 
-            dto.Id = empleado.Id;
+                if (dto.ImageCaption == null)
+                {
+                    imagecapttion = "12334";
+                }
+                else
+                {
+                    imagecapttion = dto.ImageCaption;
+                }
+
+                //dto.Foto.FileName = dto.DescripcionFoto;
+
+
+                var empleado = new Empleado()
+                {
+                    Apellido = dto.Apellido,
+                    Nombre = dto.Nombre,
+                    Dni = dto.Dni,
+                    Domicilio = dto.Domicilio,
+                    Telefono = dto.Telefono,
+                    FechaNacimiento = dto.FechaNacimiento,
+                    Sexo = dto.Sexo,
+                    Legajo = dto.Legajo,
+                    Foto = img,
+                    DescripcionFoto = parsedContentDisposition.FileName,
+                    ImageCaption = fileContent,
+                    
+                };
+
+                _empleadoServicio.Agregar(empleado);
+                _empleadoServicio.Guardar();
+
+                dto.Id = empleado.Id;
+            }
+
+            
 
             return dto;
 
@@ -104,7 +151,7 @@ namespace GE.Servicio
                 DescripcionFoto = x.DescripcionFoto,
                 Fotobyte = x.Foto,
                 ImageCaption = x.ImageCaption
-
+                
             });
 
             return emple.ToList();
