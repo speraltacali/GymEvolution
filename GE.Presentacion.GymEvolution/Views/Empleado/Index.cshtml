@@ -80,7 +80,7 @@
                                 </td>
                                 <td>
                                     
-                                    <input id="inputFile" type="file" accept="image/*" onchange="@item.Bitmap" />
+                                    <asp:Image runat="server" ImageUrl="@item.BitmapString" />
                                     <input type="text" asp-for="@item.ImageCaption">
                                     <input type="text" asp-for="@item.DescripcionFoto">
 

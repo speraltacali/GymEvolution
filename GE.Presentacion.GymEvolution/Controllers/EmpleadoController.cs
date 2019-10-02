@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
+using static System.Net.WebRequestMethods;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
@@ -34,7 +35,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             foreach (var item in empleado)
             {
-                
+                byte[] fotonew = new byte[item.Fotobyte.Length];
                 MemoryStream ms = new MemoryStream(item.Fotobyte);
                 Bitmap bm = null;
                 /*
@@ -45,8 +46,9 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
                 var bx = bm.GetThumbnailImage(32, 32, null, new IntPtr());
 
+                string finfoto = "data:image/jpg;base64," + Convert.ToBase64String(fotonew);
 
-                item.Bitmap = bx;
+                item.BitmapString = $"{finfoto}";
                 
             }
 
@@ -55,15 +57,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
    
 
-    public ActionResult Create()
+        public ActionResult Create()
         {
             return View();
         }
 
-        private byte[] GetByteArrayFromImage(IFormFile file)
+        private byte[] GetByteArrayFromImage(IFormFile file, byte[] byt, IFormFile filetamano)
         {
             using (var target = new MemoryStream())
             {
+                var intes = Convert.ToInt32(filetamano.Length);
                 file.CopyTo(target);
                 return target.ToArray();
             }
@@ -72,13 +75,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
         {
-            var img = GetByteArrayFromImage(empleado.Foto);
-            var imgCaption = empleado.ImageCaption;
+            //int tamanio = empleado.Foto.PostedFile.ContentLength;
+            var tamano = empleado.Foto.Length;//
+            IFormFile filetamano = empleado.Foto;
+            byte[] tamana2 = new byte[tamano];//
+            var img = GetByteArrayFromImage(empleado.Foto,tamana2,filetamano);//
+            var imgCaption = empleado.ImageCaption;//
 
             var fileName = Path.GetFileName(empleado.Foto.FileName);
             var contentType = empleado.Foto.ContentType;
-
-            //empleado.Foto.FileName = fileName;
+            string finfoto = "data:image/jpg;base64," + Convert.ToBase64String(img);//
 
             var empleadoAgregar = new EmpleadoDto
             {

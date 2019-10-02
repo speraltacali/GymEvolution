@@ -47,6 +47,7 @@ namespace GE.IServicio.Persona.DTO
         public IFormFile Foto { get; set; }
         public byte[] Fotobyte { get; set; }
 
+        public string BitmapString { get; set; }
         public Image Bitmap { get; set; }
         /*
         public Image Getbitmap()
