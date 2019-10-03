@@ -80,10 +80,8 @@
                                 </td>
                                 <td>
                                     
-                                    <asp:Image runat="server" ImageUrl="@item.BitmapString" />
-                                    <input type="text" asp-for="@item.ImageCaption">
-                                    <input type="text" asp-for="@item.DescripcionFoto">
-
+                                    <img src="@item.FotoLink" class="w-75" alt="Logo">
+                                    
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Sexo)

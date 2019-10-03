@@ -33,6 +33,7 @@ namespace GE.Servicio
                 Sexo = dto.Sexo,
                 GrupoSanguineo = dto.GrupoSanguineo,
                 FechaDeIngreso = dto.FechaDeIngreso,
+                FotoLink = dto.FotoLink
             };
 
             _clienteServicio.Agregar(cliente);
@@ -56,6 +57,7 @@ namespace GE.Servicio
                     Sexo = x.Sexo,
                     GrupoSanguineo = x.GrupoSanguineo,
                     FechaDeIngreso = x.FechaDeIngreso,
+                    FotoLink = x.FotoLink
                 }).ToList();
         }
 
@@ -72,6 +74,7 @@ namespace GE.Servicio
             cliente.Sexo = clienteDto.Sexo;
             cliente.GrupoSanguineo = clienteDto.GrupoSanguineo;
             cliente.FechaDeIngreso = clienteDto.FechaDeIngreso;
+            cliente.FotoLink = clienteDto.FotoLink;
 
             _clienteServicio.Modificar(cliente);
             _clienteServicio.Guardar();
@@ -100,7 +103,8 @@ namespace GE.Servicio
                 FechaNacimiento = cliente.FechaNacimiento,
                 Sexo = cliente.Sexo,
                 GrupoSanguineo = cliente.GrupoSanguineo,
-                FechaDeIngreso = cliente.FechaDeIngreso
+                FechaDeIngreso = cliente.FechaDeIngreso,
+                FotoLink = cliente.FotoLink
             };
         }
     }

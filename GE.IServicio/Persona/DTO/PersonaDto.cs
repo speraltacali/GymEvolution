@@ -41,23 +41,10 @@ namespace GE.IServicio.Persona.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es obligatorio.")]
         [EnumDataType(typeof(Dominio.Entity.Enums.Sexo))]
         public Sexo Sexo { get; set; }
-
-        public string ImageCaption { get; set; }
-        public string DescripcionFoto { get; set; }
+ 
+        //para la imagen se usan los 2
         public IFormFile Foto { get; set; }
-        public byte[] Fotobyte { get; set; }
-
-        public string BitmapString { get; set; }
-        public Image Bitmap { get; set; }
-        /*
-        public Image Getbitmap()
-        {
-            return bitmap1;
-        }
-
-        public void Setbitmap(Image value)
-        {
-            bitmap1 = value;
-        }*/
+        public string FotoLink { get; set; }
+  
     }
 }

@@ -31,26 +31,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Index()
         {
             var empleado = _empleadoServicio.ObtenerTodo();
-            //List<Bitmap> lista = new List<Bitmap>();
-
-            foreach (var item in empleado)
-            {
-                byte[] fotonew = new byte[item.Fotobyte.Length];
-                MemoryStream ms = new MemoryStream(item.Fotobyte);
-                Bitmap bm = null;
-                /*
-                Image image = Image.FromFile(item.DescripcionFoto);
-                Image newImage = image.GetThumbnailImage(32, 32, null, new IntPtr());     */
-
-                bm = new Bitmap(ms);
-
-                var bx = bm.GetThumbnailImage(32, 32, null, new IntPtr());
-
-                string finfoto = "data:image/jpg;base64," + Convert.ToBase64String(fotonew);
-
-                item.BitmapString = $"{finfoto}";
-                
-            }
+            //List<Bitmap> lista = new List<Bitmap>();            
 
             return View(empleado);
         }
@@ -75,16 +56,19 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
         {
-            //int tamanio = empleado.Foto.PostedFile.ContentLength;
-            var tamano = empleado.Foto.Length;//
-            IFormFile filetamano = empleado.Foto;
-            byte[] tamana2 = new byte[tamano];//
-            var img = GetByteArrayFromImage(empleado.Foto,tamana2,filetamano);//
-            var imgCaption = empleado.ImageCaption;//
+            if (empleado.Foto != null)
+            {
+                //guarda la imagen en la carpeta wwwroot/imgsistema
+                var path = $"wwwroot\\imgsistema\\{empleado.Foto.FileName}";
 
-            var fileName = Path.GetFileName(empleado.Foto.FileName);
-            var contentType = empleado.Foto.ContentType;
-            string finfoto = "data:image/jpg;base64," + Convert.ToBase64String(img);//
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    empleado.Foto.CopyTo(stream);
+                }
+
+                //guarda en la base de datos
+                empleado.FotoLink = $"/imgsistema/{empleado.Foto.FileName}";
+            }
 
             var empleadoAgregar = new EmpleadoDto
             {
@@ -96,10 +80,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 FechaNacimiento = empleado.FechaNacimiento,
                 Legajo = empleado.Legajo,
                 Sexo = empleado.Sexo,
-                Telefono = empleado.Telefono,
-                ImageCaption = imgCaption,
-                DescripcionFoto = fileName,
-                Foto = empleado.Foto
+                Telefono = empleado.Telefono,                
+                FotoLink = empleado.FotoLink
             };
 
             var Empleado = _empleadoServicio.Agregar(empleadoAgregar);
@@ -143,6 +125,20 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult Update(EmpleadoDto empleadoDto)
         {
+            if (empleadoDto.Foto != null)
+            {
+                //guarda la imagen en la carpeta wwwroot/imgsistema
+                var path = $"wwwroot\\imgsistema\\{empleadoDto.Foto.FileName}";
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    empleadoDto.Foto.CopyTo(stream);
+                }
+
+                //guarda en la base de datos
+                empleadoDto.FotoLink = $"/imgsistema/{empleadoDto.Foto.FileName}";
+            }
+
             _empleadoServicio.Modificar(empleadoDto);
 
             return RedirectToAction("Index");
