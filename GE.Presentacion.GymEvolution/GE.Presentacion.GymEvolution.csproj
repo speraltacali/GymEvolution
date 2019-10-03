@@ -7,6 +7,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="DrawStringLineHeight" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
@@ -22,6 +23,11 @@
     <ProjectReference Include="..\GE.IServicio\GE.IServicio.csproj" />
     <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj" />
     <ProjectReference Include="..\GE.Servicio\GE.Servicio.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\imgsistema\" />
   </ItemGroup>
 
 

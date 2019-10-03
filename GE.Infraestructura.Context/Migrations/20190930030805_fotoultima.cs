@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class alfina : Migration
+    public partial class fotoultima : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,8 @@ namespace GE.Infraestructura.Context.Migrations
                     Domicilio = table.Column<string>(nullable: true),
                     Mail = table.Column<string>(nullable: true),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
+                    ImageCaption = table.Column<string>(nullable: true),
+                    DescripcionFoto = table.Column<string>(nullable: true),
                     Foto = table.Column<byte[]>(nullable: true),
                     Sexo = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),

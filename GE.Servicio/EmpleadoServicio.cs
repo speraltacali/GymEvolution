@@ -1,20 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Empleado;
 using GE.Infraestructura.Repositorio.Empleado;
 using GE.IServicio.Empleado;
 using GE.IServicio.Empleado.DTO;
+using System.Drawing;
+using GE.IServicio.Foto;
+using Microsoft.AspNetCore.Http;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net.Http.Headers;
 
 namespace GE.Servicio
 {
     public class EmpleadoServicio : IEmpleadoServicio
     {
         private readonly IEmpleadoRepositorio _empleadoServicio = new EmpleadoRepositorio();
+
+        //trasforma file a byte
+        private byte[] GetByteArrayFromImage(IFormFile file)
+        {
+            using (var target = new MemoryStream())
+            {
+                file.CopyTo(target);
+                return target.ToArray();
+            }
+        }
+
+
         public EmpleadoDto Agregar(EmpleadoDto dto)
         {
+                                     
             var empleado = new Empleado()
             {
                 Apellido = dto.Apellido,
@@ -24,7 +44,8 @@ namespace GE.Servicio
                 Telefono = dto.Telefono,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
-                Legajo = dto.Legajo
+                Legajo = dto.Legajo,
+                FotoLink = dto.FotoLink
             };
 
             _empleadoServicio.Agregar(empleado);
@@ -48,6 +69,7 @@ namespace GE.Servicio
             empleado.FechaNacimiento = dto.FechaNacimiento;
             empleado.Sexo = dto.Sexo;
             empleado.Legajo = dto.Legajo;
+            empleado.FotoLink = dto.FotoLink;
 
             _empleadoServicio.Modificar(empleado);
             _empleadoServicio.Guardar();
@@ -69,7 +91,9 @@ namespace GE.Servicio
 
         public IEnumerable<EmpleadoDto> ObtenerTodo()
         {
-            return _empleadoServicio.ObtenerTodo().Select(x => new EmpleadoDto()
+            
+
+            var emple = _empleadoServicio.ObtenerTodo().Select(x => new EmpleadoDto()
             {
                 Id = x.Id,
                 Apellido = x.Apellido,
@@ -79,9 +103,16 @@ namespace GE.Servicio
                 Telefono = x.Telefono,
                 FechaNacimiento = x.FechaNacimiento,
                 Sexo = x.Sexo,
-                Legajo = x.Legajo
-            }).ToList();
+                Legajo = x.Legajo,
+                FotoLink = x.FotoLink
+
+            });
+
+            return emple.ToList();
+
         }
+
+        
 
         public EmpleadoDto ObtenerPorId(long id)
         {
@@ -97,7 +128,8 @@ namespace GE.Servicio
                 Telefono = empleado.Telefono,
                 FechaNacimiento = empleado.FechaNacimiento,
                 Sexo = empleado.Sexo,
-                Legajo = empleado.Legajo
+                Legajo = empleado.Legajo,
+                FotoLink = empleado.FotoLink
             };
         }
     }

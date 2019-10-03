@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Text;
 using GE.Dominio.Entity.Enums;
 using GE.Servicio.Base;
@@ -40,7 +41,11 @@ namespace GE.IServicio.Persona.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es obligatorio.")]
         [EnumDataType(typeof(Dominio.Entity.Enums.Sexo))]
         public Sexo Sexo { get; set; }
+ 
+        //para la imagen se usan los 2
+        public IFormFile Foto { get; set; }
+        public string FotoLink { get; set; }
+  
 
-        public byte[] Foto { get; set; }
     }
 }

@@ -14,6 +14,14 @@
     <Compile Remove="Migrations\20190928035533_Herencia.cs" />
     <Compile Remove="Migrations\20190928054046_ahorasi.cs" />
     <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
+    <Compile Remove="Migrations\20190928054301_alfina.cs" />
+    <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
+    <Compile Remove="Migrations\20190929035401_asd33.cs" />
+    <Compile Remove="Migrations\20190929035520_vamosanti.cs" />
+    <Compile Remove="Migrations\20190929053113_foto.cs" />
+    <Compile Remove="Migrations\20190929053212_foto02.cs" />
+    <Compile Remove="Migrations\20190930002934_fotointento.cs" />
+
   </ItemGroup>
 
   <ItemGroup>

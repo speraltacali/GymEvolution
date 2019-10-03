@@ -4,14 +4,16 @@ using GE.Infraestructura.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191003015728_fotonew")]
+    partial class fotonew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,6 +94,8 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<string>("DescripcionFoto");
+
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
@@ -101,7 +105,11 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaNacimiento");
 
+                    b.Property<byte[]>("Foto");
+
                     b.Property<string>("FotoLink");
+
+                    b.Property<string>("ImageCaption");
 
                     b.Property<string>("Mail");
 
