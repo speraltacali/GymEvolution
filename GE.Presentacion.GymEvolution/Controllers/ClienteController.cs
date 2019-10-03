@@ -52,6 +52,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             if (ModelState.IsValid)
             {
+                if (cliente.Foto != null)
+                {
+                    //guarda la imagen en la carpeta wwwroot/imgsistema
+                    var path = $"wwwroot\\imgsistema\\{cliente.Foto.FileName}";
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        cliente.Foto.CopyTo(stream);
+                    }
+
+                    //guarda en la base de datos
+                    cliente.FotoLink = $"/imgsistema/{cliente.Foto.FileName}";
+                }
+                ///---///
+
                 var Cliente = _clienteRepositorio.Agregar(cliente);
 
                 return RedirectToAction("Index");
@@ -61,24 +76,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 return View();
             }
 
-            if (cliente.Foto != null)
-            {
-                //guarda la imagen en la carpeta wwwroot/imgsistema
-                var path = $"wwwroot\\imgsistema\\{cliente.Foto.FileName}";
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    cliente.Foto.CopyTo(stream);
-                }
-
-                //guarda en la base de datos
-                cliente.FotoLink = $"/imgsistema/{cliente.Foto.FileName}";
-            }
-            ///---///
-
-            var Cliente = _clienteRepositorio.Agregar(cliente);
-
-            return RedirectToAction("Index");
+            
 
         }
 
@@ -87,29 +85,38 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             if (HttpContext.Session.GetString("Session") != null)
             {
-                var cliente = _clienteRepositorio.ObtenerPorId(id);
+                var cliente2 =_clienteRepositorio.ObtenerPorId(id);
 
-                return View(cliente);
+                return View(cliente2);
             }
             else
             {
                 return RedirectToAction("Login", "Usuario");
             }
 
-            ///---
-
-            var cliente = _clienteRepositorio.ObtenerPorId(id);
-
-            return View(cliente);
-
         }
 
 
         [HttpPost]
         public ActionResult Update(ClienteDto clienteDto)
-
+        { 
             if (ModelState.IsValid)
             {
+                if (clienteDto.Foto != null)
+                {
+                    //guarda la imagen en la carpeta wwwroot/imgsistema
+                    var path = $"wwwroot\\imgsistema\\{clienteDto.Foto.FileName}";
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        clienteDto.Foto.CopyTo(stream);
+                    }
+
+                    //guarda en la base de datos
+                    clienteDto.FotoLink = $"/imgsistema/{clienteDto.Foto.FileName}";
+                }
+                ///---///
+
                 _clienteRepositorio.Modificar(clienteDto);
 
                 return RedirectToAction("Index");
@@ -119,24 +126,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 return View();
             }
 
-            if(clienteDto.Foto != null)
-            { 
-            //guarda la imagen en la carpeta wwwroot/imgsistema
-            var path = $"wwwroot\\imgsistema\\{clienteDto.Foto.FileName}";
-
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                clienteDto.Foto.CopyTo(stream);
-            }
-
-            //guarda en la base de datos
-            clienteDto.FotoLink = $"/imgsistema/{clienteDto.Foto.FileName}";
-            }
-            ///---///
-
-            _clienteRepositorio.Modificar(clienteDto);
-
-            return RedirectToAction("Index");
+            
 
         }
 

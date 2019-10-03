@@ -47,16 +47,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 return RedirectToAction("Login", "Usuario");
             }
         }
-
+        /*
         public ActionResult Create(long id)
-
+        {
             var empleado = _empleadoServicio.ObtenerTodo();
-            //List<Bitmap> lista = new List<Bitmap>();            
+                      
 
             return View(empleado);
         }
+        */
 
-   
 
         public ActionResult Create()
 
@@ -85,19 +85,19 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             if (ModelState.IsValid)
 
-            if (empleado.Foto != null)
-            {
-                //guarda la imagen en la carpeta wwwroot/imgsistema
-                var path = $"wwwroot\\imgsistema\\{empleado.Foto.FileName}";
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (empleado.Foto != null)
                 {
-                    empleado.Foto.CopyTo(stream);
-                }
+                    //guarda la imagen en la carpeta wwwroot/imgsistema
+                    var path = $"wwwroot\\imgsistema\\{empleado.Foto.FileName}";
 
-                //guarda en la base de datos
-                empleado.FotoLink = $"/imgsistema/{empleado.Foto.FileName}";
-            }
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        empleado.Foto.CopyTo(stream);
+                    }
+
+                    //guarda en la base de datos
+                    empleado.FotoLink = $"/imgsistema/{empleado.Foto.FileName}";
+                }
 
             var empleadoAgregar = new EmpleadoDto
             {
@@ -109,21 +109,20 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 FechaNacimiento = empleado.FechaNacimiento,
                 Legajo = empleado.Legajo,
                 Sexo = empleado.Sexo,
-                Telefono = empleado.Telefono,                
+                Telefono = empleado.Telefono,
                 FotoLink = empleado.FotoLink
             };
 
-            var Empleado = _empleadoServicio.Agregar(empleadoAgregar);
-            
+            var Empleado2= _empleadoServicio.Agregar(empleadoAgregar);
+
             if (!_usuarioServicio.VerificarExisteUsuario())
 
             {
-                var Empleado = _empleadoServicio.Agregar(empleado);
 
                 if (!_usuarioServicio.VerificarExisteUsuario())
                 {
 
-                    _usuarioServicio.Agregar(Empleado.Id);
+                    _usuarioServicio.Agregar(Empleado2.Id);
 
                     return RedirectToAction("Login", "Usuario");
                 }
@@ -138,7 +137,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-        public ActionResult CreateUsuario(long id )
+        public ActionResult CreateUsuario(long id)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
@@ -192,21 +191,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
             {
                 _empleadoServicio.Modificar(empleadoDto);
 
-            if (empleadoDto.Foto != null)
-            {
-                //guarda la imagen en la carpeta wwwroot/imgsistema
-                var path = $"wwwroot\\imgsistema\\{empleadoDto.Foto.FileName}";
-
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (empleadoDto.Foto != null)
                 {
-                    empleadoDto.Foto.CopyTo(stream);
+                    //guarda la imagen en la carpeta wwwroot/imgsistema
+                    var path = $"wwwroot\\imgsistema\\{empleadoDto.Foto.FileName}";
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        empleadoDto.Foto.CopyTo(stream);
+                    }
+
+                    //guarda en la base de datos
+                    empleadoDto.FotoLink = $"/imgsistema/{empleadoDto.Foto.FileName}";
                 }
 
-                //guarda en la base de datos
-                empleadoDto.FotoLink = $"/imgsistema/{empleadoDto.Foto.FileName}";
-            }
-
-            _empleadoServicio.Modificar(empleadoDto);
+                _empleadoServicio.Modificar(empleadoDto);
 
 
                 return RedirectToAction("Index");
@@ -231,5 +230,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         //    return RedirectToAction("Index");
         //}
+
     }
 }

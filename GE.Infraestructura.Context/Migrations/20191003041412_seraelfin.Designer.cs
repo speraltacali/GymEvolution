@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190930030805_fotoultima")]
-    partial class fotoultima
+    [Migration("20191003041412_seraelfin")]
+    partial class seraelfin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,8 +94,6 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<string>("Apellido");
 
-                    b.Property<string>("DescripcionFoto");
-
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
@@ -105,9 +103,7 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaNacimiento");
 
-                    b.Property<byte[]>("Foto");
-
-                    b.Property<string>("ImageCaption");
+                    b.Property<string>("FotoLink");
 
                     b.Property<string>("Mail");
 
@@ -173,6 +169,8 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
 
                     b.Property<DateTime>("FechaIngreso");
+
+                    b.Property<byte[]>("Foto");
 
                     b.Property<string>("Legajo");
 

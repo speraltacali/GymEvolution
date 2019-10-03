@@ -31,7 +31,6 @@ namespace GE.Servicio
                 Telefono = dto.Telefono,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
-                Foto = dto.Foto,
                 GrupoSanguineo = dto.GrupoSanguineo,
                 FechaDeIngreso = dto.FechaDeIngreso,
                 FotoLink = dto.FotoLink
