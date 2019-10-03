@@ -168,6 +168,8 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaIngreso");
 
+                    b.Property<byte[]>("Foto");
+
                     b.Property<string>("Legajo");
 
                     b.ToTable("Persona_Empleado");

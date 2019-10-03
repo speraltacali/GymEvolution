@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class fotoultima : Migration
+    public partial class seraelfin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,16 +22,15 @@ namespace GE.Infraestructura.Context.Migrations
                     Domicilio = table.Column<string>(nullable: true),
                     Mail = table.Column<string>(nullable: true),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
-                    ImageCaption = table.Column<string>(nullable: true),
-                    DescripcionFoto = table.Column<string>(nullable: true),
-                    Foto = table.Column<byte[]>(nullable: true),
+                    FotoLink = table.Column<string>(nullable: true),
                     Sexo = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     GrupoSanguineo = table.Column<int>(nullable: true),
                     FechaDeIngreso = table.Column<DateTime>(nullable: true),
                     FechaVencimineto = table.Column<DateTime>(nullable: true),
                     Legajo = table.Column<string>(nullable: true),
-                    FechaIngreso = table.Column<DateTime>(nullable: true)
+                    FechaIngreso = table.Column<DateTime>(nullable: true),
+                    Foto = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {

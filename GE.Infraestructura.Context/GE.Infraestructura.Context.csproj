@@ -20,7 +20,11 @@
     <Compile Remove="Migrations\20190929035520_vamosanti.cs" />
     <Compile Remove="Migrations\20190929053113_foto.cs" />
     <Compile Remove="Migrations\20190929053212_foto02.cs" />
+    <Compile Remove="Migrations\20190929183058_SegundoDemo.cs" />
     <Compile Remove="Migrations\20190930002934_fotointento.cs" />
+    <Compile Remove="Migrations\20190930030805_fotoultima.cs" />
+    <Compile Remove="Migrations\20191003015728_fotonew.cs" />
+    <Compile Remove="Migrations\20191003024229_alfinandactm.cs" />
 
   </ItemGroup>
 
