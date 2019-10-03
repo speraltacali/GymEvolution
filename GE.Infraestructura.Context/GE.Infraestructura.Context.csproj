@@ -13,6 +13,7 @@
     <Compile Remove="Migrations\20190927172442_VistaUsuario.cs" />
     <Compile Remove="Migrations\20190928035533_Herencia.cs" />
     <Compile Remove="Migrations\20190928054046_ahorasi.cs" />
+    <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
     <Compile Remove="Migrations\20190928054301_alfina.cs" />
     <Compile Remove="Migrations\20190929005217_PruebaMaster.cs" />
     <Compile Remove="Migrations\20190929035401_asd33.cs" />
@@ -20,10 +21,12 @@
     <Compile Remove="Migrations\20190929053113_foto.cs" />
     <Compile Remove="Migrations\20190929053212_foto02.cs" />
     <Compile Remove="Migrations\20190930002934_fotointento.cs" />
+
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">

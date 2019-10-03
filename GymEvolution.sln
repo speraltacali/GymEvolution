@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Servicio.Base", "GE.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Presentacion.GymEvolution", "GE.Presentacion.GymEvolution\GE.Presentacion.GymEvolution.csproj", "{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GE.Servicio.Helpers", "GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj", "{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30789FC1-E84B-4F98-BD0E-B1C8B1375F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E892D6-6A4A-48AC-B88E-BC9970188FB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{27C6D855-DCE8-4102-B4A4-681862934D99} = {5D17DC76-15D0-4262-833F-4886DB77089B}
 		{A4CAC223-A87D-4718-8BC9-3BF46C3D3BC1} = {0A95EE54-A0A3-438B-A355-20D035C5E0DA}
 		{30789FC1-E84B-4F98-BD0E-B1C8B1375F41} = {F6D24094-C09A-4004-A088-74489414195C}
+		{B9E892D6-6A4A-48AC-B88E-BC9970188FB8} = {0A95EE54-A0A3-438B-A355-20D035C5E0DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AEF20E3E-3C3F-4F2C-9931-B5CE263773F0}

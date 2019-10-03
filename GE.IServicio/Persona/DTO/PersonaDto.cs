@@ -46,5 +46,6 @@ namespace GE.IServicio.Persona.DTO
         public IFormFile Foto { get; set; }
         public string FotoLink { get; set; }
   
+
     }
 }

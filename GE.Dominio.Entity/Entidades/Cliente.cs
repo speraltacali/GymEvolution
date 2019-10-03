@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using GE.Dominio.Base;
 using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Entity.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace GE.Dominio.Entity
 {
@@ -16,7 +17,6 @@ namespace GE.Dominio.Entity
         public DateTime FechaDeIngreso { get; set; }
 
         public DateTime FechaVencimineto { get; set; }
-
 
         //******************************************************//
 

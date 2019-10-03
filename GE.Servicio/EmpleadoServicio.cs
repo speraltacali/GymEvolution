@@ -52,7 +52,7 @@ namespace GE.Servicio
             _empleadoServicio.Guardar();
 
             dto.Id = empleado.Id;
-            
+
             return dto;
 
         }

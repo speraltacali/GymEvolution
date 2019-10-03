@@ -31,6 +31,7 @@ namespace GE.Servicio
                 Telefono = dto.Telefono,
                 FechaNacimiento = dto.FechaNacimiento,
                 Sexo = dto.Sexo,
+                Foto = dto.Foto,
                 GrupoSanguineo = dto.GrupoSanguineo,
                 FechaDeIngreso = dto.FechaDeIngreso,
                 FotoLink = dto.FotoLink
@@ -38,6 +39,8 @@ namespace GE.Servicio
 
             _clienteServicio.Agregar(cliente);
             _clienteServicio.Guardar();
+
+            dto.Id = cliente.Id;
 
             return dto;
         }

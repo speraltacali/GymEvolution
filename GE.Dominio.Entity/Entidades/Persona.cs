@@ -28,7 +28,9 @@ namespace GE.Dominio.Entity.Entidades
         //public byte[] Foto { get; set; }
         public string FotoLink { get; set; }
 
+
         public Sexo Sexo { get; set; }
 
+       
     }
 }

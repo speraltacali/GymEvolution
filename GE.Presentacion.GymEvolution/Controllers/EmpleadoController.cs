@@ -12,9 +12,13 @@ using System.Web;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
+
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Http.Headers;
 using static System.Net.WebRequestMethods;
+
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
@@ -30,6 +34,22 @@ namespace GE.Presentacion.GymEvolution.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+                var empleado = _empleadoServicio.ObtenerTodo();
+                return View(empleado);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
+
+        public ActionResult Create(long id)
+
             var empleado = _empleadoServicio.ObtenerTodo();
             //List<Bitmap> lista = new List<Bitmap>();            
 
@@ -39,14 +59,32 @@ namespace GE.Presentacion.GymEvolution.Controllers
    
 
         public ActionResult Create()
+
         {
-            return View();
+            if (!_usuarioServicio.VerificarExisteUsuario())
+            {
+                return View();
+            }
+            else
+            {
+                if (HttpContext.Session.GetString("Session") == null)
+                {
+                    return RedirectToAction("Login", "Usuario");
+                }
+                else
+                {
+                    return View();
+                }
+            }
         }
 
 
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)
         {
+
+            if (ModelState.IsValid)
+
             if (empleado.Foto != null)
             {
                 //guarda la imagen en la carpeta wwwroot/imgsistema
@@ -78,22 +116,47 @@ namespace GE.Presentacion.GymEvolution.Controllers
             var Empleado = _empleadoServicio.Agregar(empleadoAgregar);
             
             if (!_usuarioServicio.VerificarExisteUsuario())
-            {
-                _usuarioServicio.Agregar(Empleado.Id);
 
-                return RedirectToAction("Login","Usuario");
+            {
+                var Empleado = _empleadoServicio.Agregar(empleado);
+
+                if (!_usuarioServicio.VerificarExisteUsuario())
+                {
+
+                    _usuarioServicio.Agregar(Empleado.Id);
+
+                    return RedirectToAction("Login", "Usuario");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
-                return RedirectToAction("Index");
+                return View();
             }
         }
 
         public ActionResult CreateUsuario(long id )
         {
-            var empleado = _empleadoServicio.ObtenerPorId(id);
-
-            return View(empleado);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                if (_usuarioServicio.VerificarEmpleadoUsuario(id))
+                {
+                    TempData["Advertencia"] = "El Usuario ya existe en el sistema";
+                    return RedirectToAction("Index", "Empleado");
+                }
+                else
+                {
+                    var empleado = _empleadoServicio.ObtenerPorId(id);
+                    return View(empleado);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         [HttpPost]
@@ -107,15 +170,28 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public ActionResult Update(long id)
         {
-            var Empleado = _empleadoServicio.ObtenerPorId(id);
+            if (HttpContext.Session.GetString("Session") != null)
+            {
 
-            return View(Empleado);
+                var Empleado = _empleadoServicio.ObtenerPorId(id);
+
+                return View(Empleado);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
 
         [HttpPost]
         public ActionResult Update(EmpleadoDto empleadoDto)
         {
+
+            if (ModelState.IsValid)
+            {
+                _empleadoServicio.Modificar(empleadoDto);
+
             if (empleadoDto.Foto != null)
             {
                 //guarda la imagen en la carpeta wwwroot/imgsistema
@@ -132,22 +208,28 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             _empleadoServicio.Modificar(empleadoDto);
 
-            return RedirectToAction("Index");
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public ActionResult Delete(long id)
-        {
-            var Empleado = _empleadoServicio.ObtenerPorId(id);
+        //public ActionResult Delete(long id)
+        //{
+        //    var Empleado = _empleadoServicio.ObtenerPorId(id);
 
-            return View(Empleado);
-        }
+        //    return View(Empleado);
+        //}
 
-        [HttpPost]
-        public ActionResult Delete(EmpleadoDto empleadoDto)
-        {
-            _empleadoServicio.Eliminar(empleadoDto.Id);
+        //[HttpPost]
+        //public ActionResult Delete(EmpleadoDto empleadoDto)
+        //{
+        //    _empleadoServicio.Eliminar(empleadoDto.Id);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

@@ -9,6 +9,7 @@ using GE.Infraestructura.Repositorio.Empleado;
 using GE.Infraestructura.Repositorio.Usuario;
 using GE.IServicio.Usuario;
 using GE.IServicio.Usuario.DTO;
+using GE.Servicio.DatosEstaticos.Session;
 
 namespace GE.Servicio
 {
@@ -122,6 +123,10 @@ namespace GE.Servicio
             if (validacion.Count() >= 1)
             {
                 aux = true;
+                var empleado = _empleadoServicio.ObtenerPorId(validacion.FirstOrDefault().EmpleadoId);
+                SessionActiva.ApyNom = empleado.Apellido +" - "+ empleado.Nombre;
+                SessionActiva.Foto = empleado.Foto;
+
             }
 
             return aux;
@@ -146,6 +151,14 @@ namespace GE.Servicio
             bool aux = false;
 
             var usuarios = _usuarioServicio.ObtenerTodo();
+
+            foreach (var user in usuarios)
+            {
+                if (user.EmpleadoId == id)
+                {
+                    aux = true;
+                }
+            }
 
             return aux;
         }
