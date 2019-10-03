@@ -43,15 +43,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return View();
         }
 
-        private byte[] GetByteArrayFromImage(IFormFile file, byte[] byt, IFormFile filetamano)
-        {
-            using (var target = new MemoryStream())
-            {
-                var intes = Convert.ToInt32(filetamano.Length);
-                file.CopyTo(target);
-                return target.ToArray();
-            }
-        }
 
         [HttpPost]
         public ActionResult Create(EmpleadoDto empleado)

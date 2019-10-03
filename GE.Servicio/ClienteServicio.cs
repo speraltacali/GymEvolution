@@ -74,7 +74,11 @@ namespace GE.Servicio
             cliente.Sexo = clienteDto.Sexo;
             cliente.GrupoSanguineo = clienteDto.GrupoSanguineo;
             cliente.FechaDeIngreso = clienteDto.FechaDeIngreso;
+
+            if(clienteDto.FotoLink != null)
+            { 
             cliente.FotoLink = clienteDto.FotoLink;
+            }
 
             _clienteServicio.Modificar(cliente);
             _clienteServicio.Guardar();

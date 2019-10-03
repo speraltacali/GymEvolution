@@ -36,6 +36,18 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 
+.fotopersona {
+    width: auto;
+    float: right;
+    display: block;
+}
+
+.eliminarposition{
+    float:left;
+    width:70%;
+    display:block;
+}
+
 .login_btn {
     width: 130px;
 }
