@@ -196,7 +196,7 @@ a {
 
 a:hover {
   color: #0056b3;
-  text-decoration: underline;
+ 
 }
 
 a:not([href]):not([tabindex]) {
@@ -615,7 +615,7 @@ pre code {
     margin-bottom:30px;
     width: 100%;
 }
-
+/*********************************************************************************************************/
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -3332,7 +3332,7 @@ tbody.collapse.show {
   font-size: 1.25rem;
   line-height: 1;
   background: transparent;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: 0.25rem;
 }
 /***********************************************************************************************************/

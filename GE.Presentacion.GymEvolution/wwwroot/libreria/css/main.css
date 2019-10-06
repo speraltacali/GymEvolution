@@ -4,6 +4,91 @@
 [ FONT ]LOGIN*/
 
 
+.principal {
+    width: 960px;
+    height: auto;
+}
+
+
+.lateralizq {
+    float: left;
+    width: 600px;
+    height: auto;
+    padding-top: 30px;
+}
+
+
+
+
+.lateralderecho {
+    float: right;
+    padding-top: 30px;
+    width: 200px;
+    height: auto;
+}
+
+.botonGeneral {
+    width: 200px;
+    height: 100px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 30px;
+    font-size: x-large;
+    color:black;   
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#930D00), to(#FF4E28));
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    float: inherit;
+    margin-top: auto;
+    
+    padding-bottom:1em;
+}
+
+.botonGeneral :hover{
+    text-decoration:none;
+    background-color:red;
+}
+
+.botonClientes {
+    width: 220px;
+    height: 100px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 30px;
+    font-size: x-large;
+    background: -webkit-gradient(linear, 62% 100%, 36% 11%, from(#000BFF), to(#190028));
+    margin-right: auto;
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    float: right;
+    
+    padding-right:3px;
+}
+
+.botonEmpleado {
+    width: 220px;
+    height: 100px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 30px;
+    font-size: x-large;
+    background: -webkit-gradient(linear, 62% 100%, 36% 11%, from(#000BFF), to(#190028));
+    margin-right: auto;
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    float: inherit;
+}
+
+/***********/
 .card {
     border: 1px solid #28a745;
 }
@@ -106,6 +191,15 @@ input:focus {
     color:aliceblue;
 }
 
+.logintextindex {
+    background-color: chocolate;
+    height: 60px;
+    width: 700px;
+    margin-top: 10px;
+    color: aliceblue;
+    text-align:center;
+}
+
 .textuser {
     
     color: aliceblue;
@@ -120,10 +214,10 @@ input:focus {
 }
 
 header {
-    background: #FF6400;
-    border: dashed 1px #000000;
-    -moz-border-radius: 13px;
-    -webkit-border-radius: 13px;
+    
+    border: dashed 0px #000000;
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28)) -moz-border-radius: 13px;
+    /*background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#FF0000), to(#FF4E28)) -webkit-border-radius: 13px;*/
     border-radius: 13px;
     margin-left: 15px;
     margin-right: 15px;
