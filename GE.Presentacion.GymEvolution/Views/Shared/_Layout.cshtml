@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Session
+
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -38,15 +39,16 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
+                <img src="~/img/gymevolution.jpg" class="imagenbarra">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GYM Evolution</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1" text-align="right">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -63,7 +65,7 @@
                         @if (@TempData["Session"] != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Session</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
                             </li>
                         }
                         else

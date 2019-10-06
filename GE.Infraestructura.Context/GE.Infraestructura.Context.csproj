@@ -25,6 +25,9 @@
     <Compile Remove="Migrations\20190930030805_fotoultima.cs" />
     <Compile Remove="Migrations\20191003015728_fotonew.cs" />
     <Compile Remove="Migrations\20191003024229_alfinandactm.cs" />
+    <Compile Remove="Migrations\20191003041412_seraelfin.cs" />
+    <Compile Remove="Migrations\20191003183226_SegundoDemo.cs" />
+    <Compile Remove="Migrations\20191006041223_nuevavista.cs" />
 
   </ItemGroup>
 
