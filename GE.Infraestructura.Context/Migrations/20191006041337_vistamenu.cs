@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class seraelfin : Migration
+    public partial class vistamenu : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

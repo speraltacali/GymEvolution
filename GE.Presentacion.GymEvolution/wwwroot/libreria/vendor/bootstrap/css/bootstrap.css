@@ -601,7 +601,19 @@ pre code {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  margin-top:1px;
+  
   width: 100%;
+}
+
+.containerlogin {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 10px;
+    margin-bottom:30px;
+    width: 100%;
 }
 
 @media (min-width: 576px) {
@@ -3251,6 +3263,7 @@ tbody.collapse.show {
   -ms-flex-pack: justify;
       justify-content: space-between;
   padding: 0.5rem 1rem;
+  font-size:x-large;
 }
 
 .navbar > .container,
@@ -3273,10 +3286,12 @@ tbody.collapse.show {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+  font-size:x-large;
 }
 
 .navbar-brand:focus, .navbar-brand:hover {
   text-decoration: none;
+  
 }
 
 .navbar-nav {
@@ -3320,9 +3335,10 @@ tbody.collapse.show {
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
-
+/***********************************************************************************************************/
 .navbar-toggler:focus, .navbar-toggler:hover {
-  text-decoration: none;
+    text-decoration: none;
+    color:black;
 }
 
 .navbar-toggler-icon {
