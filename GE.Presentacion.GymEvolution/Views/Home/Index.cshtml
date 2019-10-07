@@ -38,21 +38,33 @@
 </head>
 <body>
     <div class="text-center">
-        <h1 class="display-4">Bienvenido</h1>
-        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+        <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
     </div>
 
+    <section class="principal">
+
+        <div class="lateralizq">
 
 
+            <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
 
+            <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
 
+            
 
+        </div>
 
+        <div class="lateralderecho">
 
+            <a asp-controller="" asp-action="" class="botonGeneral">Ver Movimientos</a>
+            
+            <a asp-controller="" asp-action="" class="botonGeneral">Caja</a>
 
+            <a asp-controller="" asp-action="" class="botonGeneral">Facturar</a>
 
+        </div>
 
-
+    </section>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>

@@ -21,103 +21,107 @@
 <link rel="stylesheet" type="text/css" href="libreria/css/main.css">
 <!--===============================================================================================-->
 <body>
-    <h2 class="textuser">User : @ViewBag.Session</h2>
-    <h1 class="logintext">Consulta Cliente</h1>
+    <div class="principal">
+        <div class="enbloque">
+            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110"/>
+            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h1 class="logintext">Consulta Cliente</h1>
+        </div>
+        <div>
+            <p align="right">
+                <a asp-action="Create" class="btn btn-primary">Crear Nuevo Cliente</a>
+            </p>
+            <br />
+    </div>
+    <div class="col-md-12">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="col-md-12">
 
-    <div>
-        <p align="right">
-            <a asp-action="Create" class="btn btn-primary">Crear Nuevo Cliente</a>
-        </p>
-        <br />
-        <div class="col-md-12">
-            <div class="container-table100">
-                <div class="wrap-table100">
-                    <div class="col-md-12">
 
-
-                        <table class="col-md-12">
-                            <thead>
-                                <tr class="table100-head">
-                                    <th width="20px">
-                                        Apellido
-                                    </th>
-                                    <th width="20px">
-                                        Nombre
-                                    </th>
-                                    <th width="20px">
-                                        Dni
-                                    </th>
-                                    <th width="20px">
-                                        Telefono
-                                    </th>
-                                    <th width="20px">
-                                        Domicilio
-                                    </th>
-                                    <th width="20px">
-                                        FechaNacimiento
-                                    </th>
-                                    <th width="20px">
-                                        Sexo
-                                    </th>
-                                    <th width="20px">
-                                        GrupoSanguineo
-                                    </th>
-                                    <th width="20px">
-                                        Foto
-                                    </th>
-                                    <th width="20px">
-                                        FechaDeIngreso
-                                    </th>
-                                    <th></th>
+                    <table class="col-md-12">
+                        <thead>
+                            <tr class="table100-head">
+                                <th width="20px">
+                                    Apellido
+                                </th>
+                                <th width="20px">
+                                    Nombre
+                                </th>
+                                <th width="20px">
+                                    Dni
+                                </th>
+                                <th width="20px">
+                                    Telefono
+                                </th>
+                                <th width="20px">
+                                    Domicilio
+                                </th>
+                                <th width="20px">
+                                    FechaNacimiento
+                                </th>
+                                <th width="20px">
+                                    Sexo
+                                </th>
+                                <th width="20px">
+                                    GrupoSanguineo
+                                </th>
+                                <th width="20px">
+                                    Foto
+                                </th>
+                                <th width="20px">
+                                    FechaDeIngreso
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr padding-bottom="2px">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Apellido)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Dni)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Telefono)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Domicilio)
+                                    </td>
+                                    <td class="tdgrupo">
+                                        @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sexo)
+                                    </td>
+                                    <td class="tdgrupo">
+                                        @Html.DisplayFor(modelItem => item.GrupoSanguineo)
+                                    </td>
+                                    <td>
+                                        <img src="@Html.DisplayFor(modelItem => item.FotoLink)" class="w-75" alt="Logo">
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaDeIngreso)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr padding-bottom="2px">
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Apellido)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Nombre)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Dni)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Telefono)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Domicilio)
-                                        </td>
-                                        <td class="tdgrupo">
-                                            @Html.DisplayFor(modelItem => item.FechaNacimiento)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Sexo)
-                                        </td>
-                                        <td class="tdgrupo">
-                                            @Html.DisplayFor(modelItem => item.GrupoSanguineo)
-                                        </td>
-                                        <td>
-                                            <img src="@Html.DisplayFor(modelItem => item.FotoLink)" class="w-75" alt="Logo">
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaDeIngreso)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
-                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                            }
+                        </tbody>
+                    </table>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 <!--===============================================================================================-->
