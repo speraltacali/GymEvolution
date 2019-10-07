@@ -119,9 +119,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             var Empleado2= _empleadoServicio.Agregar(empleadoAgregar);
 
-            if (!_usuarioServicio.VerificarExisteUsuario())
-
-            {
+            
 
                 if (!_usuarioServicio.VerificarExisteUsuario())
                 {
@@ -134,11 +132,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-            }
-            else
-            {
-                return View();
-            }
+                
+ 
         }
 
         public ActionResult CreateUsuario(long id)

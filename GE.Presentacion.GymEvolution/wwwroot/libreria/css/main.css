@@ -18,7 +18,18 @@
 }
 
 
+.buscar{
+    font-size:large;
+    color:aliceblue;
+    display:block;
 
+}
+
+.search{
+    text-align:left;
+    float:inherit;
+    padding-bottom:2px;
+}
 
 .lateralderecho {
     float: right;
@@ -45,6 +56,24 @@
     margin-top: auto;
     
     margin-bottom:7px;
+}
+
+.botonbuscar {
+    width: 80px;
+    height: 40px;
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+    font-size: x-large;
+    color: black;
+    background-color:blue;
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    float: inherit;
+    margin-top: auto;
+    margin-bottom: 7px;
 }
 
 .botonGeneral :hover{

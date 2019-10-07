@@ -6,9 +6,19 @@
 }
 <div class="principal">
     <div class="enbloque">
-        <img src="~/img/empleado.png" class="imgcliente" width="110" height="110" />
+        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
         <h2 class="textuser">User : @ViewBag.Session</h2>
         <h1 class="logintext">Consulta Empleado</h1>
+
+        <form asp-action="Index" method="get">
+            <div class="buscar">
+                <p class="search">
+                    Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                </p>
+                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+            </div>
+        </form>
     </div>
 
     <p align="right">
@@ -21,14 +31,6 @@
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="col-md-12">
-                    <form asp-action="Index" method="get">
-                        <div class="form-actions no-color">
-                            <p>
-                                Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                                <input type="submit" value="Buscar" btn="btn btn-default"/>
-                            </p>
-                        </div>
-                    </form>
                     <table class="col-md-12">
                         <thead>
                         <tr class="table100-head">
@@ -100,9 +102,8 @@
                                     <img src="@item.FotoLink" class="w-75" alt="Logo">
                                 </td>
                                 <td>
-                                    <a asp-action="CreateUsuario" asp-route-id="@item.Id" class="btn btn-primary">User</a>
-                                    @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                                    <a asp-action="CreateUsuario" asp-route-id="@item.Id" class="btn btn-primary">User</a>                     
+                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Modificar</a>
                                 </td>
                             </tr>
                         }
