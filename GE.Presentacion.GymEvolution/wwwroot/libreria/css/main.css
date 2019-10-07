@@ -5,7 +5,7 @@
 
 
 .principal {
-    width: 960px;
+    width: 1070px;
     height: auto;
 }
 
@@ -23,7 +23,7 @@
 .lateralderecho {
     float: right;
     padding-top: 30px;
-    width: 200px;
+    width: 300px;
     height: auto;
 }
 
@@ -44,7 +44,7 @@
     float: inherit;
     margin-top: auto;
     
-    padding-bottom:1em;
+    margin-bottom:7px;
 }
 
 .botonGeneral :hover{
@@ -183,27 +183,48 @@ input:focus {
     border-radius: 0;
 }
 
+.enbloque {
+    display: block;
+    padding-top:10px;
+    float: inherit;
+}
+
 .logintext{
     background-color:chocolate;
-    height:60px;
-    width:700px;
+    height:100px;
+    width:500px;
     margin-top:10px;
     color:aliceblue;
+    text-align:center;
+    padding-top:25px;
 }
 
 .logintextindex {
     background-color: chocolate;
     height: 60px;
-    width: 700px;
+    width: 1070px;
     margin-top: 10px;
     color: aliceblue;
     text-align:center;
+    display:block;
 }
 
 .textuser {
     
-    color: aliceblue;
+    color: beige;
+    background-color:darkcyan;
     text-align:right;
+    float:right;
+    padding-top:10px;
+    height:60px;
+    
+    margin-top:11px;
+}
+
+.textindex {
+    color: aliceblue;
+    text-align: right;
+    display:block;
 }
 
 .imagenbarra{
@@ -214,17 +235,22 @@ input:focus {
 }
 
 header {
-    
-    border: dashed 0px #000000;
+    border: outset 4px #000000;
     background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28)) -moz-border-radius: 13px;
     /*background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#FF0000), to(#FF4E28)) -webkit-border-radius: 13px;*/
-    border-radius: 13px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 2px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-top: 7px;
+    margin-left:45px;
+    margin-right:81px;
 }
 
-
+.imgcliente{
+    text-align:left;
+    float:left;
+    padding-top:10px;
+}
 /*//////////////////////*/
 .divAgregar {
     padding: 1px;
