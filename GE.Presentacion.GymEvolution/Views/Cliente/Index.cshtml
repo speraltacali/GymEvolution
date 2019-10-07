@@ -33,7 +33,15 @@
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="col-md-12">
-
+                        
+                        <form asp-action="Index" method="get">
+                            <div class="form-actions no-color">
+                                <p>
+                                    Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                                    <input type="submit" value="Buscar" btn="btn btn-default"/>
+                                </p>
+                            </div>
+                        </form>
 
                         <table class="col-md-12">
                             <thead>

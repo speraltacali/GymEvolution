@@ -17,6 +17,8 @@ namespace GE.IServicio.Empleado
 
         IEnumerable<EmpleadoDto> ObtenerTodo();
 
+        IEnumerable<EmpleadoDto> ObtenerPorFiltro(string cadena);
+
         EmpleadoDto ObtenerPorId(long id);
 
     }

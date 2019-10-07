@@ -21,83 +21,91 @@
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="col-md-12">
+                    <form asp-action="Index" method="get">
+                        <div class="form-actions no-color">
+                            <p>
+                                Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                                <input type="submit" value="Buscar" btn="btn btn-default"/>
+                            </p>
+                        </div>
+                    </form>
                     <table class="col-md-12">
                         <thead>
-                            <tr class="table100-head">
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Legajo)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FechaIngreso)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Apellido)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Nombre)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Dni)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Telefono)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Domicilio)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FechaNacimiento)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Sexo)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Foto)
-                                </th>
-                                <th></th>
-                            </tr>
+                        <tr class="table100-head">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Legajo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaIngreso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Apellido)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Dni)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Domicilio)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FechaNacimiento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sexo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Foto)
+                            </th>
+                            <th></th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr padding-bottom="2px">
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Legajo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FechaIngreso)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Apellido)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Nombre)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Dni)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Telefono)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Domicilio)
-                                    </td>
-                                    <td class="tdgrupo">
-                                        @Html.DisplayFor(modelItem => item.FechaNacimiento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Sexo)
-                                    </td>
-                                    <td>
-                                        <img src="@item.FotoLink" class="w-75" alt="Logo">
-                                    </td>
-                                    <td>
-                                        <a asp-action="CreateUsuario" asp-route-id="@item.Id" class="btn btn-primary">User</a>
-                                        @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        @foreach (var item in Model)
+                        {
+                            <tr padding-bottom="2px">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Legajo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaIngreso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dni)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Domicilio)
+                                </td>
+                                <td class="tdgrupo">
+                                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sexo)
+                                </td>
+                                <td>
+                                    <img src="@item.FotoLink" class="w-75" alt="Logo">
+                                </td>
+                                <td>
+                                    <a asp-action="CreateUsuario" asp-route-id="@item.Id" class="btn btn-primary">User</a>
+                                    @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
-                                    </td>
-                                </tr>
-                            }
+                                </td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>

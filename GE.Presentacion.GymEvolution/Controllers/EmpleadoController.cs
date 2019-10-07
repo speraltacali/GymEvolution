@@ -34,29 +34,33 @@ namespace GE.Presentacion.GymEvolution.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            return View();
+        }
 
+        [HttpGet]
+        public ActionResult Index(string cadena)
+        {
             if (HttpContext.Session.GetString("Session") != null)
             {
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
-                var empleado = _empleadoServicio.ObtenerTodo();
-                return View(empleado);
+                ViewData["Busqueda"] = cadena;
+                if (!String.IsNullOrEmpty(cadena))
+                {
+                    var FiltrarEmpleado = _empleadoServicio.ObtenerPorFiltro(cadena);
+                    return View(FiltrarEmpleado);
+                }
+                else
+                {
+                    var TodoEmpleado = _empleadoServicio.ObtenerTodo();
+                    return View(TodoEmpleado);
+                }
             }
             else
             {
                 return RedirectToAction("Login", "Usuario");
             }
         }
-        /*
-        public ActionResult Create(long id)
-        {
-            var empleado = _empleadoServicio.ObtenerTodo();
-                      
-
-            return View(empleado);
-        }
-        */
-
 
         public ActionResult Create()
 

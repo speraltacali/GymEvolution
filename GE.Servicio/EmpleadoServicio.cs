@@ -112,7 +112,24 @@ namespace GE.Servicio
 
         }
 
-        
+        public IEnumerable<EmpleadoDto> ObtenerPorFiltro(string cadena)
+        {
+            return _empleadoServicio.ObtenerPorFiltro(x => x.Nombre.Contains(cadena) || x.Apellido.Contains(cadena)
+                                                           || x.Dni.Contains(cadena)).Select(x => new EmpleadoDto()
+            {
+                Id = x.Id,
+                Apellido = x.Apellido,
+                Nombre = x.Nombre,
+                Dni = x.Dni,
+                Domicilio = x.Domicilio,
+                Telefono = x.Telefono,
+                FechaNacimiento = x.FechaNacimiento,
+                Sexo = x.Sexo,
+                Legajo = x.Legajo,
+                FotoLink = x.FotoLink
+            }).ToList();
+        }
+
 
         public EmpleadoDto ObtenerPorId(long id)
         {
