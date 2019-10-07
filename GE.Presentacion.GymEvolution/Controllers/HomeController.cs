@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GE.Presentacion.GymEvolution.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
@@ -12,7 +13,16 @@ namespace GE.Presentacion.GymEvolution.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         public IActionResult Privacy()
