@@ -15,6 +15,8 @@ namespace GE.IServicio.Cliente
 
         IEnumerable<ClienteDto> ObtenerTodo();
 
+        IEnumerable<ClienteDto> ObtenerPorFiltro(string cadena);
+
         ClienteDto ObtenerPorId(long id);
     }
 }
