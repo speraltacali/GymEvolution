@@ -33,7 +33,15 @@
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="col-md-12">
-
+                        
+                        <p>
+                            @using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+                            {
+                                <p class="col-md-10">
+                                    Buscar por Filtro : @Html.TextBox("cadena") <br/>
+                                    <a asp-action="Index"  class="btn btn-success">Buscar</a>
+                                </p>
+                            }
 
                         <table class="col-md-12">
                             <thead>
@@ -110,7 +118,7 @@
                                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
-                                }
+                                    }
                             </tbody>
                         </table>
 

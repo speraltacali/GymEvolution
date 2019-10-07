@@ -18,19 +18,26 @@ namespace GE.Presentacion.GymEvolution.Controllers
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
-        public ActionResult Index(string cadena)
+
+        public ActionResult Index()
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
-                var cliente = _clienteRepositorio.ObtenerPorFiltro(cadena);
-                return View(cliente);
+                return View();
             }
             else
             {
                 return RedirectToAction("Login", "Usuario");
             }
+        }
+
+        [HttpGet]
+        public ActionResult Index(string cadena)
+        {
+            var cliente = _clienteRepositorio.ObtenerPorFiltro(cadena);
+            return View(cliente);
         }
 
         public ActionResult Create()

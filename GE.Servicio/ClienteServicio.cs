@@ -65,6 +65,7 @@ namespace GE.Servicio
 
         public IEnumerable<ClienteDto> ObtenerPorFiltro(string cadena)
         {
+            cadena = "";
 
             return _clienteServicio.ObtenerPorFiltro(x => x.Apellido.Contains(cadena) || x.Nombre.Contains(cadena)
                                                           || x.Dni.Contains(cadena)).Select(x => new ClienteDto()
