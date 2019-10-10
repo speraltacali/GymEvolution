@@ -8,7 +8,7 @@ namespace GE.Aplicacion.CadenaConexion
 
         public const string DataBase = "GymEvolution";
 
-        public const string Server = @"DESKTOP-066FGIK\SQLEXPRESS";
+        public const string Server = @"STIILE-NOTBOOK\SQLEXPRESS";
         /*
         public const string User = "sa";
 

@@ -42,6 +42,8 @@ namespace GE.Infraestructura.Context
 
         public DbSet<Persona> Persona { get; set; }
 
+        public DbSet<Movimiento> Movimiento { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente_Factura>().HasKey(x => new {x.ClienteId, x.FacturaId});
