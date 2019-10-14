@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191007181433_SegundoDemo")]
-    partial class SegundoDemo
+    [Migration("20191014040651_TercerSprint")]
+    partial class TercerSprint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,31 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("Factura");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Movimiento", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<long>("EmpleadoId");
+
+                    b.Property<DateTime>("FechaActualizacion");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<int>("TipoMovimiento");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpleadoId");
+
+                    b.ToTable("Movimiento");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Persona", b =>
@@ -205,6 +230,14 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasOne("GE.Dominio.Entity.Cliente")
                         .WithMany("Factura")
                         .HasForeignKey("ClienteId");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Movimiento", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
+                        .WithMany()
+                        .HasForeignKey("EmpleadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Usuario", b =>

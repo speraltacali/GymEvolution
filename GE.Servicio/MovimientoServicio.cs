@@ -13,7 +13,7 @@ namespace GE.Servicio
     public class MovimientoServicio : IMovimientoServicio
     {
         private readonly IMovimientoRepositorio _movimientoServicio;
-
+         
         public IEnumerable<MovimientoDto> ListaTodosLosMovimientos()
         {
 

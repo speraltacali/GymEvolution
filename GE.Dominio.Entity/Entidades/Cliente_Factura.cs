@@ -13,9 +13,11 @@ namespace GE.Dominio.Entity.Entidades
 
         public long FacturaId { get; set; }
 
-        public DateTime FechaActualizacion { get; set; }
+        public long CuotaId { get; set; }
 
         //*********************************************//
+
+        public virtual Cuota Cuota { get; set; }
 
         public virtual Cliente Cliente { get; set; }
 

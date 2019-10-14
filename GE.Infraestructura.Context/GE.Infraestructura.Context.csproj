@@ -28,6 +28,7 @@
     <Compile Remove="Migrations\20191003041412_seraelfin.cs" />
     <Compile Remove="Migrations\20191003183226_SegundoDemo.cs" />
     <Compile Remove="Migrations\20191006041223_nuevavista.cs" />
+    <Compile Remove="Migrations\20191007181433_SegundoDemo.cs" />
 
   </ItemGroup>
 

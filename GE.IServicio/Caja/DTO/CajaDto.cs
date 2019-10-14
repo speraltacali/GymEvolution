@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using GE.Dominio.Base;
 
-namespace GE.Dominio.Entity.Entidades
+namespace GE.IServicio.Caja.DTO
 {
-    [Table("Caja")]
-    public class Caja : EntityBase
+    public class CajaDto : EntityBase
     {
-
         public DateTime FechaApertura { get; set; }
 
         public DateTime FechaCierre { get; set; }
@@ -19,10 +16,5 @@ namespace GE.Dominio.Entity.Entidades
         public decimal MontoCierre { get; set; }
 
         public long UsuarioId { get; set; }
-
-        //*****************************************************//
-
-        public virtual Usuario Usuario { get; set; }
-
     }
 }
