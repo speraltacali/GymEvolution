@@ -40,6 +40,10 @@ namespace GE.Infraestructura.Context
 
         public DbSet<ClienteControl> ClienteControl { get; set; }
 
+        public DbSet<Caja> Caja { get; set; }
+
+        public DbSet<DetalleCaja> DetalleCaja { get; set; }
+
         public DbSet<Persona> Persona { get; set; }
 
         public DbSet<Movimiento> Movimiento { get; set; }

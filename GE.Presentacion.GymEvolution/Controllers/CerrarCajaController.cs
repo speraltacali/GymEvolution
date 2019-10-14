@@ -6,12 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
-    public class CajaController : Controller
+    public class CerrarCajaController : Controller
     {
         public IActionResult Index()
         {
             return View();
-            //hola fer
+        }
+
+        [HttpPost]
+        public IActionResult Cerrar()
+        {
+            return Index();
         }
     }
 }

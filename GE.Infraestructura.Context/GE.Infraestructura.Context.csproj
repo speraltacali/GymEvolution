@@ -29,6 +29,8 @@
     <Compile Remove="Migrations\20191003183226_SegundoDemo.cs" />
     <Compile Remove="Migrations\20191006041223_nuevavista.cs" />
     <Compile Remove="Migrations\20191007181433_SegundoDemo.cs" />
+    <Compile Remove="Migrations\20191014040651_TercerSprint.cs" />
+    <Compile Remove="Migrations\20191014230842_ttt.cs" />
 
   </ItemGroup>
 

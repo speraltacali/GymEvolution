@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Abrir Caja</h1>
+
+<body>
+    
+    
+    
+
+<div class="caja">
+    
+    <form asp-action="Abrir" method="post">
+        <div class="buscar">
+            <p class="search">
+                Monto a Abrir <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+            </p>
+            <input type="submit" value="Abrir" btn="btn btn-default" class="btn btn-primary" />
+               
+        </div>
+    </form>
+    
+
+</div>
+    
+    
+    
+    
+    
+
+</body>
+
