@@ -218,6 +218,10 @@ input:focus {
     float: inherit;
 }
 
+.caja {
+    text-align: center;
+}
+
 .logintext{
     background-color:chocolate;
     height:100px;

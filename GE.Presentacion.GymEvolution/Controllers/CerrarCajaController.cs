@@ -12,5 +12,11 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Cerrar()
+        {
+            return Index();
+        }
     }
 }

@@ -4,4 +4,22 @@
 }
 
 <h1>Cerrar Caja</h1>
+<body>
 
+<div class="caja">
+    
+    <form asp-action="Cerrar" method="post">
+        <div class="buscar">
+            <p class="search">
+                Monto a Cerrar <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+            </p>
+            <input type="submit" value="Cerrar" btn="btn btn-default" class="btn btn-primary" />
+               
+        </div>
+    </form>
+    
+
+</div>
+    
+
+</body>
