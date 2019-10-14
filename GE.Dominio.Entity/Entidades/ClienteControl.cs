@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using GE.Dominio.Base;
+using GE.Dominio.Entity.Enums;
 
 namespace GE.Dominio.Entity.Entidades
 {
@@ -10,6 +11,8 @@ namespace GE.Dominio.Entity.Entidades
     public class ClienteControl : EntityBase
     {
         public DateTime FechaAcceso { get; set; }
+
+        public Estado Estado { get; set; }
 
         public long ClienteId { get; set; }
 
