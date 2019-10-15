@@ -32,6 +32,10 @@
     <Compile Remove="Migrations\20191014040651_TercerSprint.cs" />
     <Compile Remove="Migrations\20191014230842_ttt.cs" />
     <Compile Remove="Migrations\20191014230958_ttt.cs" />
+    <Compile Remove="Migrations\20191015173021_PagoFactura.cs" />
+    <Compile Remove="Migrations\20191015173725_PagoFactura.cs" />
+    <Compile Remove="Migrations\20191015175740_Prueba.cs" />
+    <Compile Remove="Migrations\20191015180410_Prueba.cs" />
 
   </ItemGroup>
 

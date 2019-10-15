@@ -19,7 +19,5 @@ namespace GE.Dominio.Entity.Entidades
         public Estado Estado { get; set; }
 
         //*****************************************************//
-
-        public virtual ICollection<Cliente_Factura> ClienteFactura { get; set; }
     }
 }

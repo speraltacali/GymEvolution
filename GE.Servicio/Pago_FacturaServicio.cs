@@ -11,20 +11,11 @@ namespace GE.Servicio
 {
     public class Pago_FacturaServicio : IPago_FacturaServicio
     {
-        private readonly IPago_FacturaRepositorio _pagoRepositorio = new Pago_FacturaRepositorio();
+        //private readonly IPago_FacturaRepositorio _pagoRepositorio = new Pago_FacturaRepositorio();
 
         public void PagoFactura(Pago_FacturaDto dto)
         {
-            var Pago = new Pago_Factura()
-            {
-                FacturaId = dto.FacturaId,
-                CuotaId = dto.CuotaId,
-                ClienteId = dto.ClienteId,
-                UsuarioId = dto.UsuarioId
-            };
 
-            _pagoRepositorio.Agregar(Pago);
-            _pagoRepositorio.Guardar();
         }
     }
 }

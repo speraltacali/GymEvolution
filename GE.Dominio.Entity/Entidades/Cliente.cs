@@ -18,7 +18,5 @@ namespace GE.Dominio.Entity
 
         //******************************************************//
 
-        public virtual ICollection<Factura> Factura { get; set; }
-
     }
 }
