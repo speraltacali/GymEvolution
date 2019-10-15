@@ -11,7 +11,7 @@ namespace GE.Repositorio.Base
     {
         T ObtenerPorId(long entidadId);
 
-        T ObternerPorId(long id, params Expression<Func<T, object>>[] incluirPropiedades);
+        T ObtenerPorId(long id, params Expression<Func<T, object>>[] incluirPropiedades);
 
         T ObtenerPorId(long id, string incluirPropiedades);
 

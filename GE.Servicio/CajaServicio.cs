@@ -26,9 +26,15 @@ namespace GE.Servicio
             _cajaRepositorio.Guardar();
         }
 
-        public void CerrarCaja(long id)
+        public void CerrarCaja(CajaDto dto)
         {
-            throw new NotImplementedException();
+            var Caja = _cajaRepositorio.ObtenerPorId(dto.Id);
+
+            Caja.FechaCierre = dto.FechaCierre;
+            Caja.MontoCierre = dto.MontoCierre;
+
+            _cajaRepositorio.Modificar(Caja);
+            _cajaRepositorio.Guardar();
         }
     }
 }

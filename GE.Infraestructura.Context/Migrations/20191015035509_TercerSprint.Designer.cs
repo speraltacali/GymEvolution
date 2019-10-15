@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191014230958_ttt")]
-    partial class ttt
+    [Migration("20191015035509_TercerSprint")]
+    partial class TercerSprint
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

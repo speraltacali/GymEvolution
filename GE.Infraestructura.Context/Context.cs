@@ -50,7 +50,7 @@ namespace GE.Infraestructura.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente_Factura>().HasKey(x => new {x.ClienteId, x.FacturaId});
+            modelBuilder.Entity<Pago_Factura>().HasKey(x => new {x.ClienteId, x.FacturaId});
             modelBuilder.Entity<Persona>().ToTable("Persona");
             modelBuilder.Entity<Cliente>().ToTable("Persona_Cliente");
             modelBuilder.Entity<Usuario>().ToTable("Usuario");

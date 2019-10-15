@@ -9,6 +9,6 @@ namespace GE.IServicio.Caja
     {
         void AbrirCaja(CajaDto dto);
 
-        void CerrarCaja(long id);
+        void CerrarCaja(CajaDto dto);
     }
 }
