@@ -36,6 +36,9 @@
     <Compile Remove="Migrations\20191015173725_PagoFactura.cs" />
     <Compile Remove="Migrations\20191015175740_Prueba.cs" />
     <Compile Remove="Migrations\20191015180410_Prueba.cs" />
+    <Compile Remove="Migrations\20191015193122_PagoCuotas.cs" />
+    <Compile Remove="Migrations\20191015194338_PruebaCuota.cs" />
+    <Compile Remove="Migrations\20191015201624_UsuarioPago.cs" />
 
   </ItemGroup>
 

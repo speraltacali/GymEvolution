@@ -20,5 +20,8 @@ namespace GE.Dominio.Entity.Entidades
         //***************************************************//
 
         public virtual Empleado Empleado { get; set; }
+
+        public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
+
     }
 }

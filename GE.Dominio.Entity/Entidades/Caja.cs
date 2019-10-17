@@ -20,6 +20,8 @@ namespace GE.Dominio.Entity.Entidades
 
         public long UsuarioId { get; set; }
 
+        public bool Estado { get; set; }
+
         //*****************************************************//
 
         public virtual Usuario Usuario { get; set; }

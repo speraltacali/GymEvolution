@@ -12,5 +12,9 @@ namespace GE.Dominio.Entity.Entidades
 
         public DateTime FechaIngreso { get; set; }
         public byte[] Foto { get; set; }
+
+        //*********************************************************/
+
+        //public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
     }
 }

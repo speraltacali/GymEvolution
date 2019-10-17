@@ -4,14 +4,16 @@ using GE.Infraestructura.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191015202634_UsuarioFactura")]
+    partial class UsuarioFactura
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,8 +26,6 @@ namespace GE.Infraestructura.Context.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Estado");
 
                     b.Property<DateTime>("FechaApertura");
 
@@ -171,7 +171,7 @@ namespace GE.Infraestructura.Context.Migrations
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
                 {
-                    b.Property<long>("UsuarioId");
+                    b.Property<long>("ClienteId");
 
                     b.Property<long>("FacturaId");
 
@@ -183,13 +183,17 @@ namespace GE.Infraestructura.Context.Migrations
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.HasKey("UsuarioId", "FacturaId", "CuotaId");
+                    b.Property<long?>("UsuarioId");
+
+                    b.HasKey("ClienteId", "FacturaId", "CuotaId");
 
                     b.HasAlternateKey("Id");
 
                     b.HasIndex("CuotaId");
 
                     b.HasIndex("FacturaId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("PagoFactura");
                 });
@@ -319,20 +323,24 @@ namespace GE.Infraestructura.Context.Migrations
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
                 {
-                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuotas")
+                    b.HasOne("GE.Dominio.Entity.Cliente", "Cliente")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuota")
                         .WithMany("Pago_Facturas")
                         .HasForeignKey("CuotaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Facturas")
+                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Factura")
                         .WithMany("Pago_Facturas")
                         .HasForeignKey("FacturaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario", "Usuarios")
+                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario")
                         .WithMany("Pago_Facturas")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Usuario", b =>
