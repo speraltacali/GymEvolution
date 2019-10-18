@@ -20,7 +20,7 @@ namespace GE.Dominio.Entity.Entidades
 
         //**************************************************//
 
-        public Caja Caja { get; set; }
+        public virtual Caja Caja { get; set; }
 
     }
 }

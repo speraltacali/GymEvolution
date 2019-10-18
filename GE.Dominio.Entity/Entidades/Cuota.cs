@@ -18,8 +18,12 @@ namespace GE.Dominio.Entity.Entidades
          
         public Estado Estado { get; set; }
 
+        public long ClienteId { get; set; }
+
         //*****************************************************//
 
-        public virtual ICollection<Cliente_Factura> ClienteFactura { get; set; }
+        public virtual Cliente Cliente { get; set; }
+
+        public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
     }
 }

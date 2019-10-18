@@ -21,8 +21,9 @@ namespace GE.Dominio.Entity.Entidades
         public decimal Descuento { get; set; }
 
         //*****************************************************//
-        
-        public virtual ICollection<Cliente_Factura> ClienteFactura { get; set; }
 
+        public virtual Usuario Usuario { get; set; }
+
+        public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
     }
 }

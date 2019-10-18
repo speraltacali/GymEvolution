@@ -31,6 +31,27 @@
     <Compile Remove="Migrations\20191007181433_SegundoDemo.cs" />
     <Compile Remove="Migrations\20191014040651_TercerSprint.cs" />
     <Compile Remove="Migrations\20191014230842_ttt.cs" />
+    <Compile Remove="Migrations\20191014230958_ttt.cs" />
+    <Compile Remove="Migrations\20191015173021_PagoFactura.cs" />
+    <Compile Remove="Migrations\20191015173725_PagoFactura.cs" />
+    <Compile Remove="Migrations\20191015175740_Prueba.cs" />
+    <Compile Remove="Migrations\20191015180410_Prueba.cs" />
+    <Compile Remove="Migrations\20191015193122_PagoCuotas.cs" />
+    <Compile Remove="Migrations\20191015194338_PruebaCuota.cs" />
+    <Compile Remove="Migrations\20191015201624_UsuarioPago.cs" />
+    <Compile Remove="Migrations\20191017183715_pruebaUnion.cs" />
+    <Compile Remove="Migrations\20191017190551_RelacionesFactura.cs" />
+    <Compile Remove="Migrations\20191018003128_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018003948_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018005922_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018010949_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018013556_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018014203_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018014413_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018014804_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018015435_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018015555_Normalizacion.cs" />
+    <Compile Remove="Migrations\20191018015944_MejorandoNormalizacion.cs" />
 
   </ItemGroup>
 

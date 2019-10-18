@@ -32,6 +32,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 ViewData["Busqueda"] = cadena;
+
                 if (!String.IsNullOrEmpty(cadena))
                 {
                     var FiltroCliente = _clienteRepositorio.ObtenerPorFiltro(cadena);

@@ -30,7 +30,7 @@ namespace GE.Repositorio
 
         public void Eliminar(long id)
         {
-            var entity = ObternerPorId(id);
+            var entity = ObtenerPorId(id);
             Context.Set<T>().Remove(entity);
         }
 
@@ -88,7 +88,7 @@ namespace GE.Repositorio
             return Context.Set<T>().Find(entidadId);
         }
 
-        public T ObternerPorId(long id, params Expression<Func<T, object>>[] includeProperties)
+        public T ObtenerPorId(long id, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = Context.Set<T>();
 

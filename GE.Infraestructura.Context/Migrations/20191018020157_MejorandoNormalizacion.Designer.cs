@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191014020417_primeraaa")]
-    partial class primeraaa
+    [Migration("20191018020157_MejorandoNormalizacion")]
+    partial class MejorandoNormalizacion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,35 @@ namespace GE.Infraestructura.Context.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Caja", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Estado");
+
+                    b.Property<DateTime>("FechaApertura");
+
+                    b.Property<DateTime>("FechaCierre");
+
+                    b.Property<decimal>("MontoApertura");
+
+                    b.Property<decimal>("MontoCierre");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<long>("UsuarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Caja");
+                });
+
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClienteControl", b =>
                 {
                     b.Property<long>("Id")
@@ -28,6 +57,8 @@ namespace GE.Infraestructura.Context.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("ClienteId");
+
+                    b.Property<int>("Estado");
 
                     b.Property<DateTime>("FechaAcceso");
 
@@ -42,19 +73,56 @@ namespace GE.Infraestructura.Context.Migrations
                     b.ToTable("ClienteControl");
                 });
 
-            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cliente_Factura", b =>
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cuota", b =>
                 {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cantidad");
+
                     b.Property<long>("ClienteId");
 
-                    b.Property<long>("FacturaId");
+                    b.Property<DateTime>("CuotaVencimiento");
 
-                    b.Property<DateTime>("FechaActualizacion");
+                    b.Property<DateTime>("CuotaVigente");
 
-                    b.HasKey("ClienteId", "FacturaId");
+                    b.Property<int>("Estado");
 
-                    b.HasIndex("FacturaId");
+                    b.Property<string>("Numero");
 
-                    b.ToTable("Cliente_Factura");
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Cuota");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.DetalleCaja", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CajaId");
+
+                    b.Property<decimal>("Monto");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<int>("TipoPago");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CajaId");
+
+                    b.ToTable("DetalleCaja");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Factura", b =>
@@ -62,8 +130,6 @@ namespace GE.Infraestructura.Context.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long?>("ClienteId");
 
                     b.Property<decimal>("Descuento");
 
@@ -79,9 +145,11 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<decimal>("Total");
 
+                    b.Property<long?>("UsuarioId");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Factura");
                 });
@@ -109,6 +177,27 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("EmpleadoId");
 
                     b.ToTable("Movimiento");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
+                {
+                    b.Property<long>("FacturaId");
+
+                    b.Property<long>("CuotaId");
+
+                    b.Property<long>("Id");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("FacturaId", "CuotaId");
+
+                    b.HasAlternateKey("Id");
+
+                    b.HasIndex("CuotaId");
+
+                    b.ToTable("PagoFactura");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Persona", b =>
@@ -178,9 +267,9 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
 
-                    b.Property<DateTime>("FechaDeIngreso");
+                    b.Property<int>("Estado");
 
-                    b.Property<DateTime>("FechaVencimineto");
+                    b.Property<DateTime>("FechaDeIngreso");
 
                     b.Property<int>("GrupoSanguineo");
 
@@ -204,46 +293,70 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasDiscriminator().HasValue("Empleado");
                 });
 
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Caja", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClienteControl", b =>
                 {
                     b.HasOne("GE.Dominio.Entity.Cliente", "Cliente")
-                        .WithMany()
+                        .WithMany("ClienteControl")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cliente_Factura", b =>
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cuota", b =>
                 {
                     b.HasOne("GE.Dominio.Entity.Cliente", "Cliente")
-                        .WithMany()
+                        .WithMany("Cuotas")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Factura")
-                        .WithMany("ClienteFactura")
-                        .HasForeignKey("FacturaId")
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.DetalleCaja", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Caja", "Caja")
+                        .WithMany("DetalleCajas")
+                        .HasForeignKey("CajaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Factura", b =>
                 {
-                    b.HasOne("GE.Dominio.Entity.Cliente")
-                        .WithMany("Factura")
-                        .HasForeignKey("ClienteId");
+                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario", "Usuario")
+                        .WithMany("Facturas")
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Movimiento", b =>
                 {
                     b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
-                        .WithMany()
+                        .WithMany("Movimientos")
                         .HasForeignKey("EmpleadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuotas")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("CuotaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Facturas")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("FacturaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Usuario", b =>
                 {
                     b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
-                        .WithMany()
+                        .WithMany("Usuarios")
                         .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
