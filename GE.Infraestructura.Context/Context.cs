@@ -54,12 +54,49 @@ namespace GE.Infraestructura.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pago_Factura>().HasKey(x => new {x.UsuarioId, x.FacturaId , x.CuotaId});
-            modelBuilder.Entity<Persona>().ToTable("Persona");
-            modelBuilder.Entity<Cliente>().ToTable("Persona_Cliente");
-            modelBuilder.Entity<Usuario>().ToTable("Usuario");
-            modelBuilder.Entity<Empleado>().ToTable("Persona_Empleado");
-            modelBuilder.Entity<Pago_Factura>().ToTable("PagoFactura");
+            modelBuilder.Entity<Pago_Factura>().HasKey(x => new { x.FacturaId , x.CuotaId});
+
+            modelBuilder.Entity<Pago_Factura>()
+                .HasOne(x => x.Facturas)
+                .WithMany(y => y.Pago_Facturas)
+                .HasForeignKey(x => x.FacturaId);
+
+            modelBuilder.Entity<Pago_Factura>()
+                .HasOne(x => x.Cuotas)
+                .WithMany(y => y.Pago_Facturas)
+                .HasForeignKey(x => x.CuotaId);
+
+            modelBuilder.Entity<DetalleCaja>()
+                .HasOne(x => x.Caja)
+                .WithMany(y => y.DetalleCajas)
+                .HasForeignKey(x => x.CajaId);
+
+            modelBuilder.Entity<ClienteControl>()
+                .HasOne(x => x.Cliente)
+                .WithMany(y => y.ClienteControl)
+                .HasForeignKey(x => x.ClienteId);
+
+            modelBuilder.Entity<Usuario>()
+                .HasOne(x => x.Empleado)
+                .WithMany(y => y.Usuarios)
+                .HasForeignKey(x => x.EmpleadoId);
+
+            modelBuilder.Entity<Cuota>()
+                .HasOne(x => x.Cliente)
+                .WithMany(y => y.Cuotas)
+                .HasForeignKey(x => x.ClienteId);
+
+            modelBuilder.Entity<Movimiento>()
+                .HasOne(x => x.Empleado)
+                .WithMany(y => y.Movimientos)
+                .HasForeignKey(x => x.EmpleadoId);
+
+
+            //modelBuilder.Entity<Persona>().ToTable("Persona");
+            ////modelBuilder.Entity<Cliente>().ToTable("Persona_Cliente");
+            //modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            ////modelBuilder.Entity<Empleado>().ToTable("Persona_Empleado");
+            //modelBuilder.Entity<Pago_Factura>().ToTable("PagoFactura");
 
             base.OnModelCreating(modelBuilder);
         }

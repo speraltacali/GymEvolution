@@ -26,5 +26,7 @@ namespace GE.Dominio.Entity.Entidades
 
         public virtual Usuario Usuario { get; set; }
 
+        public virtual ICollection<DetalleCaja> DetalleCajas { get; set; }
+
     }
 }

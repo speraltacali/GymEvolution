@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191015180810_romper")]
-    partial class romper
+    [Migration("20191017194513_RelacionFactura")]
+    partial class RelacionFactura
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,8 @@ namespace GE.Infraestructura.Context.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Estado");
 
                     b.Property<DateTime>("FechaApertura");
 
@@ -69,6 +71,31 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("ClienteControl");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cuota", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cantidad");
+
+                    b.Property<DateTime>("CuotaVencimiento");
+
+                    b.Property<DateTime>("CuotaVigente");
+
+                    b.Property<int>("Estado");
+
+                    b.Property<string>("Numero");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cuota");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.DetalleCaja", b =>
@@ -142,6 +169,31 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("EmpleadoId");
 
                     b.ToTable("Movimiento");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
+                {
+                    b.Property<long>("FacturaId");
+
+                    b.Property<long>("CuotaId");
+
+                    b.Property<long>("Id");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<long?>("UsuarioId");
+
+                    b.HasKey("FacturaId", "CuotaId");
+
+                    b.HasAlternateKey("Id");
+
+                    b.HasIndex("CuotaId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("PagoFactura");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Persona", b =>
@@ -265,6 +317,23 @@ namespace GE.Infraestructura.Context.Migrations
                         .WithMany()
                         .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuotas")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("CuotaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Facturas")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("FacturaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Usuario", b =>
