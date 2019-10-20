@@ -4,10 +4,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class vistamenu : Migration
+    public partial class ayaanda : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Factura",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
+                    NumeroFactura = table.Column<string>(nullable: true),
+                    FechaOperacion = table.Column<DateTime>(nullable: false),
+                    SubTotal = table.Column<decimal>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factura", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Persona",
                 columns: table => new
@@ -27,7 +45,6 @@ namespace GE.Infraestructura.Context.Migrations
                     Discriminator = table.Column<string>(nullable: false),
                     GrupoSanguineo = table.Column<int>(nullable: true),
                     FechaDeIngreso = table.Column<DateTime>(nullable: true),
-                    FechaVencimineto = table.Column<DateTime>(nullable: true),
                     Legajo = table.Column<string>(nullable: true),
                     FechaIngreso = table.Column<DateTime>(nullable: true),
                     Foto = table.Column<byte[]>(nullable: true)
@@ -45,6 +62,7 @@ namespace GE.Infraestructura.Context.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
                     FechaAcceso = table.Column<DateTime>(nullable: false),
+                    Estado = table.Column<int>(nullable: false),
                     ClienteId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -59,28 +77,26 @@ namespace GE.Infraestructura.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Factura",
+                name: "Movimiento",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    NumeroFactura = table.Column<string>(nullable: true),
-                    FechaOperacion = table.Column<DateTime>(nullable: false),
-                    SubTotal = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false),
-                    Descuento = table.Column<decimal>(nullable: false),
-                    ClienteId = table.Column<long>(nullable: true)
+                    TipoMovimiento = table.Column<int>(nullable: false),
+                    FechaActualizacion = table.Column<DateTime>(nullable: false),
+                    Descripcion = table.Column<string>(nullable: true),
+                    EmpleadoId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Factura", x => x.Id);
+                    table.PrimaryKey("PK_Movimiento", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Factura_Persona_ClienteId",
-                        column: x => x.ClienteId,
+                        name: "FK_Movimiento_Persona_EmpleadoId",
+                        column: x => x.EmpleadoId,
                         principalTable: "Persona",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,34 +123,55 @@ namespace GE.Infraestructura.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cliente_Factura",
+                name: "Caja",
                 columns: table => new
                 {
-                    ClienteId = table.Column<long>(nullable: false),
-                    FacturaId = table.Column<long>(nullable: false),
-                    FechaActualizacion = table.Column<DateTime>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
+                    FechaApertura = table.Column<DateTime>(nullable: false),
+                    FechaCierre = table.Column<DateTime>(nullable: false),
+                    MontoApertura = table.Column<decimal>(nullable: false),
+                    MontoCierre = table.Column<decimal>(nullable: false),
+                    UsuarioId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente_Factura", x => new { x.ClienteId, x.FacturaId });
+                    table.PrimaryKey("PK_Caja", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cliente_Factura_Persona_ClienteId",
-                        column: x => x.ClienteId,
-                        principalTable: "Persona",
+                        name: "FK_Caja_Usuario_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DetalleCaja",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
+                    Monto = table.Column<decimal>(nullable: false),
+                    TipoPago = table.Column<int>(nullable: false),
+                    CajaId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetalleCaja", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cliente_Factura_Factura_FacturaId",
-                        column: x => x.FacturaId,
-                        principalTable: "Factura",
+                        name: "FK_DetalleCaja_Caja_CajaId",
+                        column: x => x.CajaId,
+                        principalTable: "Caja",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cliente_Factura_FacturaId",
-                table: "Cliente_Factura",
-                column: "FacturaId");
+                name: "IX_Caja_UsuarioId",
+                table: "Caja",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClienteControl_ClienteId",
@@ -142,9 +179,14 @@ namespace GE.Infraestructura.Context.Migrations
                 column: "ClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Factura_ClienteId",
-                table: "Factura",
-                column: "ClienteId");
+                name: "IX_DetalleCaja_CajaId",
+                table: "DetalleCaja",
+                column: "CajaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movimiento_EmpleadoId",
+                table: "Movimiento",
+                column: "EmpleadoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuario_EmpleadoId",
@@ -155,16 +197,22 @@ namespace GE.Infraestructura.Context.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cliente_Factura");
-
-            migrationBuilder.DropTable(
                 name: "ClienteControl");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "DetalleCaja");
 
             migrationBuilder.DropTable(
                 name: "Factura");
+
+            migrationBuilder.DropTable(
+                name: "Movimiento");
+
+            migrationBuilder.DropTable(
+                name: "Caja");
+
+            migrationBuilder.DropTable(
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "Persona");

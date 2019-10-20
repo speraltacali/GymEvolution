@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191019194204_0001adnal")]
-    partial class _0001adnal
+    [Migration("20191020044252_ayaanda")]
+    partial class ayaanda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
