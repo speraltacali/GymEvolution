@@ -52,6 +52,14 @@
     <Compile Remove="Migrations\20191018015435_Normalizacion.cs" />
     <Compile Remove="Migrations\20191018015555_Normalizacion.cs" />
     <Compile Remove="Migrations\20191018015944_MejorandoNormalizacion.cs" />
+    <Compile Remove="Migrations\20191018020157_MejorandoNormalizacion.cs" />
+    <Compile Remove="Migrations\20191021031844_DbPrueba.cs" />
+    <Compile Remove="Migrations\20191021033550_DbGym.cs" />
+    <Compile Remove="Migrations\20191021035248_DbGym.cs" />
+    <Compile Remove="Migrations\20191021042152_DbGym.cs" />
+    <Compile Remove="Migrations\20191021043855_DBGym.cs" />
+    <Compile Remove="Migrations\20191021044745_DbGym.cs" />
+    <Compile Remove="Migrations\20191021052000_DbFinal.cs" />
 
   </ItemGroup>
 

@@ -20,9 +20,9 @@ namespace GE.Dominio.Entity
 
         //******************************************************//
 
-        public virtual ICollection<Cuota> Cuotas { get; set; }
-
         public virtual ICollection<ClienteControl> ClienteControl { get; set; }
+
+        public virtual ICollection<Pago_Factura> PagoFacturas { get; set; }
 
     }
 }

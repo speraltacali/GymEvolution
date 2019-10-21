@@ -12,6 +12,6 @@ namespace GE.IServicio.Pago_Factura.DTO
 
         public long ClienteId { get; set; }
 
-        public long UsuarioId { get; set; }
+        public long EmpleadoId { get; set; }
     }
 }

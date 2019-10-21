@@ -13,11 +13,18 @@ namespace GE.Dominio.Entity.Entidades
 
         public long CuotaId { get; set; }
 
+        public long ClienteId { get; set; }
+
+        public long EmpleadoId { get; set; }
+
         //********************************************//
 
-        public virtual  Factura Facturas { get; set; }
+        public virtual  Factura Factura { get; set; }
 
-        public virtual Cuota Cuotas { get; set; }
+        public virtual Cuota Cuota { get; set; }
 
+        public virtual Cliente Cliente { get; set; }
+
+        public virtual Empleado Empleado { get; set; }
     }
 }
