@@ -16,7 +16,13 @@ namespace GE.Dominio.Entity
 
         public DateTime FechaDeIngreso { get; set; }
 
+        public Estado Estado { get; set; }
+
         //******************************************************//
+
+        public virtual ICollection<ClienteControl> ClienteControl { get; set; }
+
+        public virtual ICollection<Pago_Factura> PagoFacturas { get; set; }
 
     }
 }

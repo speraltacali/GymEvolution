@@ -11,6 +11,13 @@ namespace GE.Dominio.Entity.Entidades
         public string Legajo { get; set; }
 
         public DateTime FechaIngreso { get; set; }
+
         public byte[] Foto { get; set; }
+
+        //*********************************************************/
+
+        public virtual ICollection<Movimiento> Movimientos { get; set; }
+
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace GE.IServicio.Factura.DTO
 {
     public class FacturaDto : BaseDto
     {
-        public string NumeroFactura { get; set; }
+        public string Numero { get; set; }
 
         public DateTime FechaOperacion { get; set; }
 

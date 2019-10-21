@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Factura;
 using GE.Infraestructura.Repositorio.Factura;
 using GE.IServicio.Factura;
@@ -19,7 +20,20 @@ namespace GE.Servicio
 
         public FacturaDto Agregar(FacturaDto facturaDto)
         {
-            throw new NotImplementedException();
+            var Factura = new Factura()
+            {
+                Numero = facturaDto.Numero,
+                FechaOperacion = facturaDto.FechaOperacion,
+                SubTotal = facturaDto.SubTotal,
+                Total = facturaDto.Total,
+                Descuento = facturaDto.Descuento
+            };
+
+            _facturaRepositorio.Agregar(Factura);
+            _facturaRepositorio.Guardar();
+
+            facturaDto.Id = Factura.Id;
+            return facturaDto;
         }
 
         public IEnumerable<FacturaDto> ObtenerTodo()

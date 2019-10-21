@@ -39,12 +39,6 @@
     <Compile Remove="Migrations\20191015173725_PagoFactura.cs" />
     <Compile Remove="Migrations\20191015175740_Prueba.cs" />
     <Compile Remove="Migrations\20191015180410_Prueba.cs" />
-    <Compile Remove="Migrations\20191015180810_romper.cs" />
-    <Compile Remove="Migrations\20191019192254_nuevamiandapofavo.cs" />
-    <Compile Remove="Migrations\20191019193822_0001adna.cs" />
-    <Compile Remove="Migrations\20191019194204_0001adnal.cs" />
-    <Compile Remove="Migrations\20191019203418_sas221d.cs" />
-    <Compile Remove="Migrations\20191020043510_newmi332.cs" />
 
   </ItemGroup>
 

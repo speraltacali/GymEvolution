@@ -20,5 +20,6 @@ namespace GE.Dominio.Entity.Entidades
         //***************************************************//
 
         public virtual Empleado Empleado { get; set; }
+
     }
 }
