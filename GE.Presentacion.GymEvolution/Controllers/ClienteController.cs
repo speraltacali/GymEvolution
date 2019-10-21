@@ -169,5 +169,13 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult CuotaEstado(ClienteDto clienteDto)
+        {
+            return RedirectToAction("CuotaEstado");
+        }
+
+
     }
 }

@@ -39,6 +39,9 @@
     <Compile Remove="Migrations\20191015173725_PagoFactura.cs" />
     <Compile Remove="Migrations\20191015175740_Prueba.cs" />
     <Compile Remove="Migrations\20191015180410_Prueba.cs" />
+    <Compile Remove="Migrations\20191021052252_DbFinal.cs" />
+    <Compile Remove="Migrations\20191021060655_DbGymEvolution.cs" />
+    <Compile Remove="Migrations\20191021061747_nuevarama.cs" />
 
   </ItemGroup>
 

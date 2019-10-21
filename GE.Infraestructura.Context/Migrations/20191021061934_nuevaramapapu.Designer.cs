@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191021052252_DbFinal")]
-    partial class DbFinal
+    [Migration("20191021061934_nuevaramapapu")]
+    partial class nuevaramapapu
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,7 +131,7 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaOperacion");
 
-                    b.Property<string>("NumeroFactura");
+                    b.Property<string>("Numero");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
