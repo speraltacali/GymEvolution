@@ -11,12 +11,7 @@ namespace GE.Servicio
 {
     public class FacturaServicio : IFacturaServicio
     {
-        private readonly IFacturaRepositorio _facturaRepositorio;
-
-        public FacturaServicio(FacturaRepositorio facturaRepositorio)
-        {
-            _facturaRepositorio = facturaRepositorio;
-        }
+        private readonly IFacturaRepositorio _facturaRepositorio = new FacturaRepositorio();
 
         public FacturaDto Agregar(FacturaDto facturaDto)
         {
