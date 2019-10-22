@@ -12,5 +12,10 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             return View();
         }
+
+        public IActionResult CuotaCalculo()
+        {
+            return View();
+        }
     }
 }

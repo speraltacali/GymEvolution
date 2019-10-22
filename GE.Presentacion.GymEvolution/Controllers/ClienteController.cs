@@ -54,7 +54,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                return View();
+                //return View();
+                return RedirectToAction("Index");
             }
             else
             {
@@ -86,11 +87,14 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
                 var Cliente = _clienteRepositorio.Agregar(cliente);
 
+                
                 return RedirectToAction("Index");
             }
             else
             {
-                return View();
+                //return View();
+                return RedirectToAction("Index");
+
             }
 
             

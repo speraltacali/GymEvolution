@@ -52,8 +52,10 @@
 
             <input type="hidden" asp-for="Id"/>
             <div class="form-group">
-                <input type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px'/>
+                <input asp-action="Venta" asp-route-id="Id" type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px' />
+                <a asp-action="CuotaEstado" class="btn btn-secondary">Perfil</a>
             </div>
+
         </form>
     </div>
 </div>
