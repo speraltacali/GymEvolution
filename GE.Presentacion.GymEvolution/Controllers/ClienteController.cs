@@ -97,6 +97,20 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         }
 
+        public ActionResult Perfil(long id)
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var cliente = _clienteRepositorio.ObtenerPorId(id);
+
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
+
         public ActionResult Update(long id)
         {
 

@@ -265,8 +265,6 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
 
-                    b.Property<int>("Estado");
-
                     b.Property<DateTime>("FechaDeIngreso");
 
                     b.Property<int>("GrupoSanguineo");
@@ -336,7 +334,7 @@ namespace GE.Infraestructura.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
-                        .WithMany()
+                        .WithMany("Pago_Facturas")
                         .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade);
 

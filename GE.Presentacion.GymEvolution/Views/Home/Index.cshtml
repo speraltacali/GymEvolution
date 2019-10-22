@@ -26,64 +26,91 @@
 
 <environment include="Development">
     <link rel="stylesheet" href="~/libreria/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
 </environment>
-<environment exclude="Development">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          asp-fallback-href="~/libreria/vendor/bootstrap/css/bootstrap.min.css"
-          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-          crossorigin="anonymous"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
-</environment>
-<link rel="stylesheet" href="~/css/site.css" />
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/libreria/vendor/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
 </head>
-<body>
-    <div class="text-center">
-        <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
+<body background= "GymFondo.jpg">
+    
+<div class="sheetSlider sh--default">
+    <input id="s1" type="radio" name="slide1" checked />
+    <input id="s2" type="radio" name="slide1" />
+    <input id="s3" type="radio" name="slide1" />
+    <input id="s4" type="radio" name="slide1" />
+    <input id="s5" type="radio" name="slide1" />
+    <input id="s6" type="radio" name="slide1" />
+    <input id="s7" type="radio" name="slide1" />
+    <input id="s8" type="radio" name="slide1" />
+    <input id="s9" type="radio" name="slide1" />
+    <input id="s10" type="radio" name="slide1" />
+
+    <div class="sh__content">
+        <!-- Slider Item -->
+        <div class="sh__item">
+            <img src="~/img/GymFondo.jpg" alt="imgText" class="imgSlider" />
+            <!-- Item Info -->
+            <div class="sh__meta">
+                <h4>GYM EVOLUTION</h4>
+                <span>Sistema de gestiones   
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
+</div>
+
+<section class="principal">
+
+    <div class="lateralizq">
+
+
+        <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
+
+        <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
+
+
+
     </div>
 
-    <section class="principal">
+    <div class="lateralderecho">
 
-        <div class="lateralizq">
+        <a asp-controller="" asp-action="" class="botonGeneral">Ver Movimientos</a>
 
+        <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
 
-            <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
+        <a asp-controller="" asp-action="" class="botonGeneral">Facturar</a>
 
-            <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
+        <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
 
-            
+    </div>
 
-        </div>
-
-        <div class="lateralderecho">
-
-            <a asp-controller="" asp-action="" class="botonGeneral">Ver Movimientos</a>
-
-            <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
-
-            <a asp-controller="" asp-action="" class="botonGeneral">Facturar</a>
-            
-            <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
-
-        </div>
-
-    </section>
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+</section>
+<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</environment>
+<environment exclude="Development">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+    </script>
+</environment>
+<script src="~/js/site.js" asp-append-version="true"></script>
 </body>

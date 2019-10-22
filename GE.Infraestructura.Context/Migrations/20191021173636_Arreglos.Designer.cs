@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191021052252_DbFinal")]
-    partial class DbFinal
+    [Migration("20191021173636_Arreglos")]
+    partial class Arreglos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,7 +131,7 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaOperacion");
 
-                    b.Property<string>("NumeroFactura");
+                    b.Property<string>("Numero");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -267,8 +267,6 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
 
-                    b.Property<int>("Estado");
-
                     b.Property<DateTime>("FechaDeIngreso");
 
                     b.Property<int>("GrupoSanguineo");
@@ -338,7 +336,7 @@ namespace GE.Infraestructura.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
-                        .WithMany()
+                        .WithMany("Pago_Facturas")
                         .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade);
 

@@ -6,3 +6,5 @@
     
 
 })(jQuery);
+
+var cliente = new Cliente();

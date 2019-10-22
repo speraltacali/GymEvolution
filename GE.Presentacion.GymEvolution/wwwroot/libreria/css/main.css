@@ -3,12 +3,40 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]LOGIN*/
 
+.imgSlider {
+    /*max-width: 130%;
+    max-height: 200%;*/
+
+    height: 500px;
+}
+
+.sheetSlider {
+    background-color: black;
+    text-align : center;
+}
+
+.sh_meta span , .sh__meta h4 {
+    color: brown;
+}
 
 .principal {
     width: 1070px;
     height: auto;
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]Principal*/
+
+.avatar {
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+    height: 350px;
+    width: 350px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
 
 .lateralizq {
     float: left;

@@ -66,6 +66,8 @@ namespace GE.Infraestructura.Context
             //    .WithMany(y => y.Pago_Facturas)
             //    .HasForeignKey(x => x.CuotaId);
 
+
+
             modelBuilder.Entity<DetalleCaja>()
                 .HasOne(x => x.Caja)
                 .WithMany(y => y.DetalleCajas)

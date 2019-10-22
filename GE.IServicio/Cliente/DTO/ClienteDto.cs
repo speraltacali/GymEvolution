@@ -18,5 +18,7 @@ namespace GE.IServicio.Cliente.DTO
 
         [DataType(DataType.Date)]
         public DateTime FechaVencimineto { get; set; }
+
+        public  Estado Estado { get; set; }
     }
 }
