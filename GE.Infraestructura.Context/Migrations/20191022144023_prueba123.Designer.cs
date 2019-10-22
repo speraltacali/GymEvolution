@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191022044941_ProbandoModal")]
-    partial class ProbandoModal
+    [Migration("20191022144023_prueba123")]
+    partial class prueba123
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

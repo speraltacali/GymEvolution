@@ -20,18 +20,19 @@
                 </button>
             </div>
         </div>
-        <form method="post" asp-area="Cliente" app-controller="Cliente" asp-action="Create"></form>
-        <div class="modal-body">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label asp-for="Nombre" class="col-md-2 control-label"></label>
-                    <div>
-                        <input asp-for="Nombre" placeholder="Nombre" class="form-control" />
-                        <span asp-validation-for="Nombre" class="text-danger"></span>
+        <form method="post" asp-area="Cliente" app-controller="Cliente" asp-action="Create" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="col-md-2 control-label"></label>
+                        <div>
+                            <input asp-for="Nombre" placeholder="Nombre" class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </div>
