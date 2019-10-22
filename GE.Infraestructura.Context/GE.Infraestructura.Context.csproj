@@ -45,7 +45,7 @@
     <Compile Remove="Migrations\20191021154255_DiseñosView.cs" />
     <Compile Remove="Migrations\20191021172634_MejorandoDiseño.cs" />
     <Compile Remove="Migrations\20191021173003_ProbandoDiseño.cs" />
-    <Compile Remove="Migrations\20191022044941_ProbandoModal.cs" />
+
 
   </ItemGroup>
 
