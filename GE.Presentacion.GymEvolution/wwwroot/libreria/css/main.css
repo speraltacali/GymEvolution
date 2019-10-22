@@ -251,7 +251,7 @@ input:focus {
 }
 
 .logintext{
-    background-color:chocolate;
+    background-color:slategrey;
     height:100px;
     width:500px;
     margin-top:10px;
@@ -273,7 +273,7 @@ input:focus {
 .textuser {
     
     color: beige;
-    background-color:darkcyan;
+    background-color:dimgrey;
     text-align:right;
     float:right;
     padding-top:10px;
@@ -384,18 +384,20 @@ header {
 	padding: 0px; 
 	box-sizing: border-box;
 }
-
+/*
 body, html {
 	height: 100%;
 	font-family: sans-serif;
-}
+}*/
 
 body {
-    /*background: #c850c0;#4158d0  EF5700naranja230E02ngro*/
+    /*background: #c850c0;#4158d0  EF5700naranja230E02ngro*/ /*
     background: -webkit-linear-gradient(45deg, #572306, #EF5700);
     background: -o-linear-gradient(45deg, #572306, #EF5700);
     background: -moz-linear-gradient(45deg, #572306, #EF5700);
-    background: linear-gradient(45deg, #572306, #EF5700);
+    background: linear-gradient(45deg, #572306, #EF5700);*/
+    background-image: url(/img/gymnegro.jpg);
+    
 }
 
 /* ------------------------------------ */
