@@ -43,7 +43,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 CuotaVigente = fechaInicio,
                 CuotaVencimiento = fechaInicio.AddMonths(cantidad),
                 Cantidad = cantidad,
-                Estado = Estado.Pagado
+                Estado = Estado.Vigente
             };
 
             var Factura = new FacturaDto()

@@ -8,6 +8,7 @@ namespace GE.Dominio.Entity.Enums
     {
         Pagado = 1,
         Vencido = 2,
-        Espera = 3
+        Espera = 3,
+        Vigente = 4
     }
 }
