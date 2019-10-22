@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GE.IServicio.Cuota.DTO.CuotaDto>
+<body>
+    <div class="enbloque">
+        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+        <h2 class="textuser">User : @ViewBag.Session</h2>
+        <h1 class="logintext">Consulta Cuota</h1>
+
+    </div>
+    <div>
+        <br />
+        <div class="col-md-12">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="col-md-12">
+
+                        <table class="col-md-12">
+                            <thead>
+                                <tr class="table100-head">
+                                    <th width="20px">
+                                        Numero
+                                    </th>
+                                    <th width="20px">
+                                        CuotaVigente
+                                    </th>
+                                    <th width="20px">
+                                        CuotaVencimiento
+                                    </th>
+                                    <th width="20px">
+                                        Estado
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr padding-bottom="2px">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Numero)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CuotaVigente)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CuotaVencimiento)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Estado)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <div align="center">
+
+                            <input type="submit" value="Cobrar" btn="btn btn-default" class="btn btn-primary" />
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--===============================================================================================-->
+<script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/bootstrap/js/popper.js"></script>
+<script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/js/main.js"></script>
+
