@@ -45,6 +45,9 @@
     <Compile Remove="Migrations\20191021154255_DiseñosView.cs" />
     <Compile Remove="Migrations\20191021172634_MejorandoDiseño.cs" />
     <Compile Remove="Migrations\20191021173003_ProbandoDiseño.cs" />
+    <Compile Remove="Migrations\20191022222710_nnewmigra.cs" />
+    <Compile Remove="Migrations\20191022222855_233ss.cs" />
+    <Compile Remove="Migrations\20191022223045_andafin.cs" />
 
 
   </ItemGroup>

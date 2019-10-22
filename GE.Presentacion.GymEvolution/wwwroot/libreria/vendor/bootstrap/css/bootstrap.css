@@ -3207,12 +3207,12 @@ tbody.collapse.show {
   border-color: transparent;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: #495057;
-  background-color: #fff;
-  border-color: #ddd #ddd #fff;
-}
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+        color: #495057;
+        background-color: #fff;
+        border-color: #ddd #ddd #fff;
+    }
 
 .nav-tabs .dropdown-menu {
   margin-top: -1px;

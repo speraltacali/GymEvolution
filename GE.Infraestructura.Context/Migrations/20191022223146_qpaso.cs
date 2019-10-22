@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class prueba123 : Migration
+    public partial class qpaso : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

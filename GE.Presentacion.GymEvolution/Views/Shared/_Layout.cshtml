@@ -52,25 +52,25 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1" text-align="right">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="Index">Empleado</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Empleado" asp-action="Index">Empleado</a>
                         </li>
 
                         @if (@TempData["Session"] != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Login @TempData["Session"]</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Login @TempData["Session"]</a>
                             </li>
                         }
                     </ul>
