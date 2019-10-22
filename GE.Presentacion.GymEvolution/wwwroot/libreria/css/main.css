@@ -9,6 +9,36 @@
     height: auto;
 }
 
+.facturar{
+    float:right;
+    background-color:darkslategray;
+}
+
+.enbloquefacturar {
+    display: block;
+    padding-top: 10px;
+    float: inherit;
+    background-color: darkslategray;
+    height:330px;   
+}
+
+.buscar2 {
+    font-size: large;
+    color: aliceblue;
+    display: block;
+    float: left;
+    background-color: darkslategray;
+    width:200px;
+    
+}
+
+.buscarfactura {
+    font-size: large;
+    color: aliceblue;
+    display: block;
+    padding-left:30px;
+    padding-right:10px;
+}
 
 .lateralizq {
     float: left;
@@ -217,6 +247,8 @@ input:focus {
     padding-top:10px;
     float: inherit;
 }
+
+
 
 .caja {
     text-align: center;
