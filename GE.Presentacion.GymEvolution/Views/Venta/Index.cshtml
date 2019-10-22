@@ -1,0 +1,132 @@
+﻿@model IEnumerable<GE.IServicio.Cliente.DTO.ClienteDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="libreria/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/css/util.css">
+<link rel="stylesheet" type="text/css" href="libreria/css/main.css">
+<!--===============================================================================================-->
+<body>
+
+    <div class="enbloquefacturar">
+        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+        <h2 class="textuser">User : @ViewBag.Session</h2>
+        <h1 class="logintext">Cobro Cuotas</h1>
+
+        <form asp-action="Index" method="get">
+            <div class="buscar2">
+                <p class="search">
+                    Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                </p>
+                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+            </div>
+        </form>
+
+        <div class="facturar">
+            <form asp-action="CuotaCalculo" method="get">
+                <div class="buscarfactura">
+                    <p class="search">
+                        Cantidad Cuotas:<input type="number" name="cantidad" value="@ViewData["Busqueda"]" />
+                    </p>
+
+                    <p class="search">
+                        Total:<input type="number" name="total" value="" />
+                    </p>
+
+                    <input type="submit" value="Cobrar" btn="btn btn-default" class="btn btn-primary" />
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="col-md-12">
+
+                    <table class="col-md-12">
+                        <thead>
+                            <tr class="table100-head">
+                                <th width="20px">
+                                    Apellido
+                                </th>
+                                <th width="20px">
+                                    Nombre
+                                </th>
+                                <th width="20px">
+                                    Dni
+                                </th>
+                                <th width="20px">
+                                    Foto
+                                </th>
+                                <th width="20px">
+                                    FechaDeIngreso
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                         <!--foreach (var item in Model)
+                         {
+                          <tr padding-bottom="2px">
+                          <td>
+                              Html.DisplayFor(modelItem => item.Apellido)
+                          </td>
+                          <td>
+                              Html.DisplayFor(modelItem => item.Nombre)
+                          </td>
+                          <td>
+                              Html.DisplayFor(modelItem => item.Dni)
+                          </td>
+                          <td>
+                              <img src="Html.DisplayFor(modelItem => item.FotoLink)" class="w-75" alt="Logo">
+                          </td>
+                          <td>
+                              Html.DisplayFor(modelItem => item.FechaDeIngreso)
+                          </td>
+                          <td>
+                              <a asp-action="CuotaEstado" asp-route-id="item.Id" class="btn btn-secondary">Ver Estado</a>
+                          </td>
+                          </tr>
+                         }-->
+                        </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        
+
+
+
+        </div>
+    </body>
+    <!--===============================================================================================-->
+                            <script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
+                            <!--===============================================================================================-->
+                            <script src="libreria/vendor/bootstrap/js/popper.js"></script>
+                            <script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
+                            <!--===============================================================================================-->
+                            <script src="libreria/vendor/select2/select2.min.js"></script>
+                            <!--===============================================================================================-->
+                            <script src="libreria/js/main.js"></script>
+
