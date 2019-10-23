@@ -127,6 +127,7 @@ namespace GE.Servicio
                 SessionActiva.EmpleadoId = empleado.Id;
                 SessionActiva.ApyNom = empleado.Apellido +" - "+ empleado.Nombre;
                 SessionActiva.Foto = empleado.Foto;
+                SessionActiva.UsuId = validacion.FirstOrDefault().Id;
 
             }
 

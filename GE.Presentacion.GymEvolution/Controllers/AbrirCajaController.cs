@@ -20,21 +20,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpPost]
-        public IActionResult Abrir(string cadena)
+        public IActionResult Abrir(CajaDto Caja)
         {
 
             var caja = new CajaDto
             {
-                MontoApertura = int.Parse(cadena),
+                MontoApertura = Caja.MontoApertura,
                 FechaApertura = DateTime.Now,
                 MontoCierre = 0,
-                UsuarioId = 1,
+                UsuarioId = SessionActiva.UsuId,
               
             };
 
              _cajaServicio.AbrirCaja(caja);
 
-            return Index();
+            return RedirectToAction("Index" ,"Home");
         }
     }
 }

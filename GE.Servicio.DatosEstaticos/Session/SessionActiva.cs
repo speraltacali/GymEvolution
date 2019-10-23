@@ -11,6 +11,8 @@ namespace GE.Servicio.DatosEstaticos.Session
 
         public static long ClienteId { get; set; }
 
+        public static long UsuId { get; set; }
+
         public static string ApyNom { get; set; }
 
         public static byte[] Foto { get; set; }

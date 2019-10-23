@@ -12,6 +12,8 @@ using GE.IServicio.Cuota;
 using GE.IServicio.Cuota.DTO;
 using GE.IServicio.Factura;
 using GE.IServicio.Factura.DTO;
+using GE.IServicio.Movimiento;
+using GE.IServicio.Movimiento.DTO;
 using GE.IServicio.Pago_Factura;
 using GE.IServicio.Pago_Factura.DTO;
 using GE.Servicio;
@@ -26,6 +28,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         private readonly ICuotaServicio _cuotaServicio = new CuotaServicio();
 
+        private readonly IMovimientoServicio _movimientoServicio = new MovimientoServicio();
         //private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
 
         public IActionResult Index()
@@ -39,7 +42,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpPost]
-        public void PagoFactura(CuotaDto cuota , FacturaDto factura)
+        public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura)
         {
             var Cuota = new CuotaDto()
             {
@@ -72,7 +75,18 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 context.SaveChanges();
             }
 
-                //_pagoFacturaServicio.PagoFactura(PagoFactura);
+            var movimiento = new MovimientoDto()
+            {
+                Descripcion = "Pago Cuota",
+                EmpleadoId = SessionActiva.EmpleadoId,
+                FechaActualizacion = DateTime.Now,
+                TipoMovimiento = TipoMovimiento.Ingreso
+            };
+
+            _movimientoServicio.NuevoMovimiento(movimiento);
+
+            return RedirectToAction("Index" , "Cliente");
+            //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }
     }
 }
