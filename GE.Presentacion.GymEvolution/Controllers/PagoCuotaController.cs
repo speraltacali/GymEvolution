@@ -36,21 +36,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpPost]
-        public ActionResult PagoFactura(decimal monto , DateTime fechaInicio , int cantidad , long clienteId)
+        public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura)
         {
             var Cuota = new CuotaDto()
             {
-                CuotaVigente = fechaInicio,
-                CuotaVencimiento = fechaInicio.AddMonths(cantidad),
-                Cantidad = cantidad,
+                CuotaVigente = cuota.CuotaVigente,
+                CuotaVencimiento = cuota.CuotaVigente.AddMonths(cuota.Cantidad),
+                Cantidad = cuota.Cantidad,
                 Estado = Estado.Vigente
             };
 
             var Factura = new FacturaDto()
             {
                 FechaOperacion = DateTime.Now,
-                SubTotal = monto,
-                Total = monto
+                SubTotal = factura.SubTotal,
+                Total = factura.SubTotal
             };
 
             var cuotaId = _cuotaServicio.CuotaVigente(Cuota);
@@ -61,12 +61,13 @@ namespace GE.Presentacion.GymEvolution.Controllers
             {
                 FacturaId = facturaId.Id,
                 CuotaId = cuotaId.Id,
-                ClienteId = clienteId
+                ClienteId = 2,
+                EmpleadoId = 1
             };
 
             _pagoFacturaServicio.PagoFactura(PagoFactura);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Perfil", "Cliente");
         }
     }
 }
