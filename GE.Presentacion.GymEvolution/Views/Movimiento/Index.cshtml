@@ -54,24 +54,30 @@
                                     </th>
                                     <th width="50px">
                                         TipoMovimiento
-                                    </th>                                                                      
+                                    </th>
+                                    <th width="50px">
+                                        Monto
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr padding-bottom="2px">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Descripcion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FechaActualizacion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TipoMovimiento)
-                                </td>
-                            
-                            </tr>
+                                <tr padding-bottom="2px">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Monto)
+                                    </td>
+
+                                </tr>
                             }
                             </tbody>
                         </table>

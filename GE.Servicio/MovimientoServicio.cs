@@ -22,7 +22,8 @@ namespace GE.Servicio
                 Descripcion = x.Descripcion,
                 FechaActualizacion = x.FechaActualizacion,
                 EmpleadoId = x.EmpleadoId,
-                TipoMovimiento = x.TipoMovimiento
+                TipoMovimiento = x.TipoMovimiento,
+                Monto = x.Monto
 
             }).ToList();
 
@@ -40,7 +41,8 @@ namespace GE.Servicio
                 Descripcion = movimientoEgreso.Descripcion,
                 EmpleadoId = movimientoEgreso.EmpleadoId,
                 FechaActualizacion = movimientoEgreso.FechaActualizacion,
-                TipoMovimiento = movimientoEgreso.TipoMovimiento
+                TipoMovimiento = movimientoEgreso.TipoMovimiento,
+                Monto = movimientoEgreso.Monto
             };
 
             _movimientoServicio.Agregar(movimiento);
@@ -56,7 +58,8 @@ namespace GE.Servicio
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
-                TipoMovimiento = x.TipoMovimiento
+                TipoMovimiento = x.TipoMovimiento,
+                Monto = x.Monto
 
             }).ToList();
         }
@@ -68,7 +71,8 @@ namespace GE.Servicio
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
-                TipoMovimiento = x.TipoMovimiento
+                TipoMovimiento = x.TipoMovimiento,
+                Monto = x.Monto
 
             }).ToList();
         }
@@ -80,7 +84,8 @@ namespace GE.Servicio
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
-                TipoMovimiento = x.TipoMovimiento
+                TipoMovimiento = x.TipoMovimiento,
+                Monto = x.Monto
 
             }).ToList();
         }

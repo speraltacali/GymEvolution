@@ -124,6 +124,7 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: right;
+    padding-bottom:4px;
     
     padding-right:3px;
 }
@@ -143,6 +144,7 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: inherit;
+    padding-bottom: 4px;
 }
 
 /***********/

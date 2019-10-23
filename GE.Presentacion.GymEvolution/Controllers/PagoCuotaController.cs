@@ -80,7 +80,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 Descripcion = "Pago Cuota",
                 EmpleadoId = SessionActiva.EmpleadoId,
                 FechaActualizacion = DateTime.Now,
-                TipoMovimiento = TipoMovimiento.Ingreso
+                TipoMovimiento = TipoMovimiento.Ingreso,
+                Monto = factura.SubTotal
             };
 
             _movimientoServicio.NuevoMovimiento(movimiento);
