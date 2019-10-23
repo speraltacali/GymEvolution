@@ -490,7 +490,7 @@ iframe {
   background: -o-linear-gradient(45deg, #4158d0, #c850c0);
   background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
   background: linear-gradient(45deg, #4158d0, #c850c0);*/
-  padding-top:40px;
+  padding-top:10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -507,7 +507,7 @@ iframe {
 }
 
 table {
-  border-spacing: 1;
+  border-spacing: 1px;
   border-collapse: collapse;
   background: white;
   border-radius: 10px;
@@ -524,7 +524,7 @@ table td, table th {
 }
     table thead tr {
         height: 60px;
-        background: #4158d0; /*36304a*/
+        background: #495057; /*36304a*/
     }
 table tbody tr {
   height: 50px;

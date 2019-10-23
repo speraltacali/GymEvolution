@@ -41,9 +41,9 @@
         <div class="col-md-12">
             <div class="container-table100">
                 <div class="wrap-table100">
-                    <div class="col-md-12">
+                    <div class="col-md-7">
 
-                        <table class="col-md-12">
+                        <table class="col-md-7">
                             <thead>
                                 <tr class="table100-head">
                                     <th width="50px">
@@ -54,26 +54,25 @@
                                     </th>
                                     <th width="50px">
                                         TipoMovimiento
-                                    </th>                                   
-                                    <th></th>
+                                    </th>                                                                      
                                 </tr>
                             </thead>
                             <tbody>
-                            <!--foreach (var item in Model)
-                                {
-                                <tr padding-bottom="2px">
-                                    <td>
-                                        Html.DisplayFor(modelItem => item.Descripcion)
-                                    </td>
-                                    <td>
-                                        Html.DisplayFor(modelItem => item.FechaActualizacion)
-                                    </td>
-                                    <td>
-                                        Html.DisplayFor(modelItem => item.TipoMovimiento)
-                                    </td>
-                               
-                                </tr>
-                                }-->
+                            @foreach (var item in Model)
+                            {
+                            <tr padding-bottom="2px">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                                </td>
+                            
+                            </tr>
+                            }
                             </tbody>
                         </table>
 
