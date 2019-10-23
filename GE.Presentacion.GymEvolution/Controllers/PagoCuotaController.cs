@@ -86,7 +86,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             _movimientoServicio.NuevoMovimiento(movimiento);
 
-            return RedirectToAction("Index" , "Cliente");
+            return RedirectToAction("Index" , "Venta");
             //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }
     }

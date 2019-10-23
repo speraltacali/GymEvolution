@@ -44,9 +44,6 @@
                                     FechaOperacion
                                 </th>
                                 <th width="20px">
-                                    Descuento
-                                </th>
-                                <th width="20px">
                                     Total
                                 </th>
                             </tr>
@@ -57,16 +54,13 @@
                          {
                           <tr padding-bottom="2px">
                           <td>
-                              Html.DisplayFor(modelItem => item.Numero)
+                              @Html.DisplayFor(modelItem => item.Numero)
                           </td>
                           <td>
-                              Html.DisplayFor(modelItem => item.FechaOperacion)
+                              @Html.DisplayFor(modelItem => item.FechaOperacion)
                           </td>
                           <td>
-                              Html.DisplayFor(modelItem => item.Descuento)
-                          </td>
-                          <td>
-                              Html.DisplayFor(modelItem => item.Total)
+                              @Html.DisplayFor(modelItem => item.Total)
                           </td>
                           </tr>
                          }

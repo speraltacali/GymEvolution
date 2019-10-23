@@ -64,7 +64,7 @@
         </form>
     </div>
     <div align="right">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:350px; height:75px'>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:500 px; height:75px'>
             Realizar Pago Cuota
         </button>
     </div>
@@ -104,12 +104,44 @@
 
 
                                 <div class="modal-footer">
-                                    @*<input type="submit" value="Guardar Datos" class="btn btn-primary" />*@
-                                    @*<button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cliente.AgregarCliente" data-save="modal">Guardar</button>*@
+
                                     <input type="hidden" asp-for="Id" />
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:100px; height:50px'>Salir</button>
-                                    @*<input asp-action="PagoFactura(cuota , factura)" type="submit" onclick="PagoCuotaDto.PagarCuota" value="Pagar Cuota" class="btn btn-primary" style='width: 250px; height: 50px'/>*@
-                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:100px; height:50px' data-save="modal">Guardar</button>
+                                    @*<button type="button" class="btn btn-danger" data-dismiss="modal" style='width:100px; height:50px'>Salir</button>
+                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:100px; height:50px' data-save="modal">Guardar</button>*@
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prueba" style='width:500px; height:75px'>
+                                        Facturar
+                                    </button>
+                                    
+                                    <div class="modal fade" id="prueba" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addContactLabel">Pago De Cuota</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <form asp-action="PagoFactura" asp-controller="PagoCuota" method="post" enctype="multipart/form-data">
+
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            <div class="form-group">
+                                                                <h2>Desea Confirmar la Operacion?</h2>
+                                                                <div class="modal-footer">
+                                                                    <input type="hidden" asp-for="Id" />
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Cancelar</button>
+                                                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:250px; height:50px' data-save="modal">Guardar</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>

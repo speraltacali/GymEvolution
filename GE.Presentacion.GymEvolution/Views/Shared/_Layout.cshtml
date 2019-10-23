@@ -63,9 +63,45 @@
 
                         @if (@TempData["Session"] != null)
                         {
-                            <li class="nav-item">
+                            
+                            <div class="modal fade" id="add-session" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="addContactLabel">Cerrar Session</h5>
+                                            <button type="button" class="close" data-dismiss="modal01" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <form asp-action="Login" asp-controller="Usuario" method="get" enctype="multipart/form-data">
+
+                                            <div class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <h2>Desea cerrar Session?</h2>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal01" style='width: 250px; height: 50px'>Cancelar</button>
+                                                            @*<input asp-action="PagoFactura(cuota , factura)" type="submit" onclick="PagoCuotaDto.PagarCuota" value="Pagar Cuota" class="btn btn-primary" style='width: 250px; height: 50px'/>*@
+                                                            <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cerrarSession.CerrarSession" style='width: 250px; height: 50px' data-save="modal01">Aceptar</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
-                            </li>
+                            </li>*@
+
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#add-session" style='width:125px; height:50px'>
+                                Cerrar Session
+                            </button>
                         }
                         else
                         {
