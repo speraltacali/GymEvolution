@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Entity.Enums;
+using GE.Infraestructura.Context;
 using GE.Infraestructura.Repositorio.Cuota;
 using GE.Infraestructura.Repositorio.Factura;
 using GE.IServicio.Cuota;
 using GE.IServicio.Cuota.DTO;
 using GE.IServicio.Factura;
 using GE.IServicio.Factura.DTO;
+using GE.IServicio.Movimiento;
+using GE.IServicio.Movimiento.DTO;
 using GE.IServicio.Pago_Factura;
 using GE.IServicio.Pago_Factura.DTO;
 using GE.Servicio;
+using GE.Servicio.DatosEstaticos.Session;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -23,7 +28,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         private readonly ICuotaServicio _cuotaServicio = new CuotaServicio();
 
-        private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
+        private readonly IMovimientoServicio _movimientoServicio = new MovimientoServicio();
+        //private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
 
         public IActionResult Index()
         {
@@ -36,37 +42,51 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpPost]
-        public ActionResult PagoFactura(decimal monto , DateTime fechaInicio , int cantidad , long clienteId)
+        public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura)
         {
             var Cuota = new CuotaDto()
             {
-                CuotaVigente = fechaInicio,
-                CuotaVencimiento = fechaInicio.AddMonths(cantidad),
-                Cantidad = cantidad,
+                CuotaVigente = cuota.CuotaVigente,
+                CuotaVencimiento = cuota.CuotaVigente.AddMonths(cuota.Cantidad),
+                Cantidad = cuota.Cantidad,
                 Estado = Estado.Vigente
             };
 
             var Factura = new FacturaDto()
             {
                 FechaOperacion = DateTime.Now,
-                SubTotal = monto,
-                Total = monto
+                SubTotal = factura.SubTotal,
+                Total = factura.SubTotal
             };
 
             var cuotaId = _cuotaServicio.CuotaVigente(Cuota);
 
             var facturaId = _facturaServicio.Agregar(Factura);
 
-            var PagoFactura = new Pago_FacturaDto()
+            using (var context = new Context())
             {
-                FacturaId = facturaId.Id,
-                CuotaId = cuotaId.Id,
-                ClienteId = clienteId
+                context.Pago_Factura.Add(new Pago_Factura()
+                {
+                    FacturaId = facturaId.Id,
+                    CuotaId = cuotaId.Id,
+                    ClienteId = SessionActiva.ClienteId,
+                    EmpleadoId = SessionActiva.EmpleadoId
+                });
+                context.SaveChanges();
+            }
+
+            var movimiento = new MovimientoDto()
+            {
+                Descripcion = "Pago Cuota",
+                EmpleadoId = SessionActiva.EmpleadoId,
+                FechaActualizacion = DateTime.Now,
+                TipoMovimiento = TipoMovimiento.Ingreso
             };
 
-            _pagoFacturaServicio.PagoFactura(PagoFactura);
+            _movimientoServicio.NuevoMovimiento(movimiento);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index" , "Cliente");
+            //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }
     }
 }

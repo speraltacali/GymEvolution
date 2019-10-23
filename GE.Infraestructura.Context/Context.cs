@@ -54,12 +54,13 @@ namespace GE.Infraestructura.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pago_Factura>().HasKey(x => new { x.FacturaId , x.CuotaId , x.ClienteId , x.EmpleadoId});
+            modelBuilder.Entity<Pago_Factura>().HasKey(x => new {x.FacturaId , x.CuotaId , x.ClienteId , x.EmpleadoId});
 
             //modelBuilder.Entity<Pago_Factura>()
-            //    .HasOne(x => x.Facturas)
+            //    .HasOne(x => x.Factura)
             //    .WithMany(y => y.Pago_Facturas)
-            //    .HasForeignKey(x => x.FacturaId);
+            //    .HasForeignKey(x => x.FacturaId)
+            //    .HasPrincipalKey(y=>y.Id);
 
             //modelBuilder.Entity<Pago_Factura>()
             //    .HasOne(x => x.Cuotas)

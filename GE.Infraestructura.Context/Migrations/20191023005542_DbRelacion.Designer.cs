@@ -4,14 +4,16 @@ using GE.Infraestructura.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191023005542_DbRelacion")]
+    partial class DbRelacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,6 +173,8 @@ namespace GE.Infraestructura.Context.Migrations
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
                 {
+                    b.Property<long>("Id");
+
                     b.Property<long>("FacturaId");
 
                     b.Property<long>("CuotaId");
@@ -179,13 +183,21 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<long>("EmpleadoId");
 
-                    b.HasKey("FacturaId", "CuotaId", "ClienteId", "EmpleadoId");
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("Id", "FacturaId", "CuotaId", "ClienteId", "EmpleadoId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("ClienteId");
 
                     b.HasIndex("CuotaId");
 
                     b.HasIndex("EmpleadoId");
+
+                    b.HasIndex("FacturaId");
 
                     b.ToTable("PagoFactura");
                 });
