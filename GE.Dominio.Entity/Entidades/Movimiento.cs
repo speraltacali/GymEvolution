@@ -16,6 +16,8 @@ namespace GE.Dominio.Entity.Entidades
 
         public string Descripcion { get; set; }
 
+        public decimal Monto { get; set; }
+
         public long EmpleadoId { get; set; }
 
         //*****************************************************//

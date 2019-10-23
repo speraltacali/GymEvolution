@@ -6,10 +6,10 @@ namespace GE.Aplicacion.CadenaConexion
     {
 
 
-        public const string DataBase = "GymEvolution";
+        public const string DataBase = "GymVersion15";
 
 
-        public const string Server = @"DESKTOP-NK0OJF1";
+        public const string Server = @"DESKTOP-066FGIK";
 
 
         //public const string User = "sa";

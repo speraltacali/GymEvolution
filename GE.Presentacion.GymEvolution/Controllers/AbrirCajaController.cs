@@ -16,12 +16,24 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public IActionResult Index()
         {
+            if (_cajaServicio.VerSiCajaEstaAbierta())
+            {
+                ViewBag.sms = "error";
+
+                return View(ViewBag);
+            }
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Abrir(CajaDto Caja)
         {
+
+            if (_cajaServicio.VerSiCajaEstaAbierta())
+            {
+                return RedirectToAction("Index", "AbrirCaja");
+            }
 
             var caja = new CajaDto
             {
