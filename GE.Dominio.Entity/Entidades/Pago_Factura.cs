@@ -7,7 +7,7 @@ using GE.Dominio.Base;
 namespace GE.Dominio.Entity.Entidades
 {
     [Table("PagoFactura")]
-    public class Pago_Factura : EntityBase
+    public class Pago_Factura /*: EntityBase*/
     {
         public long FacturaId { get; set; }
 

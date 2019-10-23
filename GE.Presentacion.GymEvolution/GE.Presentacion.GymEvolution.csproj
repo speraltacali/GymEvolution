@@ -20,6 +20,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\GE.Infraestructura.Context\GE.Infraestructura.Context.csproj" />
     <ProjectReference Include="..\GE.IServicio\GE.IServicio.csproj" />
     <ProjectReference Include="..\GE.Servicio.DatosEstaticos\GE.Servicio.Helpers.csproj" />
     <ProjectReference Include="..\GE.Servicio\GE.Servicio.csproj" />

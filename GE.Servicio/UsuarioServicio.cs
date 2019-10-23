@@ -124,6 +124,7 @@ namespace GE.Servicio
             {
                 aux = true;
                 var empleado = _empleadoServicio.ObtenerPorId(validacion.FirstOrDefault().EmpleadoId);
+                SessionActiva.EmpleadoId = empleado.Id;
                 SessionActiva.ApyNom = empleado.Apellido +" - "+ empleado.Nombre;
                 SessionActiva.Foto = empleado.Foto;
 

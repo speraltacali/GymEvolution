@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Entity.Enums;
+using GE.Infraestructura.Context;
 using GE.Infraestructura.Repositorio.Cuota;
 using GE.Infraestructura.Repositorio.Factura;
 using GE.IServicio.Cuota;
@@ -13,6 +15,7 @@ using GE.IServicio.Factura.DTO;
 using GE.IServicio.Pago_Factura;
 using GE.IServicio.Pago_Factura.DTO;
 using GE.Servicio;
+using GE.Servicio.DatosEstaticos.Session;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -23,7 +26,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         private readonly ICuotaServicio _cuotaServicio = new CuotaServicio();
 
-        private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
+        //private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
 
         public IActionResult Index()
         {
@@ -36,7 +39,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpPost]
-        public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura)
+        public void PagoFactura(CuotaDto cuota , FacturaDto factura)
         {
             var Cuota = new CuotaDto()
             {
@@ -57,17 +60,19 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             var facturaId = _facturaServicio.Agregar(Factura);
 
-            var PagoFactura = new Pago_FacturaDto()
+            using (var context = new Context())
             {
-                FacturaId = facturaId.Id,
-                CuotaId = cuotaId.Id,
-                ClienteId = 2,
-                EmpleadoId = 1
-            };
+                context.Pago_Factura.Add(new Pago_Factura()
+                {
+                    FacturaId = facturaId.Id,
+                    CuotaId = cuotaId.Id,
+                    ClienteId = SessionActiva.ClienteId,
+                    EmpleadoId = SessionActiva.EmpleadoId
+                });
+                context.SaveChanges();
+            }
 
-            _pagoFacturaServicio.PagoFactura(PagoFactura);
-
-            return RedirectToAction("Perfil", "Cliente");
+                //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }
     }
 }
