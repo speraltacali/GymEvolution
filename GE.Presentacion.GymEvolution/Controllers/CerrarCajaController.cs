@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GE.IServicio.Caja;
 using GE.IServicio.Caja.DTO;
 using GE.Servicio;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -15,14 +16,22 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public IActionResult Index()
         {
-            if (!_cajaServicio.VerSiCajaEstaAbierta())
+            if (HttpContext.Session.GetString("Session") != null)
             {
-                ViewBag.sms = "error";
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+
+                if (!_cajaServicio.VerSiCajaEstaAbierta())
+                {
+                    ViewBag.sms = "error";
+                }
 
                 return View(ViewBag);
             }
-
-            return View();
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         [HttpPost]
