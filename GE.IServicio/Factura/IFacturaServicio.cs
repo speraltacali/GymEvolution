@@ -16,5 +16,7 @@ namespace GE.IServicio.Factura
         IEnumerable<FacturaDto> ObtenerTodo();
 
         FacturaDto ObtenerTodoPorId(long id);
+
+        string NumeroFactura();
     }
 }

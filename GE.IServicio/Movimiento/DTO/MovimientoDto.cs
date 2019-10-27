@@ -14,5 +14,7 @@ namespace GE.IServicio.Movimiento.DTO
         public string Descripcion { get; set; }
 
         public long EmpleadoId { get; set; }
+
+        public decimal Monto { get; set; }
     }
 }

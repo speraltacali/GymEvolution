@@ -13,7 +13,7 @@ namespace GE.Servicio
     {
         private readonly ICuotaRepositorio _cuotaRepositorio = new CuotaRepositorio();
 
-        public void CuotaVigente(CuotaDto cuotaDto)
+        public CuotaDto CuotaVigente(CuotaDto cuotaDto)
         {
             var Cuota = new Cuota()
             {
@@ -26,6 +26,9 @@ namespace GE.Servicio
 
             _cuotaRepositorio.Agregar(Cuota);
             _cuotaRepositorio.Guardar();
+
+            cuotaDto.Id = Cuota.Id;
+            return cuotaDto;
         }
 
         public CuotaDto CuotaVencimiento(long id)

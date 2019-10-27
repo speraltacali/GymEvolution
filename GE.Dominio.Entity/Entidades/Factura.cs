@@ -10,7 +10,7 @@ namespace GE.Dominio.Entity.Entidades
     [Table("Factura")]
     public class Factura : EntityBase
     {
-        public string NumeroFactura { get; set; }
+        public string Numero{ get; set; }
 
         public DateTime FechaOperacion { get; set; }
 
@@ -22,8 +22,7 @@ namespace GE.Dominio.Entity.Entidades
 
         //*****************************************************//
 
-        public virtual Usuario Usuario { get; set; }
-
         public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
+
     }
 }

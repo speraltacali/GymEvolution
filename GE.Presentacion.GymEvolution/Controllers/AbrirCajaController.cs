@@ -6,6 +6,7 @@ using GE.IServicio.Caja;
 using GE.IServicio.Caja.DTO;
 using GE.Servicio;
 using GE.Servicio.DatosEstaticos.Session;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -16,25 +17,45 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+
+                if (_cajaServicio.VerSiCajaEstaAbierta())
+                {
+                    ViewBag.sms = "error";
+                }
+
+                return View(ViewBag);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         [HttpPost]
-        public IActionResult Abrir(string cadena)
+        public IActionResult Abrir(CajaDto Caja)
         {
+
+            if (_cajaServicio.VerSiCajaEstaAbierta())
+            {
+                return RedirectToAction("Index", "AbrirCaja");
+            }
 
             var caja = new CajaDto
             {
-                MontoApertura = int.Parse(cadena),
+                MontoApertura = Caja.MontoApertura,
                 FechaApertura = DateTime.Now,
                 MontoCierre = 0,
-                UsuarioId = 1,
+                UsuarioId = SessionActiva.UsuId,
               
             };
 
              _cajaServicio.AbrirCaja(caja);
 
-            return Index();
+            return RedirectToAction("Index" ,"Home");
         }
     }
 }

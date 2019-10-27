@@ -54,7 +54,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                return View();
+                //return View();
+                return RedirectToAction("Index");
             }
             else
             {
@@ -86,15 +87,32 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
                 var Cliente = _clienteRepositorio.Agregar(cliente);
 
+                
                 return RedirectToAction("Index");
             }
             else
             {
-                return View();
+                //return View();
+                return RedirectToAction("Index");
+
             }
 
             
 
+        }
+
+        public ActionResult Perfil(long id)
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var cliente = _clienteRepositorio.ObtenerPorId(id);
+
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
         }
 
         public ActionResult Update(long id)
@@ -169,5 +187,13 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult CuotaEstado(ClienteDto clienteDto)
+        {
+            return RedirectToAction("CuotaEstado");
+        }
+
+
     }
 }

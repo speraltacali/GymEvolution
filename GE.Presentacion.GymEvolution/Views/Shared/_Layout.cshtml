@@ -27,6 +27,8 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/libreria/vendor/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/libreria/css/sheetslider.min.css" />
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -41,7 +43,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                <img src="~/img/gymevolution.jpg" class="imagenbarra">
+                <img src="~/img/evolutionGym.jpg" class="avatar" style='width:100px; height:100px' >
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GYM Evolution</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -50,25 +52,61 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1" text-align="right">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleado" asp-action="Index">Empleado</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Empleado" asp-action="Index">Empleado</a>
                         </li>
 
                         @if (@TempData["Session"] != null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
-                            </li>
+                            
+                            <div class="modal fade" id="add-session" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="addContactLabel">Cerrar Session</h5>
+                                            <button type="button" class="close" data-dismiss="modal01" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <form asp-action="Login" asp-controller="Usuario" method="get" enctype="multipart/form-data">
+
+                                            <div class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <h2>Desea cerrar Session?</h2>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style='width: 250px; height: 50px'>Cancelar</button>
+                                                            @*<input asp-action="PagoFactura(cuota , factura)" type="submit" onclick="PagoCuotaDto.PagarCuota" value="Pagar Cuota" class="btn btn-primary" style='width: 250px; height: 50px'/>*@
+                                                            <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cerrarSession.CerrarSession" style='width: 250px; height: 50px' data-save="modal">Aceptar</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Cerrar Sesion</a>
+                            </li>*@
+
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#add-session" style='width:125px; height:50px'>
+                                Cerrar Session
+                            </button>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Login @TempData["Session"]</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Login @TempData["Session"]</a>
                             </li>
                         }
                     </ul>
@@ -92,6 +130,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/libreria/js/Cliente.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"

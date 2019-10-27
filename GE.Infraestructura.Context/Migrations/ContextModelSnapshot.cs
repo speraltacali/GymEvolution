@@ -79,8 +79,6 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<int>("Cantidad");
 
-                    b.Property<long>("ClienteId");
-
                     b.Property<DateTime>("CuotaVencimiento");
 
                     b.Property<DateTime>("CuotaVigente");
@@ -94,8 +92,6 @@ namespace GE.Infraestructura.Context.Migrations
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
 
                     b.ToTable("Cuota");
                 });
@@ -133,7 +129,7 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<DateTime>("FechaOperacion");
 
-                    b.Property<string>("NumeroFactura");
+                    b.Property<string>("Numero");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -143,11 +139,7 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<decimal>("Total");
 
-                    b.Property<long?>("UsuarioId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Factura");
                 });
@@ -163,6 +155,8 @@ namespace GE.Infraestructura.Context.Migrations
                     b.Property<long>("EmpleadoId");
 
                     b.Property<DateTime>("FechaActualizacion");
+
+                    b.Property<decimal>("Monto");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -183,17 +177,17 @@ namespace GE.Infraestructura.Context.Migrations
 
                     b.Property<long>("CuotaId");
 
-                    b.Property<long>("Id");
+                    b.Property<long>("ClienteId");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<long>("EmpleadoId");
 
-                    b.HasKey("FacturaId", "CuotaId");
+                    b.HasKey("FacturaId", "CuotaId", "ClienteId", "EmpleadoId");
 
-                    b.HasAlternateKey("Id");
+                    b.HasIndex("ClienteId");
 
                     b.HasIndex("CuotaId");
+
+                    b.HasIndex("EmpleadoId");
 
                     b.ToTable("PagoFactura");
                 });
@@ -265,8 +259,6 @@ namespace GE.Infraestructura.Context.Migrations
                 {
                     b.HasBaseType("GE.Dominio.Entity.Entidades.Persona");
 
-                    b.Property<int>("Estado");
-
                     b.Property<DateTime>("FechaDeIngreso");
 
                     b.Property<int>("GrupoSanguineo");
@@ -307,27 +299,12 @@ namespace GE.Infraestructura.Context.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Cuota", b =>
-                {
-                    b.HasOne("GE.Dominio.Entity.Cliente", "Cliente")
-                        .WithMany("Cuotas")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.DetalleCaja", b =>
                 {
                     b.HasOne("GE.Dominio.Entity.Entidades.Caja", "Caja")
                         .WithMany("DetalleCajas")
                         .HasForeignKey("CajaId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Factura", b =>
-                {
-                    b.HasOne("GE.Dominio.Entity.Entidades.Usuario", "Usuario")
-                        .WithMany("Facturas")
-                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Movimiento", b =>
@@ -340,12 +317,22 @@ namespace GE.Infraestructura.Context.Migrations
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Pago_Factura", b =>
                 {
-                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuotas")
+                    b.HasOne("GE.Dominio.Entity.Cliente", "Cliente")
+                        .WithMany("PagoFacturas")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Cuota", "Cuota")
                         .WithMany("Pago_Facturas")
                         .HasForeignKey("CuotaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Facturas")
+                    b.HasOne("GE.Dominio.Entity.Entidades.Empleado", "Empleado")
+                        .WithMany("Pago_Facturas")
+                        .HasForeignKey("EmpleadoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GE.Dominio.Entity.Entidades.Factura", "Factura")
                         .WithMany("Pago_Facturas")
                         .HasForeignKey("FacturaId")
                         .OnDelete(DeleteBehavior.Cascade);

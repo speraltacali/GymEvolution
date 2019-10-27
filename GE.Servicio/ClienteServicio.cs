@@ -13,12 +13,7 @@ namespace GE.Servicio
 {
     public class ClienteServicio : IClienteServicio
     {
-        private readonly IClienteRepositorio _clienteServicio;
-
-        public ClienteServicio()
-        {
-            _clienteServicio = new ClienteRepositorio();
-        }
+        private readonly IClienteRepositorio _clienteServicio = new ClienteRepositorio();
 
         public ClienteDto Agregar(ClienteDto dto)
         {
@@ -60,6 +55,7 @@ namespace GE.Servicio
                     GrupoSanguineo = x.GrupoSanguineo,
                     FechaDeIngreso = x.FechaDeIngreso,
                     FotoLink = x.FotoLink
+                    
                 }).ToList();
         }
 
@@ -131,7 +127,7 @@ namespace GE.Servicio
                 Sexo = cliente.Sexo,
                 GrupoSanguineo = cliente.GrupoSanguineo,
                 FechaDeIngreso = cliente.FechaDeIngreso,
-                FotoLink = cliente.FotoLink
+                FotoLink = cliente.FotoLink,
             };
         }
     }

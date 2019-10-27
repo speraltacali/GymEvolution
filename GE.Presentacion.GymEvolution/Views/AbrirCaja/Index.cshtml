@@ -1,34 +1,50 @@
-﻿
+﻿@using GE.IServicio.Caja.DTO
 @{
+    var caja = new CajaDto();
     ViewData["Title"] = "Index";
 }
 
-<h1>Abrir Caja</h1>
+<h1 class="logintext">Abrir Caja</h1>
 
 <body>
-    
-    
-    
 
-<div class="caja">
-    
-    <form asp-action="Abrir" method="post">
-        <div class="buscar">
-            <p class="search">
-                Monto a Abrir <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-            </p>
-            <input type="submit" value="Abrir" btn="btn btn-default" class="btn btn-primary" />
-               
+    @if (ViewBag.sms != null)
+    {
+        <div class="col-12">
+
+            <div class="alert alert-success alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                <h4><i class="fa-navicon fa-stop"></i>La Caja Ya Esta Abierta</h4>
+                Caja Lista Para Facturar
+
+            </div>
+
         </div>
-    </form>
-    
+    }
 
-</div>
-    
-    
-    
-    
-    
+
+    <div class="caja">
+
+        <form asp-action="Abrir" method="post">
+            <div class="buscar">
+
+                <p class="search">
+                    Monto a Abrir
+                    <input asp-for="@caja.MontoApertura" placeholder="Nombre" class="form-control" />
+                </p>
+                <input type="submit" value="Abrir" btn="btn btn-default" class="btn btn-primary" />
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+
+
+
 
 </body>
 

@@ -10,5 +10,9 @@ namespace GE.IServicio.Caja
         void AbrirCaja(CajaDto dto);
 
         void CerrarCaja(CajaDto dto);
+
+        bool VerSiCajaEstaAbierta();
+
+        CajaDto TraerCajaAbierta();
     }
 }

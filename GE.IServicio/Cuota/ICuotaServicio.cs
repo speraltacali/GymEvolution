@@ -7,7 +7,7 @@ namespace GE.IServicio.Cuota
 {
     public interface ICuotaServicio
     {
-        void CuotaVigente(CuotaDto cuotaDto);
+        CuotaDto CuotaVigente(CuotaDto cuotaDto);
 
         CuotaDto CuotaVencimiento(long id);
 

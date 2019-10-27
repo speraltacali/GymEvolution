@@ -6,7 +6,7 @@ using GE.Repositorio;
 
 namespace GE.Infraestructura.Repositorio.Pago_Factura
 {
-    public class Pago_FacturaRepositorio //: Repositorio<Dominio.Entity.Entidades.Pago_Factura> , IPago_FacturaRepositorio
+    public class Pago_FacturaRepositorio/* : Repositorio<Dominio.Entity.Entidades.Pago_Factura> , IPago_FacturaRepositorio*/
     {
     }
 }

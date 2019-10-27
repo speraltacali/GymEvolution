@@ -1,6 +1,9 @@
-﻿@model IEnumerable<GE.IServicio.Cliente.DTO.ClienteDto>
+﻿@using GE.IServicio.Cliente.DTO
+@model IEnumerable<GE.IServicio.Cliente.DTO.ClienteDto>
+
 
 @{
+    var cliente = new ClienteDto();
     ViewData["Title"] = "Index";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,15 +35,108 @@
                     Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
                 </p>
                 <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
-               
+
             </div>
         </form>
+        <br />
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact">
+            Agregar Nuevo Cliente
+        </button>
+
+        <!--Modal-->
+        <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addContactLabel">Nuevo Cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form asp-action="Create" asp-controller="Cliente" method="post" class="formCliente" enctype="multipart/form-data">
+
+                        <div class="modal-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Apellido" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Apellido" placeholder="Apellido" class="form-control" />
+                                        <span asp-validation-for="@cliente.Apellido" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Nombre" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Nombre" placeholder="Nombre" class="form-control" />
+                                        <span asp-validation-for="@cliente.Nombre" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Dni" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Dni" placeholder="Dni" class="form-control" />
+                                        <span asp-validation-for="@cliente.Dni" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Telefono" class="h6"></label>
+                                        <input asp-for="@cliente.Telefono" placeholder="Telefono" class="form-control" />
+                                        <span asp-validation-for="@cliente.Telefono" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Domicilio" class="h6"></label>
+                                        <input asp-for="@cliente.Domicilio" placeholder="Domicilio" class="form-control" />
+                                        <span asp-validation-for="@cliente.Domicilio" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.FechaNacimiento" class="h6"></label>
+                                        <input asp-for="@cliente.FechaNacimiento" class="form-control" />
+                                        <span asp-validation-for="@cliente.FechaNacimiento" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.Sexo" class="h6"></label>
+                                        <select asp-for="@cliente.Sexo" class="form-control">
+                                            <option value="0">Masculino</option>
+                                            <option value="1">Femenino</option>
+                                        </select>
+                                        <span asp-validation-for="@cliente.Sexo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.GrupoSanguineo" class="h6"></label>
+                                        <select asp-for="@cliente.GrupoSanguineo" class="form-control">
+                                            <option value="1">A</option>
+                                            <option value="2">B</option>
+                                        </select>
+                                        <span asp-validation-for="@cliente.GrupoSanguineo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label asp-for="@cliente.Foto" class="h6">Foto Empleado</label>
+                                        <input asp-for="@cliente.Foto" type="file" class="form-control" accept="image/*" />
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="@cliente.FechaDeIngreso" class="h6"></label>
+                                        <input asp-for="@cliente.FechaDeIngreso" class="form-control" />
+                                        <span asp-validation-for="@cliente.FechaDeIngreso" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                                        @*<input type="submit" value="Guardar Datos" class="btn btn-primary" />*@
+                                        <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cliente.AgregarCliente" data-save="modal">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>>
+
     </div>
     <div>
-        <p align="right">
-            <a asp-action="Create" class="btn btn-primary">Crear Nuevo Cliente</a>
-        </p>
-        <br />
+
+    
         <div class="col-md-12">
             <div class="container-table100">
                 <div class="wrap-table100">
@@ -119,16 +215,17 @@
                                         <td>
                                             <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
                                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                            <a asp-action="Perfil" asp-route-id="@item.Id" class="btn btn-secondary">Perfil</a>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 <!--===============================================================================================-->

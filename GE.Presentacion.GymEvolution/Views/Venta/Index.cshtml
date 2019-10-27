@@ -1,0 +1,85 @@
+﻿@model IEnumerable<GE.IServicio.Factura.DTO.FacturaDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="libreria/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/css/util.css">
+<link rel="stylesheet" type="text/css" href="libreria/css/main.css">
+<!--===============================================================================================-->
+<body>
+
+    
+     <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+     <h2 class="textuser">User : @ViewBag.Session</h2>
+     <h1 class="logintext">Facturas De Caja</h1>
+
+
+    <div class="col-md-12">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="col-md-12">
+
+                    <table class="col-md-12">
+                        <thead>
+                            <tr class="table100-head">
+                                <th width="20px">
+                                    Numero
+                                </th>
+                                <th width="20px">
+                                    FechaOperacion
+                                </th>
+                                <th width="20px">
+                                    Total
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                         @foreach (var item in Model)
+                         {
+                          <tr padding-bottom="2px">
+                          <td>
+                              @Html.DisplayFor(modelItem => item.Numero)
+                          </td>
+                          <td>
+                              @Html.DisplayFor(modelItem => item.FechaOperacion)
+                          </td>
+                          <td>
+                              @Html.DisplayFor(modelItem => item.Total)
+                          </td>
+                          </tr>
+                         }
+                        </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+       </div>
+
+    </body>
+    <!--===============================================================================================-->
+    <script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="libreria/vendor/bootstrap/js/popper.js"></script>
+    <script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="libreria/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="libreria/js/main.js"></script>
+

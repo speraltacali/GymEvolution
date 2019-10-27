@@ -7,17 +7,24 @@ using GE.Dominio.Base;
 namespace GE.Dominio.Entity.Entidades
 {
     [Table("PagoFactura")]
-    public class Pago_Factura : EntityBase
+    public class Pago_Factura /*: EntityBase*/
     {
         public long FacturaId { get; set; }
 
         public long CuotaId { get; set; }
 
+        public long ClienteId { get; set; }
+
+        public long EmpleadoId { get; set; }
+
         //********************************************//
 
-        public virtual  Factura Facturas { get; set; }
+        public virtual  Factura Factura { get; set; }
 
-        public virtual Cuota Cuotas { get; set; }
+        public virtual Cuota Cuota { get; set; }
 
+        public virtual Cliente Cliente { get; set; }
+
+        public virtual Empleado Empleado { get; set; }
     }
 }

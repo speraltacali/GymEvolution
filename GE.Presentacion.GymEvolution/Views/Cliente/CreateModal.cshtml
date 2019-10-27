@@ -1,0 +1,39 @@
+﻿@model GE.IServicio.Cliente.DTO.ClienteDto
+
+@{
+    ViewData["Title"] = "CreateModal";
+}
+
+<h1>Cliente</h1>
+<p>
+    <a data-toggle="modal" data-target="#modal1" class="btn btn-info text-white">Crear Cliente</a>
+</p>
+
+<div class="modal fade" data-backdrop="static" id="modal1" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLanel">Agregar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <form method="post" asp-area="Cliente" app-controller="Cliente" asp-action="Create" enctype="multipart/form-data">
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="col-md-2 control-label"></label>
+                        <div>
+                            <input asp-for="Nombre" placeholder="Nombre" class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

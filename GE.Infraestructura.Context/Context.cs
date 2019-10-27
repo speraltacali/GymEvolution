@@ -54,17 +54,20 @@ namespace GE.Infraestructura.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pago_Factura>().HasKey(x => new { x.FacturaId , x.CuotaId});
+            modelBuilder.Entity<Pago_Factura>().HasKey(x => new {x.FacturaId , x.CuotaId , x.ClienteId , x.EmpleadoId});
 
-            modelBuilder.Entity<Pago_Factura>()
-                .HasOne(x => x.Facturas)
-                .WithMany(y => y.Pago_Facturas)
-                .HasForeignKey(x => x.FacturaId);
+            //modelBuilder.Entity<Pago_Factura>()
+            //    .HasOne(x => x.Factura)
+            //    .WithMany(y => y.Pago_Facturas)
+            //    .HasForeignKey(x => x.FacturaId)
+            //    .HasPrincipalKey(y=>y.Id);
 
-            modelBuilder.Entity<Pago_Factura>()
-                .HasOne(x => x.Cuotas)
-                .WithMany(y => y.Pago_Facturas)
-                .HasForeignKey(x => x.CuotaId);
+            //modelBuilder.Entity<Pago_Factura>()
+            //    .HasOne(x => x.Cuotas)
+            //    .WithMany(y => y.Pago_Facturas)
+            //    .HasForeignKey(x => x.CuotaId);
+
+
 
             modelBuilder.Entity<DetalleCaja>()
                 .HasOne(x => x.Caja)
@@ -80,11 +83,6 @@ namespace GE.Infraestructura.Context
                 .HasOne(x => x.Empleado)
                 .WithMany(y => y.Usuarios)
                 .HasForeignKey(x => x.EmpleadoId);
-
-            modelBuilder.Entity<Cuota>()
-                .HasOne(x => x.Cliente)
-                .WithMany(y => y.Cuotas)
-                .HasForeignKey(x => x.ClienteId);
 
             modelBuilder.Entity<Movimiento>()
                 .HasOne(x => x.Empleado)

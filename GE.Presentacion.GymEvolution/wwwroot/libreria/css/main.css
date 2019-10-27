@@ -3,12 +3,40 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]LOGIN*/
 
+.imgSlider {
+    /*max-width: 130%;
+    max-height: 200%;*/
+
+    height: 500px;
+}
+
+.sheetSlider {
+    background-color: black;
+    text-align : center;
+}
+
+.sh_meta span , .sh__meta h4 {
+    color: brown;
+}
 
 .principal {
     width: 1070px;
     height: auto;
 }
 
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]Principal*/
+
+.avatar {
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+    height: 350px;
+    width: 350px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
 
 .lateralizq {
     float: left;
@@ -96,6 +124,7 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: right;
+    padding-bottom:4px;
     
     padding-right:3px;
 }
@@ -115,6 +144,7 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: inherit;
+    padding-bottom: 4px;
 }
 
 /***********/
@@ -223,7 +253,7 @@ input:focus {
 }
 
 .logintext{
-    background-color:chocolate;
+    background-color:slategrey;
     height:100px;
     width:500px;
     margin-top:10px;
@@ -245,7 +275,7 @@ input:focus {
 .textuser {
     
     color: beige;
-    background-color:darkcyan;
+    background-color:dimgrey;
     text-align:right;
     float:right;
     padding-top:10px;
@@ -356,18 +386,20 @@ header {
 	padding: 0px; 
 	box-sizing: border-box;
 }
-
+/*
 body, html {
 	height: 100%;
 	font-family: sans-serif;
-}
+}*/
 
 body {
-    /*background: #c850c0;#4158d0  EF5700naranja230E02ngro*/
+    /*background: #c850c0;#4158d0  EF5700naranja230E02ngro*/ /*
     background: -webkit-linear-gradient(45deg, #572306, #EF5700);
     background: -o-linear-gradient(45deg, #572306, #EF5700);
     background: -moz-linear-gradient(45deg, #572306, #EF5700);
-    background: linear-gradient(45deg, #572306, #EF5700);
+    background: linear-gradient(45deg, #572306, #EF5700);*/
+    background-image: url(/img/gymnegro.jpg);
+    
 }
 
 /* ------------------------------------ */
@@ -460,7 +492,7 @@ iframe {
   background: -o-linear-gradient(45deg, #4158d0, #c850c0);
   background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
   background: linear-gradient(45deg, #4158d0, #c850c0);*/
-  padding-top:40px;
+  padding-top:10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -477,7 +509,7 @@ iframe {
 }
 
 table {
-  border-spacing: 1;
+  border-spacing: 1px;
   border-collapse: collapse;
   background: white;
   border-radius: 10px;
@@ -494,7 +526,7 @@ table td, table th {
 }
     table thead tr {
         height: 60px;
-        background: #4158d0; /*36304a*/
+        background: #495057; /*36304a*/
     }
 table tbody tr {
   height: 50px;

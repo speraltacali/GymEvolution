@@ -19,5 +19,7 @@ namespace GE.Dominio.Entity.Entidades
         public virtual ICollection<Movimiento> Movimientos { get; set; }
 
         public virtual ICollection<Usuario> Usuarios { get; set; }
+
+        public virtual ICollection<Pago_Factura> Pago_Facturas { get; set; }
     }
 }
