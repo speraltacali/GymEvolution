@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +23,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        }   
+
 
         [HttpGet]
         public ActionResult Index(string cadena)
