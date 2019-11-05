@@ -9,7 +9,7 @@ namespace GE.IServicio.Cuota
     {
         CuotaDto CuotaVigente(CuotaDto cuotaDto);
 
-        CuotaDto CuotaVencimiento(long id);
+        DateTime CuotaUltimoVencimiento(IEnumerable<CuotaDto> cuotas);
 
         CuotaDto CuotaEspera(long id);
 
@@ -19,5 +19,8 @@ namespace GE.IServicio.Cuota
 
         IEnumerable<CuotaDto> ObtenerPorFiltro(string cadena);
 
+        IEnumerable<CuotaDto> ObtenerCuotasPorClienteId(long clienteId);
+
+        bool PuedePasar(string dni);
     }
 }

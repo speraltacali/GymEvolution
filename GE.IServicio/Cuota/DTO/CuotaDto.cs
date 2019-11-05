@@ -17,5 +17,7 @@ namespace GE.IServicio.Cuota.DTO
         public int Cantidad { get; set; }
 
         public Estado Estado { get; set; }
+
+        public long ClienteId { get; set; }
     }
 }
