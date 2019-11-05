@@ -62,7 +62,17 @@ namespace GE.Servicio
 
         public IEnumerable<CuotaDto> ObtenerCuotasPorClienteId(long clienteId)
         {
-            throw new NotImplementedException();
+            return _cuotaRepositorio.ObtenerPorFiltro(x => x.ClienteId == clienteId).Select(x => new CuotaDto
+            {
+                Numero = x.Numero,
+                CuotaVencimiento = x.CuotaVencimiento,
+                Cantidad = x.Cantidad,
+                ClienteId = x.ClienteId,
+                CuotaVigente = x.CuotaVigente,
+                Estado = x.Estado,
+                Id = x.Id
+
+            }).ToList();
         }
 
         public bool PuedePasar(string dni)

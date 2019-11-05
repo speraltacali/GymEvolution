@@ -20,19 +20,24 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string dni)
+        public IActionResult Index(string cadena)
         {
-
-            if (_cuotaRepositorio.PuedePasar(dni))
+            ViewData["Busqueda"] = cadena;
+            
+            if (cadena != null)
             {
-                ViewBag.sms = "Puede Pasar";
+                if (_cuotaRepositorio.PuedePasar(cadena))
+                {
+                    ViewBag.sms = "Puede Pasar";
+
+                    return View(ViewBag);
+                }
+
+                ViewBag.sms = "error";
 
                 return View(ViewBag);
             }
-
-            ViewBag.sms = "error";
-
-            return View(ViewBag);
+            return View();
         }
 
     }
