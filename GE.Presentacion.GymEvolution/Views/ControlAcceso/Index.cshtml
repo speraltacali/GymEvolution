@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Acceso";
+
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="libreria/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/css/util.css">
+<link rel="stylesheet" type="text/css" href="libreria/css/main.css">
+<!--===============================================================================================-->
+
+<body>
+
+    <div class="enbloque">
+
+        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+        <h2 class="textuser">User : @ViewBag.Session</h2>
+        <h1 class="logintext">Acceso Al Sistema</h1>
+
+        <form asp-action="Index" method="get">
+            <div class="buscar">
+                <p class="search">
+                    Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                </p>
+                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+            </div>
+        </form>
+
+    </div>
+
+
+    @if (ViewBag.sms == "error")
+    {
+        <div class="col-12">
+
+            <div class="alert alert-success alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                <h4><i class="fa-navicon fa-stop"></i>No Puede Pasar Debe Cuota</h4>
+                Vea el estado de cuenta del cliente
+
+            </div>
+
+        </div>
+    }
+
+
+    @if (ViewBag.sms == "Puede Pasar")
+    {
+        <div class="col-12">
+
+            <div class="alert-info alert-success alert-dismissible">
+
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                <h4><i class="fa-navicon fa-stop"></i>Pasar Debe Cuota</h4>
+                no tiene cuotas pendientes
+
+            </div>
+
+        </div>
+    }
+
+
+
+</body>
+
+<!--===============================================================================================-->
+<script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/bootstrap/js/popper.js"></script>
+<script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/js/main.js"></script>
+
