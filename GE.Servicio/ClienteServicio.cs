@@ -80,6 +80,27 @@ namespace GE.Servicio
 
         }
 
+        public IEnumerable<ClienteDto> ObtenerPorDni(string dni)
+        {
+
+            return _clienteServicio.ObtenerPorFiltro(x => 
+                                                          x.Dni.Contains(dni)).Select(x => new ClienteDto()
+                                                          {
+                                                              Id = x.Id,
+                                                              Apellido = x.Apellido,
+                                                              Nombre = x.Nombre,
+                                                              Dni = x.Dni,
+                                                              Domicilio = x.Domicilio,
+                                                              Telefono = x.Telefono,
+                                                              FechaNacimiento = x.FechaNacimiento,
+                                                              Sexo = x.Sexo,
+                                                              GrupoSanguineo = x.GrupoSanguineo,
+                                                              FechaDeIngreso = x.FechaDeIngreso,
+                                                              FotoLink = x.FotoLink
+                                                          }).ToList();
+
+        }
+
         public ClienteDto Modificar(ClienteDto clienteDto)
         {
             var cliente = _clienteServicio.ObtenerPorId(clienteDto.Id);
