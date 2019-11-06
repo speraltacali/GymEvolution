@@ -5,7 +5,6 @@ namespace GE.Aplicacion.CadenaConexion
     public class CadenaConexion
     {
 
-
         public const string DataBase = "GymEvolution";
 
 

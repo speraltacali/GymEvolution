@@ -25,6 +25,9 @@
 <link rel="stylesheet" type="text/css" href="libreria/css/util.css">
 <link rel="stylesheet" type="text/css" href="libreria/css/main.css">
 <!--===============================================================================================-->
+
+<script src="~/script/jquery.validate.js"></script>
+<script src="~/script/jquery.validate.unobtrusive.js"></script>
 <body>
     <div class="enbloque">
         <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
@@ -138,10 +141,6 @@
             </div>
 
         </div>
-        @section Scripts{
-            @await Html.PartialAsync("_ValidationScriptsPartial")
-        }
-
     </div>
     <div>
 
@@ -238,10 +237,11 @@
     </div>
 </body>
 
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Scripts/bootstrap.js"></script>
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
 <!--===============================================================================================-->
 <script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

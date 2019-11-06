@@ -11,7 +11,7 @@ namespace GE.Dominio.Entity.Entidades
 
         public string Descripcion { get; set; }
 
-        public byte Foto { get; set; }
+        public string Foto { get; set; }
 
         //****************************************************//
 
