@@ -81,6 +81,11 @@ namespace GE.Servicio
 
             var cliente2 = cliente.FirstOrDefault(x => x.Dni == dni);
 
+            if (cliente2 == null)
+            {
+                return false;
+            }
+
             var cuotasDelCliente = ObtenerCuotasPorClienteId(cliente2.Id);
 
             if (cuotasDelCliente == null)

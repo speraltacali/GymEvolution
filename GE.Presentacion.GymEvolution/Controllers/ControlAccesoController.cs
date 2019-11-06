@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cuota;
 using GE.Servicio;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
@@ -22,22 +23,34 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpGet]
         public IActionResult Index(string cadena)
         {
-            ViewData["Busqueda"] = cadena;
-            
-            if (cadena != null)
+            if (HttpContext.Session.GetString("Session") != null)
             {
-                if (_cuotaRepositorio.PuedePasar(cadena))
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+
+                ViewData["Busqueda"] = cadena;
+
+                if (cadena != null)
                 {
-                    ViewBag.sms = "Puede Pasar";
+                    if (_cuotaRepositorio.PuedePasar(cadena))
+                    {
+                        ViewBag.sms = "Puede Pasar";
+
+                        return View(ViewBag);
+                    }
+
+                    ViewBag.sms = "error";
 
                     return View(ViewBag);
                 }
+                return View();
 
-                ViewBag.sms = "error";
-
-                return View(ViewBag);
             }
-            return View();
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+           
         }
 
     }

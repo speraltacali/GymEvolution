@@ -40,13 +40,13 @@
         </form>
 
     </div>
-
+    <br />
 
     @if (ViewBag.sms == "error")
     {
         <div class="col-12">
 
-            <div class="alert alert-success alert-dismissible">
+            <div class="alert alert-danger alert-dismissible">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
                 <h4><i class="fa-navicon fa-stop"></i>No Puede Pasar Debe Cuota</h4>
@@ -62,11 +62,11 @@
     {
         <div class="col-12">
 
-            <div class="alert-info alert-success alert-dismissible">
+            <div class="alert alert-success alert-dismissible">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <h4><i class="fa-navicon fa-stop"></i>Pasar Debe Cuota</h4>
-                no tiene cuotas pendientes
+                <h4><i class="fa-navicon fa-stop"></i>|-------- Puede Pasar --------|</h4>
+                No Tiene Cuotas Pendientes
 
             </div>
 
