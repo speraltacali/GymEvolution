@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cliente.DTO;
+using GE.Presentacion.GymEvolution.Models;
 using GE.Servicio;
 using GE.Servicio.DatosEstaticos.Session;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +16,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClienteController : Controller
     {
-
+        private DataPaginador<ClienteDto> models;
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
@@ -52,50 +53,50 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-        public ActionResult Create()
-        {
-            if (HttpContext.Session.GetString("Session") != null)
-            {
-                //return View();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return RedirectToAction("Login", "Usuario");
-            }
-        }
+        //public ActionResult Create()
+        //{
+        //    if (HttpContext.Session.GetString("Session") != null)
+        //    {
+        //        //return View();
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login", "Usuario");
+        //    }
+        //}
 
 
         [HttpPost]
-        public ActionResult Create(ClienteDto cliente)
+        public string Create(DataPaginador<ClienteDto> cliente)
         {
 
             if (ModelState.IsValid)
             {
-                if (cliente.Foto != null)
+                if (cliente.Input.Foto != null)
                 {
                     //guarda la imagen en la carpeta wwwroot/imgsistema
-                    var path = $"wwwroot\\imgsistema\\{cliente.Foto.FileName}";
+                    var path = $"wwwroot\\imgsistema\\{cliente.Input.Foto.FileName}";
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        cliente.Foto.CopyTo(stream);
+                        cliente.Input.Foto.CopyTo(stream);
                     }
 
                     //guarda en la base de datos
-                    cliente.FotoLink = $"/imgsistema/{cliente.Foto.FileName}";
+                    cliente.Input.FotoLink = $"/imgsistema/{cliente.Input.Foto.FileName}";
                 }
-                ///---///
 
-                var Cliente = _clienteRepositorio.Agregar(cliente);
+                var Cliente = _clienteRepositorio.Agregar(cliente.Input);
 
-                
-                return RedirectToAction("Index");
+                return "Operacion Existosa";
+                //return View("Index");
             }
             else
             {
+                return "Verifique los Campos";
                 //return View();
-                return RedirectToAction("Index");
+                //return View(cliente);
 
             }
 
