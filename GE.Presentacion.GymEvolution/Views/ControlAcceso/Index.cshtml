@@ -2,6 +2,7 @@
     ViewData["Title"] = "Acceso";
 
 }
+@model GE.IServicio.Cliente.DTO.ClienteDto
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -38,9 +39,37 @@
                     <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
 
                 </div>
+
             </form>
 
         </div>
+
+        @if (ViewBag.sms == "Puede Pasar")
+        {
+            <div align="right">
+
+                <img src="@Model.FotoLink" alt="w-75" class="logo" width="80" height="80"/>
+
+                <h1 class="textuser">
+                    @Model.Apellido, @Model.Nombre
+                </h1>
+
+            </div>
+        }
+
+        @if (ViewBag.sms == "error")
+        {
+            <div align="right">
+
+                <img src="@Model.FotoLink" alt="w-75" class="logo" width="80" height="80"/>
+
+                <h1 class="textuser">
+                    @Model.Apellido, @Model.Nombre
+                </h1>
+
+            </div>
+        }
+
         <br />
 
         @if (ViewBag.sms == "error")
@@ -74,7 +103,24 @@
             </div>
         }
 
+        @if (ViewBag.sms == "NoseEncuentraCliente")
+        {
+            <div class="col-12">
+
+                <div class="alert alert-danger alert-dismissible">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    <h4><i class="fa-navicon fa-stop"></i>!..Nose Encontro el Cliente..!</h4>
+                    Verifique el DNI
+
+                </div>
+
+            </div>
+        }
+
     </div>
+
+
 
 </body>
 

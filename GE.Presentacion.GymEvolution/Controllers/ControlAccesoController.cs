@@ -32,16 +32,26 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
                 if (cadena != null)
                 {
+                    var cliente = _clienteRepositorio.ObtenerPorDni(cadena);
+                    var clienteResultado = cliente.FirstOrDefault(x => x.Dni == cadena);
+
+                    if (clienteResultado == null)
+                    {
+                        ViewBag.sms = "NoseEncuentraCliente";
+
+                        return View(clienteResultado);
+                    }
+
                     if (_cuotaRepositorio.PuedePasar(cadena))
                     {
                         ViewBag.sms = "Puede Pasar";
 
-                        return View(ViewBag);
+                        return View(clienteResultado);
                     }
 
                     ViewBag.sms = "error";
 
-                    return View(ViewBag);
+                    return View(clienteResultado);
                 }
                 return View();
 
