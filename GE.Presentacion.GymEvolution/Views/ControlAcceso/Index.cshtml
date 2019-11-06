@@ -23,57 +23,58 @@
 
 <body>
 
-    <div class="enbloque">
+    <div class="Acceso">
+        <div class="enbloque">
 
-        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-        <h2 class="textuser">User : @ViewBag.Session</h2>
-        <h1 class="logintext">Acceso Al Sistema</h1>
+            <img src="~/img/key.png" class="imgcliente" width="110" height="110" />
+            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h1 class="logintext">Acceso Al Sistema</h1>
 
-        <form asp-action="Index" method="get">
-            <div class="buscar">
-                <p class="search">
-                    Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+            <form asp-action="Index" method="get">
+                <div class="buscar">
+                    <p class="search">
+                        Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                    </p>
+                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+                </div>
+            </form>
+
+        </div>
+        <br />
+
+        @if (ViewBag.sms == "error")
+        {
+            <div class="col-12">
+
+                <div class="alert alert-danger alert-dismissible">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    <h4><i class="fa-navicon fa-stop"></i>No Puede Pasar Debe Cuota</h4>
+                    Vea el estado de cuenta del cliente
+
+                </div>
 
             </div>
-        </form>
+        }
+
+
+        @if (ViewBag.sms == "Puede Pasar")
+        {
+            <div class="col-12">
+
+                <div class="alert alert-success alert-dismissible">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    <h4><i class="fa-navicon fa-stop"></i>|-------- Puede Pasar --------|</h4>
+                    No Tiene Cuotas Pendientes
+
+                </div>
+
+            </div>
+        }
 
     </div>
-    <br />
-
-    @if (ViewBag.sms == "error")
-    {
-        <div class="col-12">
-
-            <div class="alert alert-danger alert-dismissible">
-
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <h4><i class="fa-navicon fa-stop"></i>No Puede Pasar Debe Cuota</h4>
-                Vea el estado de cuenta del cliente
-
-            </div>
-
-        </div>
-    }
-
-
-    @if (ViewBag.sms == "Puede Pasar")
-    {
-        <div class="col-12">
-
-            <div class="alert alert-success alert-dismissible">
-
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <h4><i class="fa-navicon fa-stop"></i>|-------- Puede Pasar --------|</h4>
-                No Tiene Cuotas Pendientes
-
-            </div>
-
-        </div>
-    }
-
-
 
 </body>
 

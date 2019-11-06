@@ -24,6 +24,12 @@
     height: auto;
 }
 
+.Acceso{
+    background-color: black;
+    width: 1000px;
+    height:500px;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]Principal*/
 
@@ -145,6 +151,7 @@
     border-radius: 13px;
     float: inherit;
     padding-bottom: 4px;
+    
 }
 
 /***********/
@@ -246,6 +253,8 @@ input:focus {
     display: block;
     padding-top:10px;
     float: inherit;
+    margin-left:5px;
+    margin-right:5px;
 }
 
 .caja {
