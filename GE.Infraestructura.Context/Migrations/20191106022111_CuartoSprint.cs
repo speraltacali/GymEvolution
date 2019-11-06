@@ -2,7 +2,7 @@
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class nwemigration : Migration
+    public partial class CuartoSprint : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
