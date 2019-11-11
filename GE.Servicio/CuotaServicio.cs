@@ -47,7 +47,17 @@ namespace GE.Servicio
 
         public CuotaDto ObtenerPorId(long id)
         {
-            throw new NotImplementedException();
+            var Cuota = _cuotaRepositorio.ObtenerPorId(id);
+
+            return new CuotaDto()
+            {
+                Numero = Cuota.Numero,
+                CuotaVigente = Cuota.CuotaVigente,
+                CuotaVencimiento = Cuota.CuotaVencimiento,
+                Cantidad = Cuota.Cantidad,
+                Estado = Cuota.Estado,
+                ClienteId = Cuota.ClienteId
+            };
         }
 
         public IEnumerable<CuotaDto> ObtenerTodo()

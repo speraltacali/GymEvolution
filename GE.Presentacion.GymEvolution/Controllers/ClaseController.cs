@@ -2,26 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GE.IServicio.Pago_Factura;
-using GE.Servicio;
-using GE.Servicio.DatosEstaticos.Session;
+using GE.IServicio.Clase.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
-    public class CuotaController : Controller
+    public class ClaseController : Controller
     {
-
-        private IPago_FacturaServicio _facturaCuotaServicio = new Pago_FacturaServicio();
-
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
+
         [HttpGet]
-        public IActionResult Index(string cadena)
+        public ActionResult Index(string cadena)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
@@ -29,17 +25,14 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 ViewData["Busqueda"] = cadena;
 
-                if (!string.IsNullOrEmpty(cadena))
+                if (!String.IsNullOrEmpty(cadena))
                 {
-
                     return View();
                 }
                 else
                 {
-
                     return View();
                 }
-
             }
             else
             {
@@ -47,26 +40,24 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-
-        public ActionResult CuotasCliente()
+        public ActionResult Create()
         {
-            if (HttpContext.Session.GetString("Session") != null)
-            {
-                var Cuotas = _facturaCuotaServicio.MostrarDatosGenerales(SessionActiva.ClienteId);
-
-                return View(Cuotas);
-            }
-            else
-            {
-                return RedirectToAction("Login", "Usuario");
-            }
+            return View();
         }
 
-        //[HttpGet]
-        //public ActionResult CuotasCliente(long ClienteId)
-        //{
-        //    return View();
-        //}
+        public ActionResult Create(ClaseDto clase)
+        {
+            return View();
+        }
 
+        public ActionResult Update()
+        {
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }

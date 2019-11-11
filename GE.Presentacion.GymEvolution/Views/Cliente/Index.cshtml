@@ -37,10 +37,10 @@
         <form asp-action="Index" method="get">
             <div class="buscar">
                 <p class="search">
-                    Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                    Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style='width:1100px; height: 45px'/>
+                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style='width:1100px; height: 40px' />
                 </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
-
+             
             </div>
         </form>
         <br />
@@ -68,65 +68,62 @@
                                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Apellido" class="col-md-2 control-label"></label>
-                                        <input asp-for="@paginador.Input.Apellido" placeholder="Apellido" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.Apellido" class="text-danger"></span>
+                                        <label asp-for="@cliente.Apellido" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Apellido" placeholder="Apellido" class="form-control" />
+                                        <span asp-validation-for="@cliente.Apellido" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Nombre" class="col-md-2 control-label"></label>
-                                        <input asp-for="@paginador.Input.Nombre" placeholder="Nombre" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.Nombre" class="text-danger"></span>
+                                        <label asp-for="@cliente.Nombre" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Nombre" placeholder="Nombre" class="form-control" />
+                                        <span asp-validation-for="@cliente.Nombre" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Dni" class="col-md-2 control-label"></label>
-                                        <input asp-for="@paginador.Input.Dni" placeholder="Dni" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.Dni" class="text-danger"></span>
+                                        <label asp-for="@cliente.Dni" class="col-md-2 control-label"></label>
+                                        <input asp-for="@cliente.Dni" placeholder="Dni" class="form-control" />
+                                        <span asp-validation-for="@cliente.Dni" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Telefono" class="h6"></label>
-                                        <input asp-for="@paginador.Input.Telefono" placeholder="Telefono" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.Telefono" class="text-danger"></span>
+                                        <label asp-for="@cliente.Telefono" class="h6"></label>
+                                        <input asp-for="@cliente.Telefono" placeholder="Telefono" class="form-control" />
+                                        <span asp-validation-for="@cliente.Telefono" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Domicilio" class="h6"></label>
-                                        <input asp-for="@paginador.Input.Domicilio" placeholder="Domicilio" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.Domicilio" class="text-danger"></span>
+                                        <label asp-for="@cliente.Domicilio" class="h6"></label>
+                                        <input asp-for="@cliente.Domicilio" placeholder="Domicilio" class="form-control" />
+                                        <span asp-validation-for="@cliente.Domicilio" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.FechaNacimiento" class="h6"></label>
-                                        <input asp-for="@paginador.Input.FechaNacimiento" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.FechaNacimiento" class="text-danger"></span>
+                                        <label asp-for="@cliente.FechaNacimiento" class="h6"></label>
+                                        <input asp-for="@cliente.FechaNacimiento" class="form-control" />
+                                        <span asp-validation-for="@cliente.FechaNacimiento" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.Sexo" class="h6"></label>
-                                        <select asp-for="@paginador.Input.Sexo" class="form-control">
+                                        <label asp-for="@cliente.Sexo" class="h6"></label>
+                                        <select asp-for="@cliente.Sexo" class="form-control">
                                             <option value="0">Masculino</option>
                                             <option value="1">Femenino</option>
                                         </select>
                                         <span asp-validation-for="@cliente.Sexo" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.GrupoSanguineo" class="h6"></label>
-                                        <select asp-for="@paginador.Input.GrupoSanguineo" class="form-control">
+                                        <label asp-for="@cliente.GrupoSanguineo" class="h6"></label>
+                                        <select asp-for="@cliente.GrupoSanguineo" class="form-control">
                                             <option value="1">A</option>
                                             <option value="2">B</option>
                                         </select>
-                                        <span asp-validation-for="@paginador.Input.GrupoSanguineo" class="text-danger"></span>
+                                        <span asp-validation-for="@cliente.GrupoSanguineo" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
 
-                                        <label asp-for="@paginador.Input.Foto" class="h6">Foto Empleado</label>
-                                        <input asp-for="@paginador.Input.Foto" type="file" class="form-control" accept="image/*" />
+                                        <label asp-for="@cliente.Foto" class="h6">Foto Empleado</label>
+                                        <input asp-for="@cliente.Foto" type="file" class="form-control" accept="image/*" />
 
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="@paginador.Input.FechaDeIngreso" class="h6"></label>
-                                        <input asp-for="@paginador.Input.FechaDeIngreso" class="form-control" />
-                                        <span asp-validation-for="@paginador.Input.FechaDeIngreso" class="text-danger"></span>
-                                    </div>
-
-                                    <span id="mensaje" class="text-danger"></span>
-                                    <input type="text" required class="hidenn" />
+                                        <label asp-for="@cliente.FechaDeIngreso" class="h6"></label>
+                                        <input asp-for="@cliente.FechaDeIngreso" class="form-control" />
+                                        <span asp-validation-for="@cliente.FechaDeIngreso" class="text-danger"></span>
+                                    </div>                                  
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
@@ -135,7 +132,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -143,7 +139,6 @@
         </div>
     </div>
     <div>
-
 
         <div class="col-md-12">
             <div class="container-table100">

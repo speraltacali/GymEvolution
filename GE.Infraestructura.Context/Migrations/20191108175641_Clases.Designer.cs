@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191023171150_PruebaDemo")]
-    partial class PruebaDemo
+    [Migration("20191108175641_Clases")]
+    partial class Clases
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -80,6 +80,8 @@ namespace GE.Infraestructura.Context.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Cantidad");
+
+                    b.Property<long>("ClienteId");
 
                     b.Property<DateTime>("CuotaVencimiento");
 

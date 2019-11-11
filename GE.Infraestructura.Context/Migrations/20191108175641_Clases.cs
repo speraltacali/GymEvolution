@@ -3,20 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class RelacionMN : Migration
+    public partial class Clases : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_PagoFactura_Id",
-                table: "PagoFactura");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_PagoFactura",
-                table: "PagoFactura");
-
-            migrationBuilder.DropIndex(
-                name: "IX_PagoFactura_FacturaId",
                 table: "PagoFactura");
 
             migrationBuilder.DropColumn(
@@ -27,17 +19,28 @@ namespace GE.Infraestructura.Context.Migrations
                 name: "RowVersion",
                 table: "PagoFactura");
 
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_PagoFactura",
-                table: "PagoFactura",
-                columns: new[] { "FacturaId", "CuotaId", "ClienteId", "EmpleadoId" });
+            migrationBuilder.AddColumn<decimal>(
+                name: "Monto",
+                table: "Movimiento",
+                nullable: false,
+                defaultValue: 0m);
+
+            migrationBuilder.AddColumn<long>(
+                name: "ClienteId",
+                table: "Cuota",
+                nullable: false,
+                defaultValue: 0L);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_PagoFactura",
-                table: "PagoFactura");
+            migrationBuilder.DropColumn(
+                name: "Monto",
+                table: "Movimiento");
+
+            migrationBuilder.DropColumn(
+                name: "ClienteId",
+                table: "Cuota");
 
             migrationBuilder.AddColumn<long>(
                 name: "Id",
@@ -55,16 +58,6 @@ namespace GE.Infraestructura.Context.Migrations
                 name: "AK_PagoFactura_Id",
                 table: "PagoFactura",
                 column: "Id");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_PagoFactura",
-                table: "PagoFactura",
-                columns: new[] { "Id", "FacturaId", "CuotaId", "ClienteId", "EmpleadoId" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PagoFactura_FacturaId",
-                table: "PagoFactura",
-                column: "FacturaId");
         }
     }
 }

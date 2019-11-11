@@ -1,23 +1,40 @@
 ﻿@using GE.IServicio.Cuota.DTO
 @using GE.IServicio.Factura.DTO
+@using GE.IServicio.Pago_Factura
+@using GE.Servicio
 @using GE.Servicio.DatosEstaticos.Session
 @model GE.IServicio.Cliente.DTO.ClienteDto
 
 @{
     var cuota = new CuotaDto();
+
     var factura = new FacturaDto();
+
     SessionActiva.ClienteId = Model.Id;
+
     ViewData["Title"] = "Perfil";
 }
 
 <h1>Perfil</h1>
+<h2 class="textuser">
+    ---------- OPERACIONES ----------
+    <br />
+    <br />
+    <div align="right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width: 500px; height: 75px'>
+            Realizar Pago Cuota
+        </button>
 
+        <form asp-action="CuotasCliente" asp-controller="Cuota" method="post" enctype="multipart/form-data">
+            <button type="submit" class="btn-warning" style='width: 500px; height: 75px'>Cuotas Clientes</button>
+        </form>
+    </div>
+</h2>
 <h4>Cliente</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Perfil">
-
             <img src="@Model.FotoLink" alt="imgText" class="avatar" />
             <h1>
                 @Model.Apellido , @Model.Nombre
@@ -57,16 +74,11 @@
             </div>
 
             @*<input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <input asp-action="Venta" asp-route-id="Id" type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px' />
-                </div>*@
+        <div class="form-group">
+            <input asp-action="Venta" asp-route-id="Id" type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px' />
+        </div>*@
 
         </form>
-    </div>
-    <div align="right">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:500px; height:75px'>
-            Realizar Pago Cuota
-        </button>
     </div>
 
     <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
@@ -87,12 +99,12 @@
                                 <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                                 <div class="form-group">
                                     <label asp-for="@cuota.Cantidad" class="col-md-2 control-label"></label>
-                                    <input asp-for="@cuota.Cantidad" placeholder="Apellido" class="form-control" />
+                                    <input asp-for="@cuota.Cantidad" placeholder="Cantidad" class="form-control" />
                                     <span asp-validation-for="@cuota.Cantidad" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="@factura.SubTotal" class="col-md-2 control-label"></label>
-                                    <input asp-for="@factura.SubTotal" placeholder="Nombre" class="form-control" />
+                                    <input asp-for="@factura.SubTotal" placeholder="Total" class="form-control" />
                                     <span asp-validation-for="@factura.SubTotal" class="text-danger"></span>
                                 </div>
 
@@ -123,27 +135,24 @@
                                                 </div>
 
                                                 <form asp-action="PagoFactura" asp-controller="PagoCuota" method="post" enctype="multipart/form-data">
+                                                        <div class="modal-body">
+                                                            <div class="form-horizontal">
+                                                                <div class="form-group">
+                                                                    <h2>Desea Confirmar la Operacion?</h2>
+                                                                    <div class="modal-footer">
+                                                                        <input type="hidden" asp-for="Id" />
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal" style='width: 250px; height: 50px'>Cancelar</button>
+                                                                        <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width: 250px; height: 50px' data-save="modal">Guardar</button>
+                                                                    </div>
 
-                                                    <div class="modal-body">
-                                                        <div class="form-horizontal">
-                                                            <div class="form-group">
-                                                                <h2>Desea Confirmar la Operacion?</h2>
-                                                                <div class="modal-footer">
-                                                                    <input type="hidden" asp-for="Id" />
-                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Cancelar</button>
-                                                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:250px; height:50px' data-save="modal">Guardar</button>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-                                                    </div>
-
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -155,7 +164,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" class="btn btn-danger">Volver</a>
+    <a asp-action="Index" class="btn btn-danger" style='width: 350px; height: 40px'>Volver</a>
 </div>
 
 @section Scripts {

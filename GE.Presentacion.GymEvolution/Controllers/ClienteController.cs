@@ -16,7 +16,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClienteController : Controller
     {
-        private DataPaginador<ClienteDto> models;
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
@@ -53,49 +52,47 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-        //public ActionResult Create()
-        //{
-        //    if (HttpContext.Session.GetString("Session") != null)
-        //    {
-        //        //return View();
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Login", "Usuario");
-        //    }
-        //}
+        public ActionResult Create()
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                //return View();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
 
 
         [HttpPost]
-        public string Create(DataPaginador<ClienteDto> cliente)
+        public ActionResult Create(ClienteDto cliente)
         {
 
             if (ModelState.IsValid)
             {
-                if (cliente.Input.Foto != null)
+                if (cliente.Foto != null)
                 {
                     //guarda la imagen en la carpeta wwwroot/imgsistema
-                    var path = $"wwwroot\\imgsistema\\{cliente.Input.Foto.FileName}";
+                    var path = $"wwwroot\\imgsistema\\{cliente.Foto.FileName}";
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
-                        cliente.Input.Foto.CopyTo(stream);
+                        cliente.Foto.CopyTo(stream);
                     }
 
                     //guarda en la base de datos
-                    cliente.Input.FotoLink = $"/imgsistema/{cliente.Input.Foto.FileName}";
+                    cliente.FotoLink = $"/imgsistema/{cliente.Foto.FileName}";
                 }
 
-                var Cliente = _clienteRepositorio.Agregar(cliente.Input);
+                var Cliente = _clienteRepositorio.Agregar(cliente);
 
-                return "Operacion Existosa";
-                //return View("Index");
+                return RedirectToAction("Index");
             }
             else
             {
-                return "Verifique los Campos";
-                //return View();
+                return RedirectToAction("Index");
                 //return View(cliente);
 
             }
@@ -108,6 +105,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 var cliente = _clienteRepositorio.ObtenerPorId(id);
 
                 return View(cliente);
