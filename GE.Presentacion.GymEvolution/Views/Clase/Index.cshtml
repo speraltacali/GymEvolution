@@ -51,7 +51,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addContactLabel">Nuevo Cliente</h5>
+                    <h5 class="modal-title" id="addContactLabel">Nuevo Clase</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,12 +66,12 @@
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
                                     <label asp-for="@clase.Nombre" class="col-md-2 control-label"></label>
-                                    <input asp-for="@clase.Nombre" placeholder="Apellido" class="form-control" />
+                                    <input asp-for="@clase.Nombre" placeholder="Nombre" class="form-control" />
                                     <span asp-validation-for="@clase.Nombre" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="@clase.Descripcion" class="col-md-2 control-label"></label>
-                                    <input asp-for="@clase.Descripcion" placeholder="Nombre" class="form-control" />
+                                    <input asp-for="@clase.Descripcion" placeholder="Descripcion" class="form-control" />
                                     <span asp-validation-for="@clase.Descripcion" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">

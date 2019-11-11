@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Clase;
@@ -13,7 +14,7 @@ namespace GE.Servicio
     {
         private IClaseRepositorio _claseRepositorio = new ClaseRepositorio();
 
-        public ClaseDto Guardar(ClaseDto clase)
+        public ClaseDto Agregar(ClaseDto clase)
         {
             var Clase = new Clase()
             {
@@ -55,12 +56,26 @@ namespace GE.Servicio
 
         public IEnumerable<ClaseDto> ObtenerTodo()
         {
-            throw new NotImplementedException();
+            return _claseRepositorio.ObtenerTodo()
+                .Select(x => new ClaseDto()
+                {
+                    Id = x.Id,
+                    Nombre = x.Nombre,
+                    Descripcion = x.Descripcion,
+                    FotoLink = x.Foto
+                }).ToList();
         }
 
-        public IEnumerable<ClaseDto> ObtenerPorTodo(string cadena)
+        public IEnumerable<ClaseDto> ObtenerPorFiltro(string cadena)
         {
-            throw new NotImplementedException();
+            return _claseRepositorio.ObtenerPorFiltro(x => x.Nombre.Contains(cadena)
+                                                           || x.Descripcion.Contains(cadena)).Select(x => new ClaseDto()
+            {
+                Id = x.Id,
+                Nombre = x.Nombre,
+                Descripcion = x.Descripcion,
+                FotoLink = x.Foto
+            }).ToList();
         }
 
         public ClaseDto ObtenerPorId(long Id)

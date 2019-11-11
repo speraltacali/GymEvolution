@@ -8,7 +8,7 @@ namespace GE.IServicio.Clase
 {
     public interface IClaseServicio
     {
-        ClaseDto Guardar(ClaseDto clase);
+        ClaseDto Agregar(ClaseDto clase);
 
         ClaseDto Modificar(ClaseDto clase);
 
@@ -16,7 +16,7 @@ namespace GE.IServicio.Clase
 
         IEnumerable<ClaseDto> ObtenerTodo();
 
-        IEnumerable<ClaseDto> ObtenerPorTodo(string cadena);
+        IEnumerable<ClaseDto> ObtenerPorFiltro(string cadena);
 
         ClaseDto ObtenerPorId(long Id);
     }

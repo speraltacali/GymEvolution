@@ -52,6 +52,10 @@ namespace GE.Infraestructura.Context
 
         public DbSet<Pago_Factura> Pago_Factura { get; set; }
 
+        public DbSet<Clase> Clase { get; set; }
+
+        public DbSet<ClaseDetalle> ClaseDetalle { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pago_Factura>().HasKey(x => new {x.FacturaId , x.CuotaId , x.ClienteId , x.EmpleadoId});
@@ -89,12 +93,10 @@ namespace GE.Infraestructura.Context
                 .WithMany(y => y.Movimientos)
                 .HasForeignKey(x => x.EmpleadoId);
 
-
-            //modelBuilder.Entity<Persona>().ToTable("Persona");
-            ////modelBuilder.Entity<Cliente>().ToTable("Persona_Cliente");
-            //modelBuilder.Entity<Usuario>().ToTable("Usuario");
-            ////modelBuilder.Entity<Empleado>().ToTable("Persona_Empleado");
-            //modelBuilder.Entity<Pago_Factura>().ToTable("PagoFactura");
+            modelBuilder.Entity<ClaseDetalle>()
+                .HasOne(x => x.Clase)
+                .WithMany(y => y.ClaseDetalles)
+                .HasForeignKey(x => x.ClaseId);
 
             base.OnModelCreating(modelBuilder);
         }

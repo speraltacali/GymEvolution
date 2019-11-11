@@ -24,10 +24,10 @@
     height: auto;
 }
 
-.Acceso{
-    background-color: black;
+.Acceso {
+    background-image: url('../../imgsistema/evolutiongym.jpg');
     width: 1000px;
-    height:500px;
+    height: 1500px;
 }
 
 /*//////////////////////////////////////////////////////////////////

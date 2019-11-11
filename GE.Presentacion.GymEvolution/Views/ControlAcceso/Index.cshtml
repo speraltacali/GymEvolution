@@ -34,10 +34,9 @@
             <form asp-action="Index" method="get">
                 <div class="buscar">
                     <p class="search">
-                        Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                        Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" style='width:975px; height: 45px' />
+                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style='width:975px; height: 45px' />
                     </p>
-                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
-
                 </div>
 
             </form>
@@ -48,7 +47,7 @@
         {
             <div align="right">
 
-                <img src="@Model.FotoLink" alt="w-75" class="logo" width="80" height="80"/>
+                <img src="@Model.FotoLink" class="avatar" alt="w-75" class="logo" width="50" height="50"/>
 
                 <h1 class="textuser">
                     @Model.Apellido, @Model.Nombre
@@ -61,7 +60,7 @@
         {
             <div align="right">
 
-                <img src="@Model.FotoLink" alt="w-75" class="logo" width="80" height="80"/>
+                <img src="@Model.FotoLink" class="avatar" alt="w-75" class="logo" width="100" height="100"/>
 
                 <h1 class="textuser">
                     @Model.Apellido, @Model.Nombre
@@ -99,6 +98,10 @@
                     No Tiene Cuotas Pendientes
 
                 </div>
+                
+                <form asp-action="CuotasCliente" asp-controller="Cuota" method="post" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-primary" style='width: 975px; height: 65px'>Acceso Cliente</button>
+                </form>
 
             </div>
         }
@@ -114,7 +117,6 @@
                     Verifique el DNI
 
                 </div>
-
             </div>
         }
 
