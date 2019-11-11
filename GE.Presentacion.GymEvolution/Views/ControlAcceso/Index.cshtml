@@ -34,8 +34,8 @@
             <form asp-action="Index" method="get">
                 <div class="buscar">
                     <p class="search">
-                        Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]" style='width:975px; height: 45px' />
-                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style='width:975px; height: 45px' />
+                        Buscar Cliente Por DNI<input type="text" name="cadena" value="@ViewData["Busqueda"]"  /><br />
+                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary"  />
                     </p>
                 </div>
 
@@ -47,7 +47,7 @@
         {
             <div align="right">
 
-                <img src="@Model.FotoLink" class="avatar" alt="w-75" class="logo" width="50" height="50"/>
+                <img src="@Model.FotoLink" class="avatar" alt="w-75" width="50" height="50"/>
 
                 <h1 class="textuser">
                     @Model.Apellido, @Model.Nombre
@@ -60,7 +60,7 @@
         {
             <div align="right">
 
-                <img src="@Model.FotoLink" class="avatar" alt="w-75" class="logo" width="100" height="100"/>
+                <img src="@Model.FotoLink" class="avatar" alt="w-75" width="100" height="100"/>
 
                 <h1 class="textuser">
                     @Model.Apellido, @Model.Nombre
@@ -83,7 +83,7 @@
 
                 </div>
 
-            </div>
+            </div><br />
         }
 
 
@@ -100,7 +100,7 @@
                 </div>
                 
                 <form asp-action="CuotasCliente" asp-controller="Cuota" method="post" enctype="multipart/form-data">
-                    <button type="submit" class="btn btn-primary" style='width: 975px; height: 65px'>Acceso Cliente</button>
+                    <button type="submit" class="btn btn-primary" style='width: 975px; height: 65px; margin-bottom:6px;'>Acceso Cliente</button>
                 </form>
 
             </div>

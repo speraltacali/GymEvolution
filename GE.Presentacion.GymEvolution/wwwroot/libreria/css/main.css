@@ -10,6 +10,14 @@
     height: 500px;
 }
 
+.ContenedorTotal{
+    width:1200px;
+    height:auto;
+    background-color:black;
+    padding-left:20px;
+    padding-right:20px;
+}
+
 .sheetSlider {
     background-color: black;
     text-align : center;
@@ -25,9 +33,7 @@
 }
 
 .Acceso {
-    background-image: url('../../imgsistema/evolutiongym.jpg');
-    width: 1000px;
-    height: 1500px;
+    background-color:black;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -35,8 +41,8 @@
 
 .avatar {
     /* cambia estos dos valores para definir el tamaño de tu círculo */
-    height: 350px;
-    width: 350px;
+    height: 150px;
+    width: 150px;
     /* los siguientes valores son independientes del tamaño del círculo */
     background-repeat: no-repeat;
     background-position: 50%;
@@ -131,7 +137,7 @@
     border-radius: 13px;
     float: right;
     padding-bottom:4px;
-    
+    margin-bottom:6px;
     padding-right:3px;
 }
 
@@ -150,8 +156,8 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: inherit;
-    padding-bottom: 4px;
-    
+    padding-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 /***********/

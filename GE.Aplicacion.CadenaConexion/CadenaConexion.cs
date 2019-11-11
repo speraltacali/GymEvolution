@@ -5,10 +5,10 @@ namespace GE.Aplicacion.CadenaConexion
     public class CadenaConexion
     {
 
-        public const string DataBase = "EvolutionGym";
+        public const string DataBase = "XXX4";
 
 
-        public const string Server = @"DESKTOP-NK0OJF1\SQLSANTI";
+        public const string Server = @"DESKTOP-066FGIK\SQLEXPRESS";
 
 
         //public const string User = "sa";

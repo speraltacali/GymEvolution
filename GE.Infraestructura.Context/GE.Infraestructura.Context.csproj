@@ -50,6 +50,9 @@
     <Compile Remove="Migrations\20191022223045_andafin.cs" />
     <Compile Remove="Migrations\20191023014041_TercerSprint.cs" />
     <Compile Remove="Migrations\20191105202912_nwemigration.cs" />
+    <Compile Remove="Migrations\20191108175641_Clases.cs" />
+    <Compile Remove="Migrations\20191111003807_AgregarClase.cs" />
+    <Compile Remove="Migrations\20191111040859_ssprint4.cs" />
 
 
   </ItemGroup>

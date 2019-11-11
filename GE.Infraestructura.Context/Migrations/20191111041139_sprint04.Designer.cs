@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191108175641_Clases")]
-    partial class Clases
+    [Migration("20191111041139_sprint04")]
+    partial class sprint04
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,52 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Caja");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Clase", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<string>("Foto");
+
+                    b.Property<string>("Nombre");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clase");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClaseDetalle", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("ClaseId");
+
+                    b.Property<int>("Dia");
+
+                    b.Property<TimeSpan>("HoraFin");
+
+                    b.Property<TimeSpan>("HoraInicio");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClaseId");
+
+                    b.ToTable("ClaseDetalle");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClienteControl", b =>
@@ -292,6 +338,14 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasOne("GE.Dominio.Entity.Entidades.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.ClaseDetalle", b =>
+                {
+                    b.HasOne("GE.Dominio.Entity.Entidades.Clase", "Clase")
+                        .WithMany("ClaseDetalles")
+                        .HasForeignKey("ClaseId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
