@@ -10,6 +10,17 @@
     height: 500px;
 }
 
+.ContenedorTotal {
+    width: 1100px;
+    height: auto;
+    background-color: black;
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#930D00), to(#FF4E28));
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+}
+
 .sheetSlider {
     background-color: black;
     text-align : center;
@@ -24,13 +35,17 @@
     height: auto;
 }
 
+.Acceso {
+    background-color:black;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]Principal*/
 
 .avatar {
     /* cambia estos dos valores para definir el tamaño de tu círculo */
-    height: 350px;
-    width: 350px;
+    height: 150px;
+    width: 150px;
     /* los siguientes valores son independientes del tamaño del círculo */
     background-repeat: no-repeat;
     background-position: 50%;
@@ -125,7 +140,7 @@
     border-radius: 13px;
     float: right;
     padding-bottom:4px;
-    
+    margin-bottom:6px;
     padding-right:3px;
 }
 
@@ -144,7 +159,8 @@
     -webkit-border-radius: 13px;
     border-radius: 13px;
     float: inherit;
-    padding-bottom: 4px;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 /***********/
@@ -246,6 +262,8 @@ input:focus {
     display: block;
     padding-top:10px;
     float: inherit;
+    margin-left:5px;
+    margin-right:5px;
 }
 
 .caja {
@@ -280,7 +298,7 @@ input:focus {
     float:right;
     padding-top:10px;
     height:60px;
-    
+    margin-right:4px;
     margin-top:11px;
 }
 
@@ -299,7 +317,7 @@ input:focus {
 
 header {
     border: outset 4px #000000;
-    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28)) -moz-border-radius: 13px;
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28));
     /*background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#FF0000), to(#FF4E28)) -webkit-border-radius: 13px;*/
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;

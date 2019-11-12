@@ -12,14 +12,19 @@ namespace GE.IServicio.Cuota.DTO
         public string Numero { get; set; }
 
         [DataType(DataType.Date)]
+        
         public DateTime CuotaVigente { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime CuotaVencimiento { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es obligatorio")]
+        [Range(1, Int32.MaxValue,
+            ErrorMessage = "La {0} Debe ser mayor a 0")]
         public int Cantidad { get; set; }
 
         public Estado Estado { get; set; }
+
+        public long ClienteId { get; set; }
     }
 }
