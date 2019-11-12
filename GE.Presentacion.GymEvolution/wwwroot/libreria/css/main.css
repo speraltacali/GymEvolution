@@ -314,7 +314,7 @@ input:focus {
 
 header {
     border: outset 4px #000000;
-    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28)) -moz-border-radius: 13px;
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#C70A00), to(#FF4E28));
     /*background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#FF0000), to(#FF4E28)) -webkit-border-radius: 13px;*/
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
