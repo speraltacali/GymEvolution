@@ -10,12 +10,15 @@
     height: 500px;
 }
 
-.ContenedorTotal{
-    width:1200px;
-    height:auto;
-    background-color:black;
-    padding-left:20px;
-    padding-right:20px;
+.ContenedorTotal {
+    width: 1100px;
+    height: auto;
+    background-color: black;
+    background: -webkit-gradient(linear, 80% 20%, 10% 21%, from(#930D00), to(#FF4E28));
+    border: dashed 0px #000000;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
 }
 
 .sheetSlider {

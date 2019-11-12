@@ -21,72 +21,74 @@
 <link rel="stylesheet" type="text/css" href="libreria/css/main.css">
 <!--===============================================================================================-->
 <body>
-    <div class="enbloque">
-        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-        <h2 class="textuser">User : @ViewBag.Session</h2>
-        <h1 class="logintext">Movimientos</h1>
+    <div class="ContenedorTotal">
+        <div class="enbloque">
+            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h1 class="logintext">Movimientos</h1>
 
-        <form asp-action="Index" method="get">
-            <div class="buscar">
-                <p class="search">
-                    Buscar Movimiento <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+            <form asp-action="Index" method="get">
+                <div class="buscar">
+                    <p class="search">
+                        Buscar Movimiento <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                    </p>
+                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
 
-            </div>
-        </form>
-    </div>
-    <div>
-        <br />
-        <div class="col-md-12">
-            <div class="container-table100">
-                <div class="wrap-table100">
-                    <div class="col-md-7">
+                </div>
+            </form>
+        </div>
+        <div>
+            <br />
+            <div class="col-md-12">
+                <div class="container-table100">
+                    <div class="wrap-table100">
+                        <div class="col-md-7">
 
-                        <table class="col-md-7">
-                            <thead>
-                                <tr class="table100-head">
-                                    <th width="50px">
-                                        Descripcion
-                                    </th>
-                                    <th width="50px">
-                                        FechaActualizacion
-                                    </th>
-                                    <th width="50px">
-                                        TipoMovimiento
-                                    </th>
-                                    <th width="50px">
-                                        Monto
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr padding-bottom="2px">
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Descripcion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FechaActualizacion)
-                                    </td>
-                                    <td class="tdgrupo">
-                                        @Html.DisplayFor(modelItem => item.TipoMovimiento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Monto)
-                                    </td>
+                            <table class="col-md-7">
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th width="50px">
+                                            Descripcion
+                                        </th>
+                                        <th width="50px">
+                                            FechaActualizacion
+                                        </th>
+                                        <th width="50px">
+                                            TipoMovimiento
+                                        </th>
+                                        <th width="50px">
+                                            Monto
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr padding-bottom="2px">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Descripcion)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                                            </td>
+                                            <td class="tdgrupo">
+                                                @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Monto)
+                                            </td>
 
-                                </tr>
-                            }
-                            </tbody>
-                        </table>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 </body>
 <!--===============================================================================================-->
 <script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
