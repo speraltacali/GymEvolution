@@ -12,10 +12,10 @@
             <h1 class="logintext">Consulta Empleado</h1>
 
             <form asp-action="Index" method="get">
-                <div class="buscar">
+                <div class="buscar" style="font-size:x-large">
                     <p class="search">
-                        Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" /><br />
-                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+                        Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/><br />
+                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary"  style="width:220px;height:40px;"/>
                     </p>
 
                 </div>
@@ -23,7 +23,7 @@
         </div>
 
         <p align="right">
-            <a asp-action="Create" class="btn btn-primary">Nuevo Empleado</a>
+            <a asp-action="Create" class="btn btn-primary" style="width:162px;height:70px; font-size:large; text-align:center; padding-top:25px;padding-right:6px; margin-right:17px">Nuevo Empleado</a>
         </p>
 
         <h4 style="color:yellow">@TempData["Advertencia"]</h4>
