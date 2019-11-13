@@ -53,6 +53,8 @@
     <Compile Remove="Migrations\20191108175641_Clases.cs" />
     <Compile Remove="Migrations\20191111003807_AgregarClase.cs" />
     <Compile Remove="Migrations\20191111040859_ssprint4.cs" />
+    <Compile Remove="Migrations\20191111041139_sprint04.cs" />
+    <Compile Remove="Migrations\20191111041139_sprint04.Designer.cs" />
 
 
   </ItemGroup>

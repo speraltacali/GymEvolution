@@ -5,15 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Clase;
 using GE.IServicio.Clase.DTOs;
+using GE.IServicio.Cliente;
 using GE.Servicio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClaseController : Controller
     {
         private readonly IClaseServicio _claseServicio = new ClaseServicio();
+        private readonly IClienteServicio _clienteServicio = new ClienteServicio();
+
 
         public ActionResult Index()
         {
@@ -26,9 +30,13 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
+                var clientes = _clienteServicio.ObtenerTodo();
+                //var lista = new SelectList(clientes)
+
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 ViewData["Busqueda"] = cadena;
+                //ViewData["prueba"] =
 
                 if (!String.IsNullOrEmpty(cadena))
                 {

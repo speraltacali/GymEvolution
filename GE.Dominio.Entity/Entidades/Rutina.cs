@@ -9,16 +9,11 @@ namespace GE.Dominio.Entity.Entidades
     [Table("Rutina")]
     public class Rutina : EntityBase
     {
-        public string Nombre { get; set; }
+        public string Titulo { get; set; }
 
         public string Descripcion { get; set; }
 
-        public byte[] Foto { get; set; }
-
-        public long ClienteId { get; set; }
-
         //******************************************************//
 
-        public virtual Cliente Cliente { get; set; }
     }
 }
