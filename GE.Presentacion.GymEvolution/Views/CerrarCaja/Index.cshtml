@@ -4,39 +4,45 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="logintext">Cerrar Caja</h1>
+
 <body>
+    <div class="ContenedorTotal">
 
-    @if (ViewBag.sms != null)
-    {
-        <div class="col-12">
+        <h1 class="logintext">Cerrar Caja</h1>
 
-            <div class="alert alert-success alert-dismissible">
+        @if (ViewBag.sms != null)
+        {
+            <div class="col-12">
 
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                <h4><i class="fa-navicon fa-stop"></i>---- La Caja Esta Cerrada ----</h4>
-                Abrala Para Seguir Facturando
+                <div class="alert alert-success alert-dismissible">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    <h4><i class="fa-navicon fa-stop"></i>---- La Caja Esta Cerrada ----</h4>
+                    Abrala Para Seguir Facturando
+
+                </div>
 
             </div>
+        }
+
+        <div class="caja">
+
+            <form asp-action="Cerrar" method="post">
+                <div class="buscar">
+                    <p class="search">
+                        Monto a Cerrar
+                        <input asp-for="@caja.MontoCierre" placeholder="Nombre" class="form-control" />
+                    </p>
+                    <input type="submit" value="Cerrar" btn="btn btn-default" class="btn btn-primary" style="width:200px; height:100px; font-size:x-large"/>
+
+                </div>
+            </form>
+
 
         </div>
-    }
 
-    <div class="caja">
-
-        <form asp-action="Cerrar" method="post">
-            <div class="buscar">
-                <p class="search">
-                    Monto a Cerrar
-                    <input asp-for="@caja.MontoCierre" placeholder="Nombre" class="form-control" />
-                </p>
-                <input type="submit" value="Cerrar" btn="btn btn-default" class="btn btn-primary" />
-
-            </div>
-        </form>
-
+        <br />
+        <br />
 
     </div>
-
-
 </body>

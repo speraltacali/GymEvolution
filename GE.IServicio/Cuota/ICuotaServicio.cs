@@ -19,5 +19,11 @@ namespace GE.IServicio.Cuota
 
         IEnumerable<CuotaDto> ObtenerPorFiltro(string cadena);
 
+        IEnumerable<CuotaDto> ObtenerCuotasPorClienteId(long clienteId);
+
+        bool PuedePasar(string dni);
+
+        DateTime CuotaUltimoVencimiento(IEnumerable<CuotaDto> cuotas);
+
     }
 }

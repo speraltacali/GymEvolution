@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cliente.DTO;
+using GE.Presentacion.GymEvolution.Models;
 using GE.Servicio;
 using GE.Servicio.DatosEstaticos.Session;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +16,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClienteController : Controller
     {
-
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
@@ -22,7 +23,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        }   
+
 
         [HttpGet]
         public ActionResult Index(string cadena)
@@ -83,17 +85,15 @@ namespace GE.Presentacion.GymEvolution.Controllers
                     //guarda en la base de datos
                     cliente.FotoLink = $"/imgsistema/{cliente.Foto.FileName}";
                 }
-                ///---///
 
                 var Cliente = _clienteRepositorio.Agregar(cliente);
 
-                
                 return RedirectToAction("Index");
             }
             else
             {
-                //return View();
                 return RedirectToAction("Index");
+                //return View(cliente);
 
             }
 
@@ -105,6 +105,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 var cliente = _clienteRepositorio.ObtenerPorId(id);
 
                 return View(cliente);

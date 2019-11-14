@@ -1,4 +1,5 @@
-﻿using GE.Dominio.Entity.Entidades;
+﻿
+using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Ejercicio;
 using GE.Infraestructura.Repositorio.Ejercicio;
 using GE.IServicio.Ejercicio;

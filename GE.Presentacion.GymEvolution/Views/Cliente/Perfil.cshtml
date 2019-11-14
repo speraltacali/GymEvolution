@@ -1,72 +1,80 @@
 ﻿@using GE.IServicio.Cuota.DTO
 @using GE.IServicio.Factura.DTO
+@using GE.IServicio.Pago_Factura
+@using GE.Servicio
 @using GE.Servicio.DatosEstaticos.Session
 @model GE.IServicio.Cliente.DTO.ClienteDto
 
 @{
     var cuota = new CuotaDto();
+
     var factura = new FacturaDto();
+
     SessionActiva.ClienteId = Model.Id;
+
     ViewData["Title"] = "Perfil";
 }
 
 <h1>Perfil</h1>
-
 <h4>Cliente</h4>
 <hr />
+<div align="right">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width: 400px; height: 75px'>
+        Realizar Pago Cuota
+    </button>
+
+    <form asp-action="CuotasCliente" asp-controller="Cuota" method="get" enctype="multipart/form-data">
+        <button type="submit" class="btn-warning" style='width: 400px; height: 75px'>Cuotas Clientes</button>
+    </form>
+</div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Perfil">
+            <img src="@Model.FotoLink" alt="imgText" class="avatar"/>
 
-            <img src="@Model.FotoLink" alt="imgText" class="avatar" />
             <h1>
                 @Model.Apellido , @Model.Nombre
             </h1>
-
+           
 
             <div class="form-group">
                 <label asp-for="GrupoSanguineo" class="control-label"></label>
-                <input asp-for="GrupoSanguineo" class="form-control" readonly="readonly" />
+                <input asp-for="GrupoSanguineo" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="GrupoSanguineo" class="text-danger"></span>
 
                 <label asp-for="Dni" class="control-label"></label>
-                <input asp-for="Dni" class="form-control" readonly="readonly" />
+                <input asp-for="Dni" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="Dni" class="text-danger"></span>
 
                 <label asp-for="FechaNacimiento" class="control-label"></label>
-                <input asp-for="FechaNacimiento" class="form-control" readonly="readonly" />
+                <input asp-for="FechaNacimiento" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="FechaDeIngreso" class="control-label"></label>
-                <input asp-for="FechaDeIngreso" class="form-control" readonly="readonly" />
+                <input asp-for="FechaDeIngreso" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="FechaDeIngreso" class="text-danger"></span>
 
                 <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" readonly="readonly" />
+                <input asp-for="Telefono" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="Telefono" class="text-danger"></span>
 
                 <label asp-for="Domicilio" class="control-label"></label>
-                <input asp-for="Domicilio" class="form-control" readonly="readonly" />
+                <input asp-for="Domicilio" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="Domicilio" class="text-danger"></span>
 
                 <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" readonly="readonly" />
+                <input asp-for="Sexo" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
 
             @*<input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <input asp-action="Venta" asp-route-id="Id" type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px' />
-                </div>*@
+        <div class="form-group">
+            <input asp-action="Venta" asp-route-id="Id" type="submit" value="Pagar Cuota" class="btn btn-primary" style='width:350px; height:75px' />
+        </div>*@
 
         </form>
-    </div>
-    <div align="right">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:500px; height:75px'>
-            Realizar Pago Cuota
-        </button>
     </div>
 
     <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
@@ -84,70 +92,66 @@
                     <div class="modal-body">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()"/>
                                 <div class="form-group">
                                     <label asp-for="@cuota.Cantidad" class="col-md-2 control-label"></label>
-                                    <input asp-for="@cuota.Cantidad" placeholder="Apellido" class="form-control" />
+                                    <input asp-for="@cuota.Cantidad" placeholder="Cantidad" class="form-control"/>
                                     <span asp-validation-for="@cuota.Cantidad" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="@factura.SubTotal" class="col-md-2 control-label"></label>
-                                    <input asp-for="@factura.SubTotal" placeholder="Nombre" class="form-control" />
+                                    <input asp-for="@factura.SubTotal" placeholder="Total" class="form-control"/>
                                     <span asp-validation-for="@factura.SubTotal" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label asp-for="@cuota.CuotaVigente" class="h6"></label>
-                                    <input asp-for="@cuota.CuotaVigente" class="form-control" />
+                                    <input asp-for="@cuota.CuotaVigente" class="form-control"/>
                                     <span asp-validation-for="@cuota.CuotaVigente" class="text-danger"></span>
                                 </div>
 
 
                                 <div class="modal-footer">
 
-                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="Id"/>
                                     @*<button type="button" class="btn btn-danger" data-dismiss="modal" style='width:100px; height:50px'>Salir</button>
                                     <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:100px; height:50px' data-save="modal">Guardar</button>*@
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prueba" style='width:500px; height:75px'>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prueba" style='width: 500px; height: 75px'>
                                         Facturar
                                     </button>
-                                    
+
                                     <div class="modal fade" id="prueba" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="addContactLabel">Pago De Cuota</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
 
                                                 <form asp-action="PagoFactura" asp-controller="PagoCuota" method="post" enctype="multipart/form-data">
-
                                                     <div class="modal-body">
                                                         <div class="form-horizontal">
                                                             <div class="form-group">
                                                                 <h2>Desea Confirmar la Operacion?</h2>
                                                                 <div class="modal-footer">
-                                                                    <input type="hidden" asp-for="Id" />
-                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Cancelar</button>
-                                                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width:250px; height:50px' data-save="modal">Guardar</button>
+                                                                    <input type="hidden" asp-for="Id"/>
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style='width: 250px; height: 50px'>Cancelar</button>
+                                                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="pagoCuota.FacturaPago" style='width: 250px; height: 50px' data-save="modal">Guardar</button>
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -155,7 +159,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" class="btn btn-danger">Volver</a>
+    <a asp-action="Index" class="btn btn-danger" style='width: 350px; height: 40px'>Volver</a>
 </div>
 
 @section Scripts {
