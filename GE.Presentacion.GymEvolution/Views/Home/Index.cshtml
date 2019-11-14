@@ -40,121 +40,122 @@
     </environment>
 </head>
 <body background="GymFondo.jpg">
-   
-        <div class="sheetSlider sh--default">
-            <input id="s1" type="radio" name="slide1" checked />
-            <input id="s2" type="radio" name="slide1" />
-            <input id="s3" type="radio" name="slide1" />
-            <input id="s4" type="radio" name="slide1" />
-            <input id="s5" type="radio" name="slide1" />
-            <input id="s6" type="radio" name="slide1" />
-            <input id="s7" type="radio" name="slide1" />
-            <input id="s8" type="radio" name="slide1" />
-            <input id="s9" type="radio" name="slide1" />
-            <input id="s10" type="radio" name="slide1" />
 
-            <div class="sh__content">
-                <!-- Slider Item -->
-                <div class="sh__item">
-                    <img src="~/img/GymFondo.jpg" alt="imgText" class="imgSlider" />
-                    <!-- Item Info -->
-                    <div class="sh__meta">
-                        <h4>GYM EVOLUTION</h4>
-                        <span>
-                            Sistema de gestiones
-                        </span>
-                    </div>
+    <div class="sheetSlider sh--default">
+        <input id="s1" type="radio" name="slide1" checked />
+        <input id="s2" type="radio" name="slide1" />
+        <input id="s3" type="radio" name="slide1" />
+        <input id="s4" type="radio" name="slide1" />
+        <input id="s5" type="radio" name="slide1" />
+        <input id="s6" type="radio" name="slide1" />
+        <input id="s7" type="radio" name="slide1" />
+        <input id="s8" type="radio" name="slide1" />
+        <input id="s9" type="radio" name="slide1" />
+        <input id="s10" type="radio" name="slide1" />
+
+        <div class="sh__content">
+            <!-- Slider Item -->
+            <div class="sh__item">
+                <img src="~/img/GymFondo.jpg" alt="imgText" class="imgSlider" />
+                <!-- Item Info -->
+                <div class="sh__meta">
+                    <h4>GYM EVOLUTION</h4>
+                    <span>
+                        Sistema de gestiones
+                    </span>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="text-center">
-            <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
-        </div>
+    <div class="text-center">
+        <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
+    </div>
 
-        <section class="principal">
+    <section class="principal">
 
-            <div class="lateralizq">
+        <div class="lateralizq">
 
 
-                <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
+            <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
 
-                <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
+            <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
 
-                <a asp-controller="ControlAcceso" asp-action="Index" class="botonEmpleado">Control Acceso</a>
+            @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:350px; height:75px'>
+                Abrir Caja Modal
+            </button>*@
 
-                <a asp-controller="Clase" asp-action="Index" class="botonClientes">Clases</a>
+            <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addContactLabel">Abrir Caja</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addContactLabel">Abrir Caja</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                        <form asp-action="Abrir" asp-controller="AbrirCaja" method="post" enctype="multipart/form-data">
 
-                            <form asp-action="Abrir" asp-controller="AbrirCaja" method="post" enctype="multipart/form-data">
-
-                                <div class="modal-body">
-                                    <div class="form-horizontal">
+                            <div class="modal-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" class="formCaja" />
                                         <div class="form-group">
-                                            <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" class="formCaja" />
-                                            <div class="form-group">
-                                                <label asp-for="@caja.MontoApertura" class="col-md-2 control-label"></label>
-                                                <input asp-for="@caja.MontoApertura" placeholder="Nombre" class="form-control" />
-                                                <span asp-validation-for="@caja.MontoApertura" class="text-danger"></span>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Salir</button>
-
-                                                <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="abrirCaja.AbrirCaja" data-save="modal">Guardar</button>
-                                            </div>
-
+                                            <label asp-for="@caja.MontoApertura" class="col-md-2 control-label"></label>
+                                            <input asp-for="@caja.MontoApertura" placeholder="Nombre" class="form-control" />
+                                            <span asp-validation-for="@caja.MontoApertura" class="text-danger"></span>
                                         </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Salir</button>
+                                          
+                                            <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="abrirCaja.AbrirCaja" data-save="modal">Guardar</button>
+                                        </div>
+
                                     </div>
                                 </div>
+                            </div>
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
-
             </div>
 
-            <div class="lateralderecho">
+        </div>
 
-                <a asp-controller="Movimiento" asp-action="Index" class="botonGeneral">Ver Movimientos</a>
+        <div class="lateralderecho">
 
-                <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
+            <a asp-controller="Movimiento" asp-action="Index" class="botonGeneral">Ver Movimientos</a>
 
-                <a asp-controller="Venta" asp-action="Index" class="botonGeneral">Facturar</a>
+            <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
 
-                <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
+            <a asp-controller="Venta" asp-action="Index" class="botonGeneral">Facturar</a>
 
-            </div>
+            <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
 
-        </section>
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-            </script>
-        </environment>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        
+            <a asp-controller="Ejercicio" asp-action="Index" class="botonGeneral">Ejercicios</a>
+
+        </div>
+
+    </section>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
