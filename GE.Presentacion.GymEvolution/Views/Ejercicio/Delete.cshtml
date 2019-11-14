@@ -1,0 +1,41 @@
+﻿@model GE.IServicio.Ejercicio.DTO.EjercicioDto
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>--Esta Seguro De Borrar Este Cliente?--</h3>
+
+<p align="right">
+
+
+    <img src="@Html.DisplayFor(model=> model.FotoLink)" class="fotopersona" alt="Logo">
+<p />
+
+<div class="eliminarposition">
+    <h4>Ejercicio</h4>
+    <hr />
+    <dl class="col-md-3">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repeticiones)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FotoLink)
+        </dt>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-danger">Volver</a>
+    </form>
+</div>
+
+

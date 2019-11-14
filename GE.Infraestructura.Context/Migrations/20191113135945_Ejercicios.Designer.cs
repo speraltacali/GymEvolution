@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GE.Infraestructura.Context.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191023171150_PruebaDemo")]
-    partial class PruebaDemo
+    [Migration("20191113135945_Ejercicios")]
+    partial class Ejercicios
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,6 +119,31 @@ namespace GE.Infraestructura.Context.Migrations
                     b.HasIndex("CajaId");
 
                     b.ToTable("DetalleCaja");
+                });
+
+            modelBuilder.Entity("GE.Dominio.Entity.Entidades.Ejercicio", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion");
+
+                    b.Property<byte[]>("Foto");
+
+                    b.Property<string>("FotoLink");
+
+                    b.Property<int>("Repeticiones");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<int>("Serie");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ejercicio");
                 });
 
             modelBuilder.Entity("GE.Dominio.Entity.Entidades.Factura", b =>

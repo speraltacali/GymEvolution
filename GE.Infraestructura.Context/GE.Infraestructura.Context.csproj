@@ -49,6 +49,12 @@
     <Compile Remove="Migrations\20191022222855_233ss.cs" />
     <Compile Remove="Migrations\20191022223045_andafin.cs" />
     <Compile Remove="Migrations\20191023014041_TercerSprint.cs" />
+    <Compile Remove="Migrations\20191111225639_Ferr.cs" />
+    <Compile Remove="Migrations\20191111225639_Ferr.Designer.cs" />
+    <Compile Remove="Migrations\20191111225727_Ferr.cs" />
+    <Compile Remove="Migrations\20191111225727_Ferr.Designer.cs" />
+    <Compile Remove="Migrations\20191113134700_Ejercicio.cs" />
+    <Compile Remove="Migrations\20191113134700_Ejercicio.Designer.cs" />
 
 
   </ItemGroup>

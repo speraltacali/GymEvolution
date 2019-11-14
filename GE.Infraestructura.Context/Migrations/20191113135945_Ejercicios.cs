@@ -2,7 +2,7 @@
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class PruebaDemo : Migration
+    public partial class Ejercicios : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
