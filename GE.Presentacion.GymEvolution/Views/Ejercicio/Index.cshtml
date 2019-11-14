@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Http
+@model IEnumerable<GE.IServicio.Ejercicio.DTO.EjercicioDto>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="principal">
+    <div class="enbloque">
+        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+        <h2 class="textuser">User : @ViewBag.Session</h2>
+        <h1 class="logintext">Consulta Ejercicio</h1>
+
+        <form asp-action="Index" method="get">
+            <div class="buscar">
+                <p class="search">
+                    Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                </p>
+                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+
+    <p align="right">
+        <a asp-action="Create" class="btn btn-primary">Nuevo Ejercicio</a>
+    </p>
+
+    <h4 style="color:yellow">@TempData["Advertencia"]</h4>
+
+</div>
+<div class="col-md-12">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="col-md-12">
+                <table class="col-md-12">
+                    <thead>
+                        <tr class="table100-head">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Repeticiones)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Serie)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Foto)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr padding-bottom="2px">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Repeticiones)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Serie)
+                                </td>
+                                <td>
+                                    <img src="@item.FotoLink" class="w-75" alt="Logo">
+                                </td>
+                                <td>
+                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Modificar</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
