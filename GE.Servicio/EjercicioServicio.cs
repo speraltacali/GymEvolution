@@ -21,9 +21,25 @@ namespace GE.Servicio
         {
             using (var target = new MemoryStream())
             {
+
                 file.CopyTo(target);
                 return target.ToArray();
             }
+
+                Nombre = dto.Nombre,
+                Repeticiones = dto.Repeticiones,
+                Series = dto.Series,
+                Musculo = dto.Musculo,
+                Foto = dto.FotoLink,
+                RutinaId = dto.RutinaId
+            };
+
+            _ejercicioRepositorio.Agregar(Ejercicio);
+            _ejercicioRepositorio.Guardar();
+
+            dto.Id = Ejercicio.Id;
+            return dto;
+
         }
         public EjercicioDto Agregar(EjercicioDto dto)
         {
@@ -35,9 +51,16 @@ namespace GE.Servicio
                 FotoLink = dto.FotoLink
             };
 
+
             _ejercicioServicio.Agregar(ejercicio);
             _ejercicioServicio.Guardar();
 
+            Ejercicio.Nombre = dto.Nombre;
+            Ejercicio.Repeticiones = dto.Repeticiones;
+            Ejercicio.Series = dto.Series;
+            Ejercicio.Musculo = dto.Musculo;
+            Ejercicio.Foto = dto.FotoLink;
+            Ejercicio.RutinaId = dto.RutinaId;
             dto.Id = ejercicio.Id;
 
             return dto;
@@ -56,6 +79,7 @@ namespace GE.Servicio
 
         public EjercicioDto Modificar(EjercicioDto dto)
         {
+
             var ejercicio = _ejercicioServicio.ObtenerPorId(dto.Id);
 
             ejercicio.Descripcion = dto.Descripcion;
@@ -71,14 +95,19 @@ namespace GE.Servicio
 
         public IEnumerable<EjercicioDto> ObtenerPorFiltro(string cadena)
         {
-            return _ejercicioServicio.ObtenerPorFiltro(x => x.Descripcion.Contains(cadena)).Select(x => new EjercicioDto()
-                                                           {
-                                                               Id = x.Id,
-                                                               Descripcion = x.Descripcion,
-                                                               Serie = x.Serie,
-                                                               Repeticiones = x.Repeticiones,
-                                                               FotoLink = x.FotoLink
-                                                           }).ToList();
+
+            return _ejercicioRepositorio.ObtenerTodo()
+                .Select(x => new EjercicioDto()
+                {
+                    Id = x.Id,
+                    Nombre = x.Nombre,
+                    Repeticiones = x.Repeticiones,
+                    Series = x.Series,
+                    Musculo = x.Musculo,
+                    FotoLink = x.Foto,
+                    RutinaId = x.RutinaId
+                }).ToList();
+
         }
 
         public EjercicioDto ObtenerPorId(long id)
@@ -87,16 +116,21 @@ namespace GE.Servicio
 
             return new EjercicioDto()
             {
-                Id = ejercicio.Id,
-                Descripcion = ejercicio.Descripcion,
-                Serie = ejercicio.Serie,
-                Repeticiones = ejercicio.Repeticiones,
-                FotoLink = ejercicio.FotoLink   
+
+                Id = Ejercicio.Id,
+                Nombre = Ejercicio.Nombre,
+                Repeticiones = Ejercicio.Repeticiones,
+                Series = Ejercicio.Series,
+                Musculo = Ejercicio.Musculo,
+                FotoLink = Ejercicio.Foto,
+                RutinaId = Ejercicio.RutinaId
+
             };
         }
 
         public IEnumerable<EjercicioDto> ObtenerTodo()
         {
+
             var ejercicio = _ejercicioServicio.ObtenerTodo().Select(x => new EjercicioDto()
             {
                 Id = x.Id,
@@ -107,6 +141,7 @@ namespace GE.Servicio
             });
 
             return ejercicio.ToList();
+
         }
     }
 }

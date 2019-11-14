@@ -10,5 +10,10 @@ namespace GE.IServicio.Ejercicio.DTO
         public int Serie { get; set; }
         public IFormFile Foto { get; set; }
         public string FotoLink { get; set; }
+
+
+        public long RutinaId { get; set; }
+
+
     }
 }
