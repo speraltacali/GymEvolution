@@ -20,8 +20,10 @@ namespace GE.Dominio.Entity.Entidades
 
         public string Foto { get; set; }
 
+        public long RutinaId { get; set; }
+
         //**************************************************************//
 
-        public virtual ICollection<RutinaCliente> RutinaClientes { get; set; }
+        public virtual Rutina Rutina { get; set; }
     }
 }

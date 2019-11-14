@@ -27,5 +27,7 @@ namespace GE.IServicio.Ejercicio.DTO
         public IFormFile Foto { get; set; } 
         public string FotoLink { get; set; }
 
+        public long RutinaId { get; set; }
+
     }
 }
