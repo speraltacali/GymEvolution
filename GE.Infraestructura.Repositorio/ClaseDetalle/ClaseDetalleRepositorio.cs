@@ -7,7 +7,7 @@ using GE.Repositorio.Base;
 
 namespace GE.Infraestructura.Repositorio.ClaseDetalle
 {
-    public class ClaseDetalleRepositorio : Repositorio<Dominio.Entity.Entidades.Clase> , IClaseDetalleRepositorio 
+    public class ClaseDetalleRepositorio : Repositorio<Dominio.Entity.Entidades.ClaseDetalle> , IClaseDetalleRepositorio 
     {
     }
 }
