@@ -22,6 +22,6 @@ namespace GE.Dominio.Entity.Entidades
 
         //**************************************************************//
 
-
+        public virtual ICollection<RutinaCliente> RutinaClientes { get; set; }
     }
 }

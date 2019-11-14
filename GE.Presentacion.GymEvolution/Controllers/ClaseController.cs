@@ -108,5 +108,10 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             return View();
         }
+
+        public ActionResult Detail()
+        {
+            return View();
+        }
     }
 }

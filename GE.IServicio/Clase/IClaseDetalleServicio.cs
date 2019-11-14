@@ -8,7 +8,7 @@ namespace GE.IServicio.Clase.DTOs
     {
         ClaseDetalleDto Guardar(ClaseDetalleDto claseDetalle);
 
-        ClaseDetalleDto Modificar(long Id);
+        ClaseDetalleDto Modificar(ClaseDetalleDto claseDetalle);
 
         void Eliminar(long Id);
     }
