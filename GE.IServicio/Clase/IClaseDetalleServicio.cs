@@ -6,7 +6,7 @@ namespace GE.IServicio.Clase.DTOs
 {
     public interface IClaseDetalleServicio
     {
-        ClaseDetalleDto Guardar(ClaseDetalleDto claseDetalle);
+        ClaseDetalleDto Agregar(ClaseDetalleDto claseDetalle);
 
         ClaseDetalleDto Modificar(ClaseDetalleDto claseDetalle);
 
