@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GE.Infraestructura.Context.Migrations
 {
-    public partial class sprint04 : Migration
+    public partial class TerminandoGym : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

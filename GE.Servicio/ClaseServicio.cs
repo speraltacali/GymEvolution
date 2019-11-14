@@ -21,6 +21,7 @@ namespace GE.Servicio
                 Nombre = clase.Nombre,
                 Descripcion = clase.Descripcion,
                 Foto = clase.FotoLink
+
             };
 
             _claseRepositorio.Agregar(Clase);
@@ -80,7 +81,23 @@ namespace GE.Servicio
 
         public ClaseDto ObtenerPorId(long Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clase = _claseRepositorio.ObtenerPorId(Id);
+
+                return new ClaseDto()
+                {
+                    Id = clase.Id,
+                    Nombre = clase.Nombre,
+                    Descripcion = clase.Descripcion,
+                    FotoLink = clase.Foto
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al Encontrar el Registro");
+                throw;
+            }
         }
     }
 }

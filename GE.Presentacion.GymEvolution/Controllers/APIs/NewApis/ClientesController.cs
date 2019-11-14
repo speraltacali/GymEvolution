@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GE.Dominio.Entity;
+using GE.Infraestructura.Context;
+using GE.Infraestructura.Repositorio.Cliente;
+using GE.Dominio.Repositorio.Cliente;
 
 namespace GE.Presentacion.GymEvolution.Controllers.APIs.NewApis
 {
@@ -13,19 +16,29 @@ namespace GE.Presentacion.GymEvolution.Controllers.APIs.NewApis
     [ApiController]
     public class ClientesController : ControllerBase
     {
-        private readonly ContexApi _context;
+        private readonly Context _context;
+        private readonly IClienteRepositorio _repositorio = new ClienteRepositorio();
 
-        public ClientesController(ContexApi context)
+        public ClientesController(Context context)
         {
             _context = context;
         }
 
         // GET: api/Clientes
         [HttpGet]
+        public IEnumerable<Cliente> GetCliente()
+        {
+            return _repositorio.ObtenerTodo();
+        }
+        /*
+         
+             // GET: api/Clientes
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
         {
             return await _context.Cliente.ToListAsync();
         }
+             */
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
