@@ -44,5 +44,5 @@ namespace GE.Aplicacion.CadenaConexion
                                                      $"Password={Password};";
 
     */
-    }
 }
+
