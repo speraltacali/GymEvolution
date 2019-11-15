@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using GE.Dominio.Entity.Entidades;
 using GE.Dominio.Repositorio.Clase;
@@ -55,6 +56,18 @@ namespace GE.Servicio
                 _detalleRepositorio.Eliminar(Id);
                 _detalleRepositorio.Guardar();
             }
+        }
+
+        public IEnumerable<ClaseDetalleDto> ObtenerSegunClase(long ClaseId)
+        {
+            return _detalleRepositorio.ObtenerPorFiltro(x => ClaseId == ClaseId)
+                .Select(x => new ClaseDetalleDto()
+                {
+                    HoraInicio = x.HoraInicio,
+                    HoraFin = x.HoraFin,
+                    Dia = x.Dia,
+                    ClaseId = x.ClaseId
+                }).ToList();
         }
     }
 }

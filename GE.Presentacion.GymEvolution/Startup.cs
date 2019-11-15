@@ -33,7 +33,7 @@ namespace GE.Presentacion.GymEvolution
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<Context>(option => option.UseInMemoryDatabase("Clase19"));
+            //services.AddDbContext<Context>(option => option.UseInMemoryDatabase("Clase19"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

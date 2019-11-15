@@ -47,7 +47,11 @@ namespace GE.Infraestructura.Context
         public DbSet<Cuota> Cuota { get; set; }
 
         public DbSet<Persona> Persona { get; set; }
+
+        public DbSet<Rutina> Rutina { get; set; }
+
         public DbSet<Ejercicio> Ejercicio { get; set; }
+
         public DbSet<Movimiento> Movimiento { get; set; }
 
         public DbSet<Pago_Factura> Pago_Factura { get; set; }
@@ -97,6 +101,11 @@ namespace GE.Infraestructura.Context
                 .HasOne(x => x.Clase)
                 .WithMany(y => y.ClaseDetalles)
                 .HasForeignKey(x => x.ClaseId);
+
+            modelBuilder.Entity<Ejercicio>()
+                .HasOne(x => x.Rutina)
+                .WithMany(y => y.Ejercicios)
+                .HasForeignKey(x => x.RutinaId);
 
             base.OnModelCreating(modelBuilder);
         }

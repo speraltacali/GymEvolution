@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GE.IServicio.Clase.DTOs.ClaseDetalleDto>
+
+@{
+    ViewData["Title"] = "DetailIndex";
+}
+
+<h1>DetailIndex</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia)
+            </td>
+            <td>
+                @*<a asp-action="EditDetail" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteDetail" asp-route-id="@item.Id">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

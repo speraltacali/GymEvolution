@@ -16,8 +16,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
     public class ClaseController : Controller
     {
         private readonly IClaseServicio _claseServicio = new ClaseServicio();
-        private readonly IClienteServicio _clienteServicio = new ClienteServicio();
-
+        private readonly IClaseDetalleServicio _detalleServicio = new ClaseDetalleServicio();
 
         public ActionResult Index()
         {
@@ -30,9 +29,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                var clientes = _clienteServicio.ObtenerTodo();
-                //var lista = new SelectList(clientes)
-
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 ViewData["Busqueda"] = cadena;
@@ -113,18 +109,80 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult Update(ClaseDto dto)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if (dto.Foto != null)
+                {
+                    //guarda la imagen en la carpeta wwwroot/imgsistema
+                    var path = $"wwwroot\\imgsistema\\{dto.Foto.FileName}";
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        dto.Foto.CopyTo(stream);
+                    }
+
+                    //guarda en la base de datos
+                    dto.FotoLink = $"/imgsistema/{dto.Foto.FileName}";
+                }
+                ///---///
+
+                _claseServicio.Modificar(dto);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
 
-        public ActionResult Delete()
+        public ActionResult Delete(long id)
         {
-            return View();
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var clase = _claseServicio.ObtenerPorId(id);
+
+                return View(clase);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
         }
 
-        public ActionResult Detail()
+        [HttpPost]
+        public ActionResult Delete(ClaseDto dto)
+        {
+            _claseServicio.Eliminar(dto.Id);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DetailIndex(long claseId)
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+
+                var detalle =_detalleServicio.ObtenerSegunClase(claseId);
+
+                return View(detalle);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
+
+
+        public ActionResult EditDetail()
         {
             return View();
         }

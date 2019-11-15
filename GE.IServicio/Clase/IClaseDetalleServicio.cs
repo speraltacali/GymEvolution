@@ -11,5 +11,7 @@ namespace GE.IServicio.Clase.DTOs
         ClaseDetalleDto Modificar(ClaseDetalleDto claseDetalle);
 
         void Eliminar(long Id);
+
+        IEnumerable<ClaseDetalleDto> ObtenerSegunClase(long ClaseId);
     }
 }
