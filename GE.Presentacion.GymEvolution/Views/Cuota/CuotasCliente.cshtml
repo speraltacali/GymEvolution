@@ -1,0 +1,109 @@
+﻿@model IEnumerable<GE.IServicio.DTOEntidades.CuotaEntidad>
+
+@{
+    ViewData["Title"] = "CuotasCliente";
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="libreria/images/icons/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="libreria/css/util.css">
+<link rel="stylesheet" type="text/css" href="libreria/css/main.css">
+<!--===============================================================================================-->
+<body>
+<div class="enbloque">
+    <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+    <h1 class="logintext">Consulta de Cuotas</h1>
+
+    <form asp-action="CuotasCliente" method="get">
+        <div class="buscar">
+            <p class="search">
+                Buscar Cuota <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+            </p>
+            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+
+        </div>
+    </form>
+</div>
+<div>
+    <br />
+    <div class="col-md-12">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="col-md-7">
+                    <table class="col-md-7">
+                        <thead>
+                        <tr>
+                            <th width="22px">
+                                Numero
+                            </th>
+                            <th width="22px">
+                                Meses
+                            </th>
+                            <th width="60px">
+                                 Fecha Vigente
+                            </th>
+                            <th width="60px">
+                                Fecha Vencimiento
+                            </th>
+                            <th width="25px">
+                                Total
+                            </th>
+                            <th width="60px">
+                                Fecha Pago
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Numero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CantidadMeses)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaVigente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaVencimiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaOperacion)
+                                </td>
+                                <td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!--===============================================================================================-->
+<script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/bootstrap/js/popper.js"></script>
+<script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="libreria/js/main.js"></script>

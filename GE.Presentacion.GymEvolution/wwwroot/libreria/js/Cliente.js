@@ -7,16 +7,16 @@ class Cliente {
             $('.formCliente').serialize(),
             (response) => {
 
-                try {
-                    var item = JSON.parse(reponse);
-                    if (item.code == "Done") {
-                        window.location.href = "Index";
-                    } else {
-                        document.getElementById("mensaje").innerHTML = item.Description;
-                    }
-                } catch (e) {
-                    document.getElementById("mensaje").innerHTML = reponse;
-                } 
+                //try {
+                //    var item = JSON.parse(reponse);
+                //    if (item.code == "Done") {
+                //        window.location.href = "Index";
+                //    } else {
+                //        document.getElementById("mensaje").innerHTML = item.Description;
+                //    }
+                //} catch (e) {
+                //    document.getElementById("mensaje").innerHTML = reponse;
+                //} 
 
                 console.log(response);
             }

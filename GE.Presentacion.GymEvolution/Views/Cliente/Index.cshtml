@@ -1,4 +1,4 @@
-﻿@using GE.IServicio.Cliente.DTO
+@using GE.IServicio.Cliente.DTO
 @using GE.Presentacion.GymEvolution.Models
 @model IEnumerable<GE.IServicio.Cliente.DTO.ClienteDto>
 
@@ -29,205 +29,205 @@
 <script src="~/script/jquery.validate.js"></script>
 <script src="~/script/jquery.validate.unobtrusive.js"></script>
 <body>
-    <div class="enbloque">
-        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-        <h2 class="textuser">User : @ViewBag.Session</h2>
-        <h1 class="logintext">Consulta Cliente</h1>
+    <div class="ContenedorTotal">
+        <div class="enbloque">
+            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h1 class="logintext">Consulta Cliente</h1>
 
-        <form asp-action="Index" method="get">
-            <div class="buscar">
-                <p class="search">
-                    Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+            <form asp-action="Index" method="get">
+                <div class="buscar" style="font-size:x-large">
+                    <p class="search">
+                        Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
+                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;" />
+                    </p>
 
-            </div>
-        </form>
-        <br />
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Agregar Nuevo Cliente
-        </button>
+                </div>
+            </form>
+            <br />
+            <!-- Button trigger modal --><p align="right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:200px;height:100px; font-size:large">
+                    Agregar Nuevo Cliente
+                </button>
+            </p>
 
-        <!--Modal-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addContactLabel">Nuevo Cliente</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+            <!--Modal-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addContactLabel">Nuevo Cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-                    <form asp-controller="Cliente" asp-action="Create" method="post" class="formCliente" enctype="multipart/form-data">
+                        <form asp-controller="Cliente" asp-action="Create" method="post" class="formCliente" enctype="multipart/form-data">
 
-                        <div class="modal-body">
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="modal-body">
+                                <div class="form-horizontal">
                                     <div class="form-group">
-                                        <label asp-for="@cliente.Apellido" class="col-md-2 control-label"></label>
-                                        <input asp-for="@cliente.Apellido" placeholder="Apellido" class="form-control" />
-                                        <span asp-validation-for="@cliente.Apellido" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.Nombre" class="col-md-2 control-label"></label>
-                                        <input asp-for="@cliente.Nombre" placeholder="Nombre" class="form-control" />
-                                        <span asp-validation-for="@cliente.Nombre" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.Dni" class="col-md-2 control-label"></label>
-                                        <input asp-for="@cliente.Dni" placeholder="Dni" class="form-control" />
-                                        <span asp-validation-for="@cliente.Dni" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.Telefono" class="h6"></label>
-                                        <input asp-for="@cliente.Telefono" placeholder="Telefono" class="form-control" />
-                                        <span asp-validation-for="@cliente.Telefono" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.Domicilio" class="h6"></label>
-                                        <input asp-for="@cliente.Domicilio" placeholder="Domicilio" class="form-control" />
-                                        <span asp-validation-for="@cliente.Domicilio" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.FechaNacimiento" class="h6"></label>
-                                        <input asp-for="@cliente.FechaNacimiento" class="form-control" />
-                                        <span asp-validation-for="@cliente.FechaNacimiento" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.Sexo" class="h6"></label>
-                                        <select asp-for="@cliente.Sexo" class="form-control">
-                                            <option value="0">Masculino</option>
-                                            <option value="1">Femenino</option>
-                                        </select>
-                                        <span asp-validation-for="@cliente.Sexo" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.GrupoSanguineo" class="h6"></label>
-                                        <select asp-for="@cliente.GrupoSanguineo" class="form-control">
-                                            <option value="1">A</option>
-                                            <option value="2">B</option>
-                                        </select>
-                                        <span asp-validation-for="@cliente.GrupoSanguineo" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
+                                        <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Apellido" class="col-md-2 control-label"></label>
+                                            <input asp-for="@cliente.Apellido" placeholder="Apellido" class="form-control" />
+                                            <span asp-validation-for="@cliente.Apellido" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Nombre" class="col-md-2 control-label"></label>
+                                            <input asp-for="@cliente.Nombre" placeholder="Nombre" class="form-control" />
+                                            <span asp-validation-for="@cliente.Nombre" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Dni" class="col-md-2 control-label"></label>
+                                            <input asp-for="@cliente.Dni" placeholder="Dni" class="form-control" />
+                                            <span asp-validation-for="@cliente.Dni" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Telefono" class="h6"></label>
+                                            <input asp-for="@cliente.Telefono" placeholder="Telefono" class="form-control" />
+                                            <span asp-validation-for="@cliente.Telefono" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Domicilio" class="h6"></label>
+                                            <input asp-for="@cliente.Domicilio" placeholder="Domicilio" class="form-control" />
+                                            <span asp-validation-for="@cliente.Domicilio" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.FechaNacimiento" class="h6"></label>
+                                            <input asp-for="@cliente.FechaNacimiento" class="form-control" />
+                                            <span asp-validation-for="@cliente.FechaNacimiento" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.Sexo" class="h6"></label>
+                                            <select asp-for="@cliente.Sexo" class="form-control">
+                                                <option value="0">Masculino</option>
+                                                <option value="1">Femenino</option>
+                                            </select>
+                                            <span asp-validation-for="@cliente.Sexo" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.GrupoSanguineo" class="h6"></label>
+                                            <select asp-for="@cliente.GrupoSanguineo" class="form-control">
+                                                <option value="1">A</option>
+                                                <option value="2">B</option>
+                                            </select>
+                                            <span asp-validation-for="@cliente.GrupoSanguineo" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
 
-                                        <label asp-for="@cliente.Foto" class="h6">Foto Empleado</label>
-                                        <input asp-for="@cliente.Foto" type="file" class="form-control" accept="image/*" />
+                                            <label asp-for="@cliente.Foto" class="h6">Foto Empleado</label>
+                                            <input asp-for="@cliente.Foto" type="file" class="form-control" accept="image/*" />
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@cliente.FechaDeIngreso" class="h6"></label>
-                                        <input asp-for="@cliente.FechaDeIngreso" class="form-control" />
-                                        <span asp-validation-for="@cliente.FechaDeIngreso" class="text-danger"></span>
-                                    </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="@cliente.FechaDeIngreso" class="h6"></label>
+                                            <input asp-for="@cliente.FechaDeIngreso" class="form-control" />
+                                            <span asp-validation-for="@cliente.FechaDeIngreso" class="text-danger"></span>
+                                        </div>
 
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                                        <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cliente.AgregarCliente" data-save="modal">Guardar</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                                            <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="cliente.AgregarCliente" data-save="modal">Guardar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
-    <div>
+        <div>
 
+            <div class="col-md-12">
+                <div class="container-table100">
+                    <div class="wrap-table100">
+                        <div class="col-md-12">
 
-        <div class="col-md-12">
-            <div class="container-table100">
-                <div class="wrap-table100">
-                    <div class="col-md-12">
-
-                        <table class="col-md-12">
-                            <thead>
-                                <tr class="table100-head">
-                                    <th width="20px">
-                                        Apellido
-                                    </th>
-                                    <th width="20px">
-                                        Nombre
-                                    </th>
-                                    <th width="20px">
-                                        Dni
-                                    </th>
-                                    <th width="20px">
-                                        Telefono
-                                    </th>
-                                    <th width="20px">
-                                        Domicilio
-                                    </th>
-                                    <th width="20px">
-                                        FechaNacimiento
-                                    </th>
-                                    <th width="20px">
-                                        Sexo
-                                    </th>
-                                    <th width="20px">
-                                        GrupoSanguineo
-                                    </th>
-                                    <th width="20px">
-                                        Foto
-                                    </th>
-                                    <th width="20px">
-                                        FechaDeIngreso
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr padding-bottom="2px">
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Apellido)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Nombre)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Dni)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Telefono)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Domicilio)
-                                        </td>
-                                        <td class="tdgrupo">
-                                            @Html.DisplayFor(modelItem => item.FechaNacimiento)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Sexo)
-                                        </td>
-                                        <td class="tdgrupo">
-                                            @Html.DisplayFor(modelItem => item.GrupoSanguineo)
-                                        </td>
-                                        <td>
-                                            <img src="@Html.DisplayFor(modelItem => item.FotoLink)" class="w-75" alt="Logo">
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FechaDeIngreso)
-                                        </td>
-                                        <td>
-                                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
-                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                                            <a asp-action="Perfil" asp-route-id="@item.Id" class="btn btn-secondary">Perfil</a>
-                                        </td>
+                            <table class="col-md-12">
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th width="20px">
+                                            Apellido
+                                        </th>
+                                        <th width="20px">
+                                            Nombre
+                                        </th>
+                                        <th width="20px">
+                                            Dni
+                                        </th>
+                                        <th width="20px">
+                                            Telefono
+                                        </th>
+                                        <th width="20px">
+                                            Domicilio
+                                        </th>
+                                        <th width="20px">
+                                            FechaNacimiento
+                                        </th>
+                                        <th width="20px">
+                                            Sexo
+                                        </th>
+                                        <th width="20px">
+                                            GrupoSanguineo
+                                        </th>
+                                        <th width="20px">
+                                            Foto
+                                        </th>
+                                        <th width="20px">
+                                            FechaDeIngreso
+                                        </th>
+                                        <th></th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr padding-bottom="2px">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Apellido)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nombre)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Dni)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Telefono)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Domicilio)
+                                            </td>
+                                            <td class="tdgrupo">
+                                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Sexo)
+                                            </td>
+                                            <td class="tdgrupo">
+                                                @Html.DisplayFor(modelItem => item.GrupoSanguineo)
+                                            </td>
+                                            <td>
+                                                <img src="@Html.DisplayFor(modelItem => item.FotoLink)" class="w-75" alt="Logo">
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FechaDeIngreso)
+                                            </td>
+                                            <td>
+                                                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                                <a asp-action="Perfil" asp-route-id="@item.Id" class="btn btn-secondary">Perfil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
 
+                        </div>
                     </div>
                 </div>
             </div>

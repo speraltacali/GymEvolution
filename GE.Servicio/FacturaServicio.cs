@@ -37,6 +37,7 @@ namespace GE.Servicio
             return _facturaRepositorio.ObtenerTodo()
                 .Select(x => new FacturaDto()
                 {
+                    Id = x.Id,
                     Numero = x.Numero,
                     FechaOperacion = x.FechaOperacion,
                     SubTotal = x.SubTotal,
@@ -47,7 +48,17 @@ namespace GE.Servicio
 
         public FacturaDto ObtenerTodoPorId(long id)
         {
-            throw new NotImplementedException();
+            var Factura = _facturaRepositorio.ObtenerPorId(id);
+
+            return new FacturaDto()
+            {
+                Id = Factura.Id,
+                Numero = Factura.Numero,
+                FechaOperacion = Factura.FechaOperacion,
+                SubTotal = Factura.SubTotal,
+                Total = Factura.Total,
+                Descuento = Factura.Descuento
+            };
         }
 
         public string NumeroFactura()

@@ -17,7 +17,9 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClienteController : Controller
     {
+
         private ClienteDto models;
+
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
@@ -105,6 +107,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
                 var cliente = _clienteRepositorio.ObtenerPorId(id);
 
                 return View(cliente);

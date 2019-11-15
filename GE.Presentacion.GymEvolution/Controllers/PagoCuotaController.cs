@@ -26,11 +26,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class PagoCuotaController : Controller
     {
-        private readonly IFacturaServicio _facturaServicio = new FacturaServicio();
+        private IPago_FacturaServicio _facturaServicio = new Pago_FacturaServicio();
 
-        private readonly ICuotaServicio _cuotaServicio = new CuotaServicio();
-
-        private readonly IMovimientoServicio _movimientoServicio = new MovimientoServicio();
         //private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
 
         public IActionResult Index()
@@ -46,50 +43,17 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura, ClienteDto cliente)
         {
-            var Cuota = new CuotaDto()
+            if(_facturaServicio.ValidarMesPago(cuota.CuotaVigente,SessionActiva.ClienteId)==false)
             {
-                CuotaVigente = cuota.CuotaVigente,
-                CuotaVencimiento = cuota.CuotaVigente.AddMonths(cuota.Cantidad),
-                Cantidad = cuota.Cantidad,
-                Estado = Estado.Vigente,
-                ClienteId = cliente.Id
-            };
-
-            var Factura = new FacturaDto()
-            {
-                FechaOperacion = DateTime.Now,
-                SubTotal = factura.SubTotal,
-                Total = factura.SubTotal
-            };
-
-            var cuotaId = _cuotaServicio.CuotaVigente(Cuota);
-
-            var facturaId = _facturaServicio.Agregar(Factura);
-
-            using (var context = new Context())
-            {
-                context.Pago_Factura.Add(new Pago_Factura()
-                {
-                    FacturaId = facturaId.Id,
-                    CuotaId = cuotaId.Id,
-                    ClienteId = SessionActiva.ClienteId,
-                    EmpleadoId = SessionActiva.EmpleadoId
-                });
-                context.SaveChanges();
+                _facturaServicio.PagoCuota(cuota, factura, cliente);
+                return RedirectToAction("CuotasCliente", "Cuota");
             }
-
-            var movimiento = new MovimientoDto()
+            else
             {
-                Descripcion = "Pago Cuota",
-                EmpleadoId = SessionActiva.EmpleadoId,
-                FechaActualizacion = DateTime.Now,
-                TipoMovimiento = TipoMovimiento.Ingreso,
-                Monto = factura.SubTotal
-            };
-
-            _movimientoServicio.NuevoMovimiento(movimiento);
-
-            return RedirectToAction("Index" , "Venta");
+                TempData["Validacion"] = "Puede Pasar";
+                ModelState.AddModelError("Error", "El cliente ya posee la factira");
+                return RedirectToAction("Index", "Venta");
+            }
             //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }
     }
