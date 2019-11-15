@@ -15,7 +15,7 @@ namespace GE.Dominio.Entity.Entidades
 
         //******************************************************//
 
-        public virtual ICollection<RutinaCliente> RutinaClientes { get; set; }
+        public virtual ICollection<Ejercicio> Ejercicios { get; set; }
 
     }
 }

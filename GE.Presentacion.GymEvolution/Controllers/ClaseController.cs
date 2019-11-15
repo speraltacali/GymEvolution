@@ -99,10 +99,25 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-        public ActionResult Update()
+        public ActionResult Update(long id )
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                var clase = _claseServicio.ObtenerPorId(id);
+
+                return View(clase);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
+
+        public ActionResult Update(ClaseDto dto)
         {
             return View();
         }
+
 
         public ActionResult Delete()
         {

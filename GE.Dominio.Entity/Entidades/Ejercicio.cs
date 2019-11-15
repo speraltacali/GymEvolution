@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GE.Dominio.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using GE.Dominio.Base;
 using GE.Dominio.Entity.Enums;
 
 namespace GE.Dominio.Entity.Entidades
@@ -11,7 +11,6 @@ namespace GE.Dominio.Entity.Entidades
     public class Ejercicio : EntityBase
     {
         public string Nombre { get; set; }
-
         public int Repeticiones { get; set; }
 
         public int Series { get; set; }
@@ -20,8 +19,11 @@ namespace GE.Dominio.Entity.Entidades
 
         public string Foto { get; set; }
 
+        public long RutinaId { get; set; }
+
         //**************************************************************//
 
-        public virtual ICollection<RutinaCliente> RutinaClientes { get; set; }
+        public virtual Rutina Rutina { get; set; }
+
     }
 }

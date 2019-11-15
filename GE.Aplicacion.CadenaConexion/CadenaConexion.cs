@@ -12,7 +12,6 @@ namespace GE.Aplicacion.CadenaConexion
         public const string Server = @"tcp:gymevolutiondbserver.database.windows.net";
 
 
-
         public const string User = "softgym@gymevolutiondbserver";
 
         public const string Password = " GYM2019soft";
@@ -45,4 +44,5 @@ namespace GE.Aplicacion.CadenaConexion
                                                      $"Password={Password};";
 
     */
+    }
 }
