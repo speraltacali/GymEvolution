@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using GE.Dominio.Entity;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cliente.DTO;
 using GE.Presentacion.GymEvolution.Models;
@@ -16,6 +17,9 @@ namespace GE.Presentacion.GymEvolution.Controllers
 {
     public class ClienteController : Controller
     {
+
+        private ClienteDto models;
+
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
 
         // GET: Cliente
@@ -93,8 +97,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
             else
             {
                 return RedirectToAction("Index");
-                //return View(cliente);
-
             }
 
             

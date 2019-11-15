@@ -6,22 +6,43 @@ namespace GE.Aplicacion.CadenaConexion
     {
 
 
-        public const string DataBase = "GimnasioEvolution";
+        public const string DataBase = "GymEvolutionDB2019";
 
 
-        public const string Server = @"DESKTOP-9NL1EIH\SQLEXPRESS";
+        public const string Server = @"tcp:gymevolutiondbserver.database.windows.net";
 
 
-        //public const string User = "sa";
+        public const string User = "softgym@gymevolutiondbserver";
 
-        //public const string Password = "santi42175";
+        public const string Password = " GYM2019soft";
 
 
         public static string AccesoCadenaConexion => $"Data Source={Server};" +
                                                      $"Initial Catalog={DataBase};" +
-                                                     $"Integrated Security=true";
+                                                     //$"Integrated Security=true"; +
+                                                     $"User Id={User};" +
+                                                     $"Password={Password};";
+    }
 
-        /*    $"User Id={User};" +
-            $"Password={Password};";*/
+    /*
+
+    public const string DataBase = "GymEvolutionDB2019";
+
+
+        public const string Server = @"tcp:gymevolutiondbserver.database.windows.net";
+
+
+        public const string User = "softgym@gymevolutiondbserver";
+
+        public const string Password = " GYM2019soft";
+
+
+        public static string AccesoCadenaConexion => $"Data Source={Server};" +
+                                                     $"Initial Catalog={DataBase};" +
+                                                     //$"Integrated Security=true"; +
+                                                     $"User Id={User};" +
+                                                     $"Password={Password};";
+
+    */
     }
 }
