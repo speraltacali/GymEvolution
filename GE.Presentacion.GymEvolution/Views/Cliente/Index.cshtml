@@ -1,4 +1,4 @@
-﻿@using GE.IServicio.Cliente.DTO
+@using GE.IServicio.Cliente.DTO
 @using GE.Presentacion.GymEvolution.Models
 @model IEnumerable<GE.IServicio.Cliente.DTO.ClienteDto>
 
@@ -29,7 +29,7 @@
 <script src="~/script/jquery.validate.js"></script>
 <script src="~/script/jquery.validate.unobtrusive.js"></script>
 <body>
-   <div class="ContenedorTotal">
+    <div class="ContenedorTotal">
         <div class="enbloque">
             <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
             <h2 class="textuser">User : @ViewBag.Session</h2>
@@ -38,7 +38,7 @@
             <form asp-action="Index" method="get">
                 <div class="buscar" style="font-size:x-large">
                     <p class="search">
-                        Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/><br />
+                        Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
                         <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;" />
                     </p>
 
@@ -46,9 +46,9 @@
             </form>
             <br />
             <!-- Button trigger modal --><p align="right">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:200px;height:100px; font-size:large">
-                Agregar Nuevo Cliente
-            </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:200px;height:100px; font-size:large">
+                    Agregar Nuevo Cliente
+                </button>
             </p>
 
             <!--Modal-->
@@ -232,7 +232,7 @@
                 </div>
             </div>
         </div>
-   </div>
+    </div>
 </body>
 
 @section Scripts{

@@ -5,10 +5,12 @@ namespace GE.Aplicacion.CadenaConexion
     public class CadenaConexion
     {
 
+
         public const string DataBase = "GymEvolutionDB2019";
 
 
         public const string Server = @"tcp:gymevolutiondbserver.database.windows.net";
+
 
 
         public const string User = "softgym@gymevolutiondbserver";
