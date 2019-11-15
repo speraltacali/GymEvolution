@@ -12,7 +12,9 @@ namespace GE.Servicio
 {
     public class EjercicioServicio : IEjercicioServicio
     {
-        private readonly  IEjercicioRepositorio _ejercicioRepositorio = new EjercicioRepositorio();
+
+
+        private readonly IEjercicioRepositorio _ejercicioRepositorio = new EjercicioRepositorio();
         public EjercicioDto Agregar(EjercicioDto dto)
         {
             var Ejercicio = new Ejercicio
@@ -41,7 +43,7 @@ namespace GE.Servicio
             Ejercicio.Series = dto.Series;
             Ejercicio.Musculo = dto.Musculo;
             Ejercicio.Foto = dto.FotoLink;
-            Ejercicio.RutinaId = dto.RutinaId; 
+            Ejercicio.RutinaId = dto.RutinaId;
 
             _ejercicioRepositorio.Modificar(Ejercicio);
             _ejercicioRepositorio.Guardar();
@@ -93,7 +95,7 @@ namespace GE.Servicio
 
         public IEnumerable<EjercicioDto> ObtenerPorFiltro(string cadena)
         {
-            return _ejercicioRepositorio.ObtenerPorFiltro(x=>x.Nombre.Contains(cadena))
+            return _ejercicioRepositorio.ObtenerPorFiltro(x => x.Nombre.Contains(cadena))
                 .Select(x => new EjercicioDto()
                 {
                     Id = x.Id,
