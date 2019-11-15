@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GE.Infraestructura.Repositorio.Ejercicio
 {
-    public class EjercicioRepositorio : Repositorio<Dominio.Entity.Entidades.Ejercicios>, IEjercicioRepositorio
+    public class EjercicioRepositorio : Repositorio<Dominio.Entity.Entidades.Ejercicio>, IEjercicioRepositorio
     {
     }
 }

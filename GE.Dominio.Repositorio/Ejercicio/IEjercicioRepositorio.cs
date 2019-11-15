@@ -2,7 +2,7 @@
 
 namespace GE.Dominio.Repositorio.Ejercicio
 {
-    public interface IEjercicioRepositorio : IRepositorio<Entity.Entidades.Ejercicios>
+    public interface IEjercicioRepositorio : IRepositorio<Entity.Entidades.Ejercicio>
     {
         //asdasdasdasdas
     }
