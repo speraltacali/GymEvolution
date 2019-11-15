@@ -93,8 +93,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             var ejercicioAgregar = new EjercicioDto
             {
-                Descripcion = ejercicio.Descripcion,
-                Serie = ejercicio.Serie,
+                Nombre = ejercicio.Nombre,
+                Series = ejercicio.Series,
                 Repeticiones = ejercicio.Repeticiones,
                 FotoLink = ejercicio.FotoLink
             };
