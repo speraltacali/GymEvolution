@@ -30,27 +30,28 @@
 <script src="~/script/jquery.validate.unobtrusive.js"></script>
 <body>
     <div class="ContenedorTotal">
-        <div class="enbloque">
-            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-            <h2 class="textuser" style="margin-right:20px">User : @ViewBag.Session</h2>
-            <h1 class="logintext">Consulta Cliente</h1>
+        <div style="margin-left:40px;">
+            <div class="enbloque">
+                <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+                <h2 class="textuser" style="margin-right:40px">User : @ViewBag.Session</h2>
+                <h1 class="logintext">Consulta Cliente</h1>
 
-            <form asp-action="Index" method="get">
-                <div class="buscar" style="font-size:x-large">
-                    <p class="search">
-                        Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
-                        <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;" />
-                    </p>
+                <form asp-action="Index" method="get">
+                    <div class="buscar" style="font-size:x-large">
+                        <p class="search">
+                            Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
+                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;" />
+                        </p>
 
-                </div>
-            </form>
-            <br />
-            <!-- Button trigger modal --><p align="right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:200px;height:100px; font-size:large; margin-right:20px;">
-                    Agregar Nuevo Cliente
-                </button>
-            </p>
-
+                    </div>
+                </form>
+                <br />
+                <!-- Button trigger modal --><p align="right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:200px;height:100px; font-size:large; margin-right:40px;background-color:teal">
+                        Agregar Nuevo Cliente
+                    </button>
+                </p>
+            </div>
             <!--Modal-->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
