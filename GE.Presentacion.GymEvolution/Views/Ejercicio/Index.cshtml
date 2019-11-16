@@ -6,14 +6,14 @@
 <div class="ContenedorTotal">
     <div class="principal">
         <div class="enbloque">
-            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+            <img src="~/img/programar.png" class="imgcliente" width="110" height="110" />
             <h2 class="textuser">User : @ViewBag.Session</h2>
             <h1 class="logintext">Consulta Ejercicio</h1>
 
             <form asp-action="Index" method="get">
                 <div class="buscar">
                     <p class="search">
-                        Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/>
+                        Buscar Ejercicio <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/>
                     </p>
                     <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;"/>
 
