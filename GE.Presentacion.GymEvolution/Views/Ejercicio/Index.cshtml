@@ -3,76 +3,78 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="principal">
-    <div class="enbloque">
-        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-        <h2 class="textuser">User : @ViewBag.Session</h2>
-        <h1 class="logintext">Consulta Ejercicio</h1>
+<div class="ContenedorTotal">
+    <div class="principal">
+        <div class="enbloque">
+            <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h1 class="logintext">Consulta Ejercicio</h1>
 
-        <form asp-action="Index" method="get">
-            <div class="buscar">
-                <p class="search">
-                    Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+            <form asp-action="Index" method="get">
+                <div class="buscar">
+                    <p class="search">
+                        Buscar Empleado <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/>
+                    </p>
+                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;"/>
 
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
+
+        <p align="right">
+            <a asp-action="Create" class="btn btn-primary" style="width:162px;height:70px; font-size:large; text-align:center; padding-top:25px;padding-right:6px; margin-right:15px">Nuevo Ejercicio</a>
+        </p>
+
+        <h4 style="color:yellow">@TempData["Advertencia"]</h4>
+
     </div>
-
-    <p align="right">
-        <a asp-action="Create" class="btn btn-primary">Nuevo Ejercicio</a>
-    </p>
-
-    <h4 style="color:yellow">@TempData["Advertencia"]</h4>
-
-</div>
-<div class="col-md-12">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="col-md-12">
-                <table class="col-md-12">
-                    <thead>
-                        <tr class="table100-head">
-                            <th>
-                                @Html.DisplayNameFor(model => model.Nombre)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Repeticiones)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Series)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Foto)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr padding-bottom="2px">
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Repeticiones)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Series)
-                                </td>
-                                <td>
-                                    <img src="@item.FotoLink" class="w-75" alt="Logo">
-                                </td>
-                                <td>
-                                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Modificar</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Eliminar</a>
-                                </td>
+    <div class="col-md-12">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="col-md-12">
+                    <table class="col-md-12">
+                        <thead>
+                            <tr class="table100-head">
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Nombre)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Repeticiones)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Series)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Foto)
+                                </th>
+                                <th></th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr padding-bottom="2px">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Repeticiones)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Series)
+                                    </td>
+                                    <td>
+                                        <img src="@item.FotoLink" class="w-75" alt="Logo">
+                                    </td>
+                                    <td>
+                                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Modificar</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

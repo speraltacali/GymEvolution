@@ -300,6 +300,8 @@ input:focus {
     height:60px;
     margin-right:4px;
     margin-top:11px;
+    padding-left:2px;
+    padding-right:2px;
 }
 
 .textindex {

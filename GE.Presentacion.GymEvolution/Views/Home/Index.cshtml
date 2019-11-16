@@ -81,15 +81,13 @@
 
             <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
 
-            <a asp-controller="ControlAcceso" asp-action="Index" class="botonEmpleado">Control Acceso</a> <br />
+            <a asp-controller="ControlAcceso" asp-action="Index" class="botonEmpleado">Control Acceso</a>
 
-            <br />
-            <br />
-            <a asp-controller="Clase" asp-action="Index" class="botonEmpleado">Clases</a>
+            <a asp-controller="Clase" asp-action="Index" class="botonClientes">Clases</a>
 
             @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:350px; height:75px'>
-            Abrir Caja Modal
-        </button>*@
+                Abrir Caja Modal
+            </button>*@
 
             <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -144,6 +142,11 @@
 
         </div>
 
+        <br />
+        <br />
+        <br />
+        <br />
+
     </section>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -164,4 +167,5 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
 </body>

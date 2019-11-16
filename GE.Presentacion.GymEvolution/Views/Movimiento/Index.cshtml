@@ -24,15 +24,15 @@
     <div class="ContenedorTotal">
         <div class="enbloque">
             <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-            <h2 class="textuser">User : @ViewBag.Session</h2>
+            <h2 class="textuser" style="margin-right:17px">User : @ViewBag.Session</h2>
             <h1 class="logintext">Movimientos</h1>
 
             <form asp-action="Index" method="get">
                 <div class="buscar">
                     <p class="search">
-                        Buscar Movimiento <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
+                        Buscar Movimiento <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;"/>
                     </p>
-                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+                    <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;"/>
 
                 </div>
             </form>
