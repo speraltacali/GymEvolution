@@ -7,14 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GE.Dominio.Entity.Entidades;
 using GE.Infraestructura.Context;
+using GE.Dominio.Repositorio.Clase;
+using GE.Infraestructura.Repositorio.Clase;
 
-namespace GE.Presentacion.GymEvolution.Controllers.APIs
+namespace GE.Presentacion.GymEvolution.Controllers.APIs.NewApis
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ClasesController : ControllerBase
     {
         private readonly Context _context;
+        private readonly IClaseRepositorio claseRepositorio = new ClaseRepositorio();
 
         public ClasesController(Context context)
         {
@@ -23,9 +26,9 @@ namespace GE.Presentacion.GymEvolution.Controllers.APIs
 
         // GET: api/Clases
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Clase>>> GetClase()
+        public IEnumerable<Clase> GetClase()
         {
-            return await _context.Clase.ToListAsync();
+            return claseRepositorio.ObtenerTodo();
         }
 
         // GET: api/Clases/5
