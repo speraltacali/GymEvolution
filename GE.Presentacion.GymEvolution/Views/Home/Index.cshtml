@@ -67,87 +67,105 @@
             </div>
         </div>
     </div>
+    <div class="ContenedorTotal" style="padding-left:10px;padding-right:10px;padding-top:2px;">
+        <div class="text-center">
+            <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
+        </div>
 
-    <div class="text-center">
-        <h1 class="logintextindex">Bienvenido: User @ViewBag.Session</h1>
-    </div>
+        <section class="principal">
 
-    <section class="principal">
-
-        <div class="lateralizq">
+            <div class="lateralizq">
 
 
-            <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
+                <a asp-controller="Cliente" asp-action="Index" class="botonClientes">Consulta Cliente</a>
 
-            <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
+                <a asp-controller="Empleado" asp-action="Index" class="botonEmpleado">Consulta Empleado</a>
 
-            <a asp-controller="ControlAcceso" asp-action="Index" class="botonEmpleado">Control Acceso</a>
+                <a asp-controller="ControlAcceso" asp-action="Index" class="botonEmpleado">Control Acceso</a>
 
-            <a asp-controller="Clase" asp-action="Index" class="botonClientes">Clases</a>
+                <a asp-controller="Clase" asp-action="Index" class="botonClientes">Clases</a>
 
-            @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:350px; height:75px'>
-                Abrir Caja Modal
-            </button>*@
+                <a asp-controller="Rutina" asp-action="Index" class="botonEmpleado">Rutina</a>
 
-            <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addContactLabel">Abrir Caja</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width:350px; height:75px'>
+                    Abrir Caja Modal
+                </button>*@
 
-                        <form asp-action="Abrir" asp-controller="AbrirCaja" method="post" enctype="multipart/form-data">
-
-                            <div class="modal-body">
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" class="formCaja" />
-                                        <div class="form-group">
-                                            <label asp-for="@caja.MontoApertura" class="col-md-2 control-label"></label>
-                                            <input asp-for="@caja.MontoApertura" placeholder="Nombre" class="form-control" />
-                                            <span asp-validation-for="@caja.MontoApertura" class="text-danger"></span>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Salir</button>
-
-                                            <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="abrirCaja.AbrirCaja" data-save="modal">Guardar</button>
-                                        </div>
-
-                                    </div>
-                                </div>
+                <div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addContactLabel">Abrir Caja</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
 
-                        </form>
+                            <form asp-action="Abrir" asp-controller="AbrirCaja" method="post" enctype="multipart/form-data">
+
+                                <div class="modal-body">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" class="formCaja" />
+                                            <div class="form-group">
+                                                <label asp-for="@caja.MontoApertura" class="col-md-2 control-label"></label>
+                                                <input asp-for="@caja.MontoApertura" placeholder="Nombre" class="form-control" />
+                                                <span asp-validation-for="@caja.MontoApertura" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal" style='width:250px; height:50px'>Salir</button>
+
+                                                <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="abrirCaja.AbrirCaja" data-save="modal">Guardar</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
+            <div class="lateralderecho">
 
-        <div class="lateralderecho">
+                <a asp-controller="Movimiento" asp-action="Index" class="botonGeneral">Ver Movimientos</a>
 
-            <a asp-controller="Movimiento" asp-action="Index" class="botonGeneral">Ver Movimientos</a>
+                <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
 
-            <a asp-controller="AbrirCaja" asp-action="Index" class="botonGeneral">Abrir Caja</a>
+                <a asp-controller="Venta" asp-action="Index" class="botonGeneral">Facturas</a>
 
-            <a asp-controller="Venta" asp-action="Index" class="botonGeneral">Facturar</a>
+                <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
 
-            <a asp-controller="CerrarCaja" asp-action="Index" class="botonGeneral">Cerrar Caja</a>
+            </div>
 
-            <a asp-controller="Rutina" asp-action="Index" class="botonGeneral">Rutina</a>
+            <br />
+            <br />
+            <br />
+            <br />
 
-        </div>
-
+        </section>
         <br />
         <br />
         <br />
         <br />
-
-    </section>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
