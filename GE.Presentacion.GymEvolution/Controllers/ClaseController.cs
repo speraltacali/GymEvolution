@@ -90,7 +90,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
             else
             {
                 return RedirectToAction("Index");
-                //return View(cliente);
 
             }
         }
@@ -164,14 +163,14 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DetailIndex(long claseId)
+        public ActionResult Detalle(long claseId)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
 
-                var detalle =_detalleServicio.ObtenerSegunClase(claseId);
+                var detalle = _detalleServicio.ObtenerSegunClase(claseId);
 
                 return View(detalle);
             }
@@ -181,10 +180,5 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-
-        public ActionResult EditDetail()
-        {
-            return View();
-        }
     }
 }

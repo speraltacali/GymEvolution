@@ -58,11 +58,26 @@ namespace GE.Servicio
             }
         }
 
+        public ClaseDetalleDto ObtenerPorId(long id)
+        {
+            var detalle = _detalleRepositorio.ObtenerPorId(id);
+
+            return new ClaseDetalleDto()
+            {
+                Id = detalle.Id,
+                HoraInicio = detalle.HoraInicio,
+                HoraFin = detalle.HoraFin,
+                Dia = detalle.Dia,
+                ClaseId = detalle.ClaseId
+            };
+        }
+
         public IEnumerable<ClaseDetalleDto> ObtenerSegunClase(long ClaseId)
         {
-            return _detalleRepositorio.ObtenerPorFiltro(x => ClaseId == ClaseId)
+            return _detalleRepositorio.ObtenerPorFiltro(x => x.ClaseId == ClaseId)
                 .Select(x => new ClaseDetalleDto()
                 {
+                    Id = x.Id,
                     HoraInicio = x.HoraInicio,
                     HoraFin = x.HoraFin,
                     Dia = x.Dia,

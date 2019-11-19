@@ -1,10 +1,13 @@
-﻿class ClaseDetalle {
+﻿
+class ClaseDetalle {
+
     AgregarClaseDetalle() {
-        $post(
-            "Create" , serialize(),
+        $.post(
+            "Create",
+            $('.formDetalle').serialize(),
             (response) => {
                 console.log(response);
             }
-        )
+        );
     }
 }
