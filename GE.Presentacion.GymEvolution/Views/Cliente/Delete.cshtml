@@ -4,16 +4,17 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Eliminar</h1>
+<div class="ContenedorTotal" style="padding-left:20px;padding-right:20px;padding-top:20px; padding-bottom:20px">
+    <h1>Eliminar</h1>
 
-<h3>--Esta Seguro De Borrar Este Cliente?--</h3>
+    <h3>--Esta Seguro De Borrar Este Cliente?--</h3>
 
-<p align="right">
+    <p align="right">
 
 
-    <img src="@Html.DisplayFor(model=> model.FotoLink)" class="fotopersona" alt="Logo">
-<p/>
-    <div class="eliminarposition">
+        <img src="@Html.DisplayFor(model=> model.FotoLink)" class="fotopersona" alt="Logo" width="200" height="300">
+    <p />
+    <div>
         <h4>Cliente</h4>
         <hr />
         <dl class="col-md-3">
@@ -75,7 +76,8 @@
 
         <form asp-action="Delete">
             <input type="hidden" asp-for="Id" />
-            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-            <a asp-action="Index" class="btn btn-danger">Volver</a>
+            <input type="submit" value="Eliminar" class="btn btn-danger" style="width:240px;height:40px"/> |
+            <a asp-action="Index" class="btn btn-danger" style="width:220px;height:40px">Volver</a>
         </form>
     </div>
+</div>
