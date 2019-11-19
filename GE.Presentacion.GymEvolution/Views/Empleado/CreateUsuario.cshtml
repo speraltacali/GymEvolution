@@ -4,36 +4,37 @@
     ViewData["Title"] = "CreateUsuario";
 }
 <body>
-    <h1>Crear Usuario para Empleado</h1>
-    <div align="center" style="color:white " class="datosalmediouser">
-        <h5>Esta seguro de crear usuario para el empleado :</h5>
-        <div class="col-almedio">
+    <div class="ContenedorTotal" style="padding-left:300px;padding-top:40px;padding-bottom:40px;">
+        <h1>Crear Usuario para Empleado:</h1><br />
+        <div align="center" style="color:white;font-size:large ">
+            <h5>Esta seguro de crear usuario para el empleado :</h5>
+            <div class="col-lg-5">
 
-            @Html.DisplayNameFor(model => model.Legajo) :
-            @Html.DisplayFor(model => model.Legajo)
+                @Html.DisplayNameFor(model => model.Legajo) :
+                @Html.DisplayFor(model => model.Legajo)
+                <br />
+                @Html.DisplayNameFor(model => model.Apellido) :
+                @Html.DisplayFor(model => model.Apellido)
+                <br />
+                @Html.DisplayNameFor(model => model.Nombre) :
+                @Html.DisplayFor(model => model.Nombre)
+                <br />
+                @Html.DisplayNameFor(model => model.Dni) :
+                @Html.DisplayFor(model => model.Dni)
+                <div>
+                    <br />
+                    <form asp-action="CreateUsuario">
+                        <div class="form-group">
+                            <input type="submit" value="Crear Usuario" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;" />
+                        </div>
+                        <br />
+                        <div>
+                            <a asp-action="Index" class="btn btn-danger" style="width:220px;height:40px">Volver</a>
+                        </div>
+                    </form>
+                </div>
 
-            @Html.DisplayNameFor(model => model.Apellido) :
-            @Html.DisplayFor(model => model.Apellido)
-
-            @Html.DisplayNameFor(model => model.Nombre) :
-            @Html.DisplayFor(model => model.Nombre)
-
-            @Html.DisplayNameFor(model => model.Dni) :
-            @Html.DisplayFor(model => model.Dni)
-            <div>
-                <br/>
-                <form asp-action="CreateUsuario">
-                    <div class="form-group">
-                        <input type="submit" value="Crear Usuario" class="btn btn-primary"/>
-                    </div>
-                    <br/>
-                    <div>
-                        <a asp-action="Index" class="btn btn-danger">Volver</a>
-                    </div>
-                </form>
             </div>
-
         </div>
     </div>
-
 </body>
