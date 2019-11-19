@@ -143,9 +143,10 @@
                                             <td>
                                                 <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
                                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                                                <a asp-action="Index" asp-controller="ClaseDetalle" asp-route-id="@item.Id" class="btn btn-danger">Detail</a>
+                                                <a asp-action="Detalle" asp-route-id="@item.Id" class="btn btn-danger">Detail</a>
                                                 @{
                                                     Parametros.Id = item.Id;
+                                                    TempData["Id"] = item.Id;
                                                 }
                                             </td>
                                         </tr>

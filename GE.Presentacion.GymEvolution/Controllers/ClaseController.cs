@@ -163,22 +163,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Detalle(long claseId)
+        public ActionResult Detalle(long id)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                ViewBag.Session = HttpContext.Session.GetString("Session");
-                TempData["Session"] = HttpContext.Session.GetString("Session");
+                var clase = _claseServicio.ObtenerPorId(id);
 
-                var detalle = _detalleServicio.ObtenerSegunClase(claseId);
-
-                return View(detalle);
+                return View(clase);
             }
             else
             {
                 return RedirectToAction("Login", "Usuario");
             }
         }
+
+
 
     }
 }

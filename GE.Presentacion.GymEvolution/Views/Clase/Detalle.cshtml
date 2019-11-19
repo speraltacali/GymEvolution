@@ -1,107 +1,104 @@
 ﻿@using GE.IServicio.Clase.DTOs
-@model IEnumerable<GE.IServicio.Clase.DTOs.ClaseDetalleDto>
+@using GE.Servicio
+@model GE.IServicio.Clase.DTOs.ClaseDto
 
 @{
-    ViewData["Title"] = "CuotasCliente";
+    IClaseDetalleServicio _detalleServicio = new ClaseDetalleServicio();
+
+    var Lista = _detalleServicio.ObtenerSegunClase(Model.Id);
 
     var detalle = new ClaseDetalleDto();
+
+    ViewData["Title"] = "Detalle";
 }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<link rel="icon" type="image/png" href="libreria/images/icons/favicon.ico" />
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/vendor/animate/animate.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="libreria/css/util.css">
-<link rel="stylesheet" type="text/css" href="libreria/css/main.css">
-<!--===============================================================================================-->
-<body>
-    <div class="enbloque">
-        <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
-        <h1 class="logintext">Detalle de la Clase </h1>
+<h1>Clase</h1>
 
-        <form asp-action="Index" method="get">
-            <div class="buscar">
-                <p class="search">
-                    Buscar Detalle <input type="text" name="cadena" value="@ViewData["Busqueda"]" />
-                </p>
-                <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" />
+<h4>Consulta Detalles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Detalle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <img src="@Model.FotoLink" alt="imgText" class="avatar" />
 
+            <h1>
+                @Model.Nombre
+            </h1>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
+
+            <input type="hidden" asp-for="Id" />
         </form>
+    </div>
 
-        <p align="right">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalDetalle" style="width:190px;height:50px; font-size:medium; text-align:center; padding-top:13px; margin-right:20px; padding-bottom:15px;background-color:teal">
-                Agregar Nuevo Detalle
-            </button>
-        </p>
+    <p align="right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:190px;height:50px; font-size:medium; text-align:center; padding-top:13px; margin-right:20px; padding-bottom:15px;background-color:teal">
+            Agregar Detalle
+        </button>
+        <a asp-action="Create" class="btn btn-primary">Nuevo</a>
+    </p>
+    <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContactLabel">Nuevo Detalle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-        <div class="modal fade" id="ModalDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addContactLabel">Nuevo Detalle</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <form asp-controller="ClaseDetalle" asp-action="Create" method="post" class="formDetalle">
 
-                    <form asp-controller="ClaseDetalle" asp-action="Create" method="post" class="formCliente" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        <div class="modal-body">
-                            <div class="form-horizontal">
                                 <div class="form-group">
-                                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <label asp-for="@detalle.HoraInicio" class="control-label"></label>
+                                    <input asp-for="@detalle.HoraInicio" type="time" class="form-control" />
+                                    <span asp-validation-for="@detalle.HoraInicio" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@detalle.HoraFin" class="control-label"></label>
+                                    <input asp-for="@detalle.HoraFin" type="time" class="form-control" />
+                                    <span asp-validation-for="@detalle.HoraFin" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@detalle.Dia" class="control-label"></label>
+                                    <select asp-for="@detalle.Dia" class="form-control">
+                                        <option value="1">Lunes</option>
+                                        <option value="2">Martes</option>
+                                        <option value="3">Miercoles</option>
+                                        <option value="4">Jueves</option>
+                                        <option value="5">Viernes</option>
+                                        <option value="6">Sabado</option>
+                                        <option value="7">Domingo</option>
 
-                                    <div class="form-group">
-                                        <label asp-for="@detalle.HoraInicio" class="control-label"></label>
-                                        <input asp-for="@detalle.HoraInicio" type="time" class="form-control" />
-                                        <span asp-validation-for="@detalle.HoraInicio" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@detalle.HoraFin" class="control-label"></label>
-                                        <input asp-for="@detalle.HoraFin" type="time" class="form-control" />
-                                        <span asp-validation-for="@detalle.HoraFin" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="@detalle.Dia" class="control-label"></label>
-                                        <select asp-for="@detalle.Dia" class="form-control">
-                                            <option value="1">Lunes</option>
-                                            <option value="2">Martes</option>
-                                            <option value="3">Miercoles</option>
-                                            <option value="4">Jueves</option>
-                                            <option value="5">Viernes</option>
-                                            <option value="6">Sabado</option>
-                                            <option value="7">Domingo</option>
+                                    </select>
+                                    <span asp-validation-for="@detalle.Dia" class="text-danger"></span>
+                                </div>
 
-                                        </select>
-                                        <span asp-validation-for="@detalle.Dia" class="text-danger"></span>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                                        <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="claseDetalle.AgregarClaseDetalle" data-save="modal">Guardar</button>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="claseDetalle.AgregarClaseDetalle" data-save="modal">Guardar</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                    </form>
-                </div>
+                </form>
             </div>
-
         </div>
+
     </div>
+
     <div>
         <br />
         <div class="col-md-12">
@@ -111,20 +108,20 @@
                         <table class="col-md-7">
                             <thead>
                                 <tr>
-                                    <th width="22px">
+                                    <th>
                                         Horario Inicio
                                     </th>
-                                    <th width="22px">
+                                    <th>
                                         Horario Fin
                                     </th>
-                                    <th width="60px">
+                                    <th>
                                         Dia
                                     </th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in Lista)
                                 {
                                     <tr>
                                         <td>
@@ -136,6 +133,11 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Dia)
                                         </td>
+
+                                        <td>
+                                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                                        </td>
+
                                     </tr>
                                 }
                             </tbody>
@@ -145,14 +147,13 @@
             </div>
         </div>
     </div>
-</body>
-<!--===============================================================================================-->
-<script src="libreria/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="libreria/vendor/bootstrap/js/popper.js"></script>
-<script src="libreria/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="libreria/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="libreria/js/main.js"></script>
+</div>
 
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

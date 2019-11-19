@@ -55,6 +55,8 @@
     <Compile Remove="Migrations\20191111225727_Ferr.Designer.cs" />
     <Compile Remove="Migrations\20191113134700_Ejercicio.cs" />
     <Compile Remove="Migrations\20191113134700_Ejercicio.Designer.cs" />
+    <Compile Remove="Migrations\20191119031040_TerminandoCode.cs" />
+    <Compile Remove="Migrations\20191119031040_TerminandoCode.Designer.cs" />
 
 
   </ItemGroup>

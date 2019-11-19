@@ -17,14 +17,17 @@ namespace GE.Presentacion.GymEvolution.Controllers
         private readonly IClaseDetalleServicio _detalleServicio = new ClaseDetalleServicio();
 
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(long id)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
 
-                var detalle = _detalleServicio.ObtenerSegunClase(Parametros.Id);
+                var valor = id;
+
+                var detalle = _detalleServicio.ObtenerSegunClase(id);
 
                 return View(detalle);
             }
@@ -34,21 +37,39 @@ namespace GE.Presentacion.GymEvolution.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Create(ClaseDetalleDto dto)
-        {
-            if (ModelState.IsValid)
-            {
-                dto.ClaseId = Parametros.Id;
-                var Detalle = _detalleServicio.Agregar(dto);
 
-                return RedirectToAction("Index");
+        public ActionResult Create()
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                return View();
             }
             else
             {
-                return RedirectToAction("Index");
-
+                return RedirectToAction("Login", "Usuario");
             }
+        }
+        
+
+        [HttpPost]
+        public ActionResult Create(ClaseDetalleDto dto)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    dto.ClaseId = Parametros.Id;
+            //    _detalleServicio.Agregar(dto);
+
+            //    return RedirectToAction("Index");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+
+            dto.ClaseId = Parametros.Id;
+            _detalleServicio.Agregar(dto);
+
+            return RedirectToAction("Detalle","Clase");
         }
 
 
@@ -71,6 +92,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
         {
             if (ModelState.IsValid)
             {
+                dto.ClaseId = Parametros.Id;
                 _detalleServicio.Modificar(dto);
 
                 return RedirectToAction("Index");

@@ -10,6 +10,10 @@
 
     var factura = new FacturaDto();
 
+    IPago_FacturaServicio _cuotas = new Pago_FacturaServicio();
+
+    var Lista = _cuotas.MostrarDatosGenerales(Model.Id);
+
     SessionActiva.ClienteId = Model.Id;
 
     ViewData["Title"] = "Perfil";
@@ -180,46 +184,58 @@
                         <div class="wrap-table100">
                             <div class="col-md-12">
 
-                                <table class="col-md-12">
+                                <table class="col-md-7">
                                     <thead>
-                                        <tr class="table100-head">
-                                            <th width="20px">
+                                        <tr>
+                                            <th width="22px">
                                                 Numero
                                             </th>
-                                            <th width="20px">
-                                                CuotaVigente
+                                            <th width="22px">
+                                                Meses
                                             </th>
-                                            <th width="20px">
-                                                CuotaVencimiento
+                                            <th width="60px">
+                                                Fecha Vigente
                                             </th>
-                                            <th width="20px">
-                                                Estado
+                                            <th width="60px">
+                                                Fecha Vencimiento
+                                            </th>
+                                            <th width="25px">
+                                                Total
+                                            </th>
+                                            <th width="60px">
+                                                Fecha Pago
                                             </th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!--
-                                            foreach (var item in Model2)
-                                            {
-                                                <tr padding-bottom="2px">
-                                                    <td>
-                                                        Html.DisplayFor(modelItem => item.Numero)
-                                                    </td>
-                                                    <td>
-                                                        Html.DisplayFor(modelItem => item.CuotaVigente)
-                                                    </td>
-                                                    <td>
-                                                        Html.DisplayFor(modelItem => item.CuotaVencimiento)
-                                                    </td>
-                                                    <td>
-                                                        Html.DisplayFor(modelItem => item.Estado)
-                                                    </td>
-                                                </tr>
-                                            }-->
+                                        @foreach (var item in Lista)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Numero)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CantidadMeses)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaVigente)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaVencimiento)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaOperacion)
+                                                </td>
+                                                <td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                         </div>
                     </div>
