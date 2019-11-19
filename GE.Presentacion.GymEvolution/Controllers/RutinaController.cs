@@ -29,12 +29,11 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 ViewData["Busqueda"] = cadena;
-                //ViewData["prueba"] =
 
                 if (!String.IsNullOrEmpty(cadena))
                 {
                     var FiltroRutina = _rutinaServicio.ObtenerPorFiltro(cadena);
-                    return View(FiltroRutina);
+                    return View(FiltroRutina);  
                 }
                 else
                 {

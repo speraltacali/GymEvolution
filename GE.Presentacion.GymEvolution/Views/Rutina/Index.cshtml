@@ -1,47 +1,107 @@
-﻿@model IEnumerable<GE.Dominio.Entity.Entidades.Rutina>
+﻿@using GE.IServicio.Rutina.DTO
+@model IEnumerable<GE.IServicio.Rutina.DTO.RutinaDto>
 
 @{
     ViewData["Title"] = "Index";
+
+    var rutina = new RutinaDto();
 }
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RowVersion)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RowVersion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="ContenedorTotal">
+    <!-- Button trigger modal -->
+    <p align="right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:190px;height:50px; font-size:medium; text-align:center; padding-top:13px; margin-right:20px; padding-bottom:15px;background-color:teal">
+            Agregar Nueva Rutina
+        </button>
+    </p>
+    <!--Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContactLabel">Nueva Rutina</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form asp-controller="Rutina" asp-action="Create" method="post" class="formRutina" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="@rutina.Titulo" class="col-md-2 control-label"></label>
+                                    <input asp-for="@rutina.Titulo" placeholder="Nombre" class="form-control" />
+                                    <span asp-validation-for="@rutina.Titulo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="@rutina.Descripcion" class="col-md-2 control-label"></label>
+                                    <input asp-for="@rutina.Descripcion" placeholder="Descripcion" class="form-control" />
+                                    <span asp-validation-for="@rutina.Descripcion" class="text-danger"></span>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                                    <button type="submit" value="Guardar Datos" class="btn btn-primary" onclick="rutina.AgregarRutina" data-save="modal">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+
+        <div class="col-md-4" style="margin-left:350px">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="col-md-4">
+
+                        <table class="col-md-4">
+                            <thead>
+                                <tr class="table100-head">
+                                    <th width="40px">
+                                        Titulo
+                                    </th>
+                                    <th width="40px">
+                                        Descripcion
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr padding-bottom="2px">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Titulo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Descripcion)
+                                        </td>
+
+                                        <td>
+                                            <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

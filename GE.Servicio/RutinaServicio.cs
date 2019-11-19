@@ -59,6 +59,7 @@ namespace GE.Servicio
             return _rutinaRepositorio.ObtenerTodo()
                 .Select(x => new RutinaDto()
                 {
+                    Id = x.Id,
                     Titulo = x.Titulo,
                     Descripcion = x.Descripcion
                 }).ToList();
@@ -70,6 +71,7 @@ namespace GE.Servicio
 
             return new RutinaDto()
             {
+                Id = Rutina.Id,
                 Titulo = Rutina.Titulo,
                 Descripcion = Rutina.Descripcion
             };
@@ -81,6 +83,7 @@ namespace GE.Servicio
                                                           x.Descripcion.Contains(cadena))
                 .Select(x => new RutinaDto()
                 {
+                    Id = x.Id,
                     Titulo = x.Titulo,
                     Descripcion = x.Descripcion
                 }).ToList();
