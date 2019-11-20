@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GE.Servicio.Base;
 
 namespace GE.IServicio.Movimiento.DTO
 {
-    public class MovimientoDto
+    public class MovimientoDto : BaseDto
     {
         public TipoMovimiento TipoMovimiento { get; set; }
 

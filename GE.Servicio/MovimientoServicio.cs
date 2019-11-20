@@ -55,6 +55,7 @@ namespace GE.Servicio
             return _movimientoServicio.ObtenerPorFiltro(x => x.FechaActualizacion.Date >= desde.Date
             && x.FechaActualizacion.Date <= hasta.Date).Select(x => new MovimientoDto
             {
+                Id = x.Id,
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
@@ -68,6 +69,7 @@ namespace GE.Servicio
         {
             return _movimientoServicio.ObtenerPorFiltro(x => x.Descripcion.Contains(cadena)).Select(x => new MovimientoDto
             {
+                Id = x.Id,
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
@@ -81,6 +83,7 @@ namespace GE.Servicio
         {
             return _movimientoServicio.ObtenerPorFiltro(x => x.FechaActualizacion.Date == fecha.Date).Select(x => new MovimientoDto
             {
+                Id = x.Id,
                 Descripcion = x.Descripcion,
                 EmpleadoId = x.EmpleadoId,
                 FechaActualizacion = x.FechaActualizacion,
@@ -88,6 +91,21 @@ namespace GE.Servicio
                 Monto = x.Monto
 
             }).ToList();
+        }
+
+
+        public IEnumerable<MovimientoDto> ObtenerPorEmpleado(long id)
+        {
+            return _movimientoServicio.ObtenerPorFiltro(x => x.EmpleadoId == id)
+                .Select(x => new MovimientoDto()
+                {
+                    Id = x.Id,
+                    Descripcion = x.Descripcion,
+                    EmpleadoId = x.EmpleadoId,
+                    FechaActualizacion = x.FechaActualizacion,
+                    TipoMovimiento = x.TipoMovimiento,
+                    Monto = x.Monto
+                }).ToList();
         }
     }
 }

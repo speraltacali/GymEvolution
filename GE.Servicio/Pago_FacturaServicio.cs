@@ -140,5 +140,6 @@ namespace GE.Servicio
 
             return CuotasCliente.ToList();
         }
+
     }
 }

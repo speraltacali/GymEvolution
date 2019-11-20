@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using GE.Dominio.Entity;
-using GE.Dominio.Entity.Entidades;
-using GE.Dominio.Entity.Enums;
-using GE.Infraestructura.Context;
-using GE.Infraestructura.Repositorio.Cuota;
-using GE.Infraestructura.Repositorio.Factura;
+﻿using GE.IServicio.Caja;
 using GE.IServicio.Cliente.DTO;
 using GE.IServicio.Cuota;
 using GE.IServicio.Cuota.DTO;
@@ -28,7 +18,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
     {
         private IPago_FacturaServicio _facturaServicio = new Pago_FacturaServicio();
 
-        //private readonly IPago_FacturaServicio _pagoFacturaServicio = new Pago_FacturaServicio();
+        private ICajaServicio _cajaServicio = new CajaServicio();
+
 
         public IActionResult Index()
         {
@@ -43,16 +34,24 @@ namespace GE.Presentacion.GymEvolution.Controllers
         [HttpPost]
         public ActionResult PagoFactura(CuotaDto cuota , FacturaDto factura, ClienteDto cliente)
         {
-            if(_facturaServicio.ValidarMesPago(cuota.CuotaVigente,SessionActiva.ClienteId)==false)
+            if(_cajaServicio.VerSiCajaEstaAbierta())
             {
-                _facturaServicio.PagoCuota(cuota, factura, cliente);
-                return RedirectToAction("CuotasCliente", "Cuota");
+                if (_facturaServicio.ValidarMesPago(cuota.CuotaVigente, SessionActiva.ClienteId) == false)
+                {
+                    _facturaServicio.PagoCuota(cuota, factura, cliente);
+                    return RedirectToAction("CuotasCliente", "Cuota");
+                }
+                else
+                {
+                    TempData["Validacion"] = "Puede Pasar";
+                    ModelState.AddModelError("Error", "El cliente ya posee la factura");
+                    return RedirectToAction("CuotasCliente", "Cuota");
+                }
             }
             else
             {
-                TempData["Validacion"] = "Puede Pasar";
-                ModelState.AddModelError("Error", "El cliente ya posee la factira");
-                return RedirectToAction("Index", "Venta");
+                TempData["error"] = "error";
+                return RedirectToAction("Perfil", "Cliente");
             }
             //_pagoFacturaServicio.PagoFactura(PagoFactura);
         }

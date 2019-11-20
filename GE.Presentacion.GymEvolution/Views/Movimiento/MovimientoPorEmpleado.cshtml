@@ -1,0 +1,135 @@
+﻿@using GE.IServicio.Cuota.DTO
+@using GE.IServicio.Factura.DTO
+@using GE.IServicio.Movimiento
+@using GE.IServicio.Pago_Factura
+@using GE.Servicio
+@using GE.Servicio.DatosEstaticos.Session
+@model GE.IServicio.Empleado.DTO.EmpleadoDto
+
+@{
+
+    IMovimientoServicio _movimientoServicio = new MovimientoServicio();
+
+    var Lista = _movimientoServicio.ObtenerPorEmpleado(Model.Id);
+
+    SessionActiva.ClienteId = Model.Id;
+
+    ViewData["Title"] = "Perfil";
+}
+
+<body>
+    <section class="ContenedorTotal">
+        <div class="izquierdaPerfil" style="padding-left:50px;padding-top:30px;">
+
+            <h1>Perfil Empleado</h1>
+            <h4>Movimientos</h4>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="MovimientoPorEmpleado">
+                        <img src="@Model.FotoLink" alt="imgText" class="avatar" />
+
+                        <h1>
+                            @Model.Apellido , @Model.Nombre
+                        </h1>
+
+
+                        <div class="form-group">
+                            <label asp-for="Dni" class="control-label"></label>
+                            <input asp-for="Dni" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
+                            <span asp-validation-for="Dni" class="text-danger"></span>
+
+                            <label asp-for="FechaNacimiento" class="control-label"></label>
+                            <input asp-for="FechaNacimiento" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
+                            <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Telefono" class="control-label"></label>
+                            <input asp-for="Telefono" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+
+                            <label asp-for="Domicilio" class="control-label"></label>
+                            <input asp-for="Domicilio" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
+                            <span asp-validation-for="Domicilio" class="text-danger"></span>
+
+                            <label asp-for="Sexo" class="control-label"></label>
+                            <input asp-for="Sexo" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
+                            <span asp-validation-for="Sexo" class="text-danger"></span>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="derechaPerfil" style="padding-right:50px;padding-top:30px;">
+
+            <div align="right" style="float: right">
+
+                <div>
+                    <a asp-action="Index" class="btn btn-danger" style='width: 400px; height: 40px; margin-top: 30px;'>Volver</a>
+                </div>
+
+            </div>
+
+            <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
+
+                <div class="col-md-12">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="col-md-7">
+
+                                <table class="col-md-7">
+                                    <thead>
+                                        <tr class="table100-head">
+                                            <th width="50px">
+                                                Descripcion
+                                            </th>
+                                            <th width="50px">
+                                                FechaActualizacion
+                                            </th>
+                                            <th width="50px">
+                                                TipoMovimiento
+                                            </th>
+                                            <th width="50px">
+                                                Monto
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Lista)
+                                        {
+                                            <tr padding-bottom="2px">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                                                </td>
+                                                <td class="tdgrupo">
+                                                    @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Monto)
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

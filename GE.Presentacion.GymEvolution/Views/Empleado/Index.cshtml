@@ -106,6 +106,7 @@
                                         <td>
                                             <a asp-action="CreateUsuario" asp-route-id="@item.Id" class="btn btn-primary">User</a>
                                             <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary">Modificar</a>
+                                            <a asp-action="MovimientoPorEmpleado" asp-controller="Movimiento" asp-route-id="@item.Id" class="btn btn-secondary">Perfil</a>
                                         </td>
                                     </tr>
                                 }

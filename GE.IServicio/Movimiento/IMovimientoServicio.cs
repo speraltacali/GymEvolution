@@ -18,5 +18,7 @@ namespace GE.IServicio.Movimiento
 
         IEnumerable<MovimientoDto> ObtenerFechaDesdeHasta(DateTime desde, DateTime hasta);
 
+        IEnumerable<MovimientoDto> ObtenerPorEmpleado(long id);
+
     }
 }

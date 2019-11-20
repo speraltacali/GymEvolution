@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using GE.Dominio.Entity.Entidades;
@@ -20,7 +21,8 @@ namespace GE.Servicio
             {
                 FechaApertura = dto.FechaApertura,
                 MontoApertura = dto.MontoApertura,
-                UsuarioId = dto.UsuarioId
+                UsuarioId = dto.UsuarioId,
+                Estado = true
             };
 
             _cajaRepositorio.Agregar(Caja);
@@ -33,6 +35,7 @@ namespace GE.Servicio
 
             Caja.FechaCierre = dto.FechaCierre;
             Caja.MontoCierre = dto.MontoCierre;
+            Caja.Estado = false;
 
             _cajaRepositorio.Modificar(Caja);
             _cajaRepositorio.Guardar();
@@ -58,6 +61,54 @@ namespace GE.Servicio
 
             return devolver;
 
+        }
+
+        public IEnumerable<CajaDto> ObtenerTodo()
+        {
+            return _cajaRepositorio.ObtenerTodo()
+                .Select(x => new CajaDto()
+                {
+                    Id = x.Id,
+                    FechaApertura = x.FechaApertura,
+                    MontoApertura = x.MontoApertura,
+                    FechaCierre = x.FechaCierre,
+                    MontoCierre = x.MontoCierre,
+                    UsuarioId = x.UsuarioId,
+                    Estado = x.Estado
+                });
+        }
+
+        public IEnumerable<CajaDto> ObtenerPorFiltro(DateTime fecha)
+        {
+            return _cajaRepositorio.ObtenerPorFiltro(x=>x.FechaApertura >= fecha 
+                                                        && x.FechaCierre <= fecha
+                                                        && x.Estado)
+                .Select(x => new CajaDto()
+                {
+                    Id = x.Id,
+                    FechaApertura = x.FechaApertura,
+                    MontoApertura = x.MontoApertura,
+                    FechaCierre = x.FechaCierre,
+                    MontoCierre = x.MontoCierre,
+                    UsuarioId = x.UsuarioId,
+                    Estado = x.Estado
+                });
+        }
+
+        public CajaDto ObtenerPorId(long id)
+        {
+            var Caja = _cajaRepositorio.ObtenerPorId(id);
+
+            return new CajaDto()
+                {
+                    Id = Caja.Id,
+                    FechaApertura = Caja.FechaApertura,
+                    MontoApertura = Caja.MontoApertura,
+                    FechaCierre = Caja.FechaCierre,
+                    MontoCierre = Caja.MontoCierre,
+                    UsuarioId = Caja.UsuarioId,
+                    Estado = Caja.Estado
+            };
         }
 
         public bool VerSiCajaEstaAbierta()

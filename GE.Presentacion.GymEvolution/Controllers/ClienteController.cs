@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GE.Dominio.Entity;
+using GE.IServicio.Caja;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cliente.DTO;
 using GE.Presentacion.GymEvolution.Models;
@@ -21,6 +22,8 @@ namespace GE.Presentacion.GymEvolution.Controllers
         private ClienteDto models;
 
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
+
+        private ICajaServicio _cajaServicio = new CajaServicio();
 
         // GET: Cliente
 
@@ -110,6 +113,11 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
                 var cliente = _clienteRepositorio.ObtenerPorId(id);
+
+                if (_cajaServicio.VerSiCajaEstaAbierta())
+                {
+                    ViewBag.sms = "error";
+                }
 
                 return View(cliente);
             }

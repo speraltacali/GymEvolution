@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GE.IServicio.Caja.DTO.CajaDto>
+
+@{
+    ViewData["Title"] = "ConsultaCaja";
+}
+
+<h1>Consulta Caja</h1>
+
+<body>
+    <div class="ContenedorTotal">
+        <div style="margin-left:40px;">
+            <div class="enbloque">
+                <img src="~/img/cliente.png" class="imgcliente" width="110" height="110" />
+                <h2 class="textuser" style="margin-right:40px">User : @ViewBag.Session</h2>
+                <h1 class="logintext">Consulta Caja</h1>
+
+                <form asp-action="ConsultaCaja" method="get">
+                    <div class="buscar" style="font-size:x-large">
+                        <p class="search">
+                            Buscar Caja <input type="date" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
+                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;" />
+                        </p>
+
+                    </div>
+                </form>
+                <br />
+            </div>
+            <div>
+
+                <div class="col-md-12">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="col-md-12">
+
+                                <table class="col-md-12">
+                                    <thead>
+                                        <tr class="table100-head">
+                                            <th width="20px">
+                                                Fecha Apertura
+                                            </th>
+                                            <th width="20px">
+                                                Monto Apertura
+                                            </th>
+                                            <th width="20px">
+                                                Fecha Cierre
+                                            </th>
+                                            <th width="20px">
+                                                Monto Cierre
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr padding-bottom="2px">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaApertura)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MontoApertura)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FechaCierre)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MontoCierre)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

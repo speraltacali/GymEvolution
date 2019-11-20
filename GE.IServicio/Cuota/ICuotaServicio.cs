@@ -17,7 +17,7 @@ namespace GE.IServicio.Cuota
 
         IEnumerable<CuotaDto> ObtenerTodo();
 
-        IEnumerable<CuotaDto> ObtenerPorFiltro(string cadena);
+        IEnumerable<CuotaDto> ObtenerPorFiltro(DateTime fecha);
 
         IEnumerable<CuotaDto> ObtenerCuotasPorClienteId(long clienteId);
 

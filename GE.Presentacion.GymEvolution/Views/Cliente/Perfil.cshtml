@@ -26,6 +26,21 @@
             <h1>Perfil</h1>
             <h4>Cliente</h4>
             <hr />
+            @if (ViewBag.sms == null)
+            {
+                <div class="col-12">
+
+                    <div class="alert alert-success alert-dismissible">
+
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                        <h4><i class="fa-navicon fa-stop"></i>La Caja Esta Cerrada</h4>
+                        Abrir caja para poder Facturar
+
+                    </div>
+
+                </div>
+            }
+
 
             <div class="row">
                 <div class="col-md-4">
@@ -39,33 +54,33 @@
 
                         <div class="form-group">
                             <label asp-for="GrupoSanguineo" class="control-label"></label>
-                            <input asp-for="GrupoSanguineo" class="form-control" readonly="readonly" />
+                            <input asp-for="GrupoSanguineo" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="GrupoSanguineo" class="text-danger"></span>
 
                             <label asp-for="Dni" class="control-label"></label>
-                            <input asp-for="Dni" class="form-control" readonly="readonly" />
+                            <input asp-for="Dni" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="Dni" class="text-danger"></span>
 
                             <label asp-for="FechaNacimiento" class="control-label"></label>
-                            <input asp-for="FechaNacimiento" class="form-control" readonly="readonly" />
+                            <input asp-for="FechaNacimiento" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="FechaDeIngreso" class="control-label"></label>
-                            <input asp-for="FechaDeIngreso" class="form-control" readonly="readonly" />
+                            <input asp-for="FechaDeIngreso" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="FechaDeIngreso" class="text-danger"></span>
 
                             <label asp-for="Telefono" class="control-label"></label>
-                            <input asp-for="Telefono" class="form-control" readonly="readonly" />
+                            <input asp-for="Telefono" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="Telefono" class="text-danger"></span>
 
                             <label asp-for="Domicilio" class="control-label"></label>
-                            <input asp-for="Domicilio" class="form-control" readonly="readonly" />
+                            <input asp-for="Domicilio" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="Domicilio" class="text-danger"></span>
 
                             <label asp-for="Sexo" class="control-label"></label>
-                            <input asp-for="Sexo" class="form-control" readonly="readonly" />
+                            <input asp-for="Sexo" class="form-control" style='width: 500px; height: 50px;' readonly="readonly" />
                             <span asp-validation-for="Sexo" class="text-danger"></span>
                         </div>
 
@@ -162,17 +177,20 @@
        
         <div class="derechaPerfil" style="padding-right:50px;padding-top:30px;">
 
-            <div align="right" style="float:right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width: 400px; height: 75px; margin-bottom:15px;'>
-                    Realizar Pago Cuota
-                </button>
+            <div align="right" style="float: right">
+                @if (ViewBag.sms != null)
+                {
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-contact" style='width: 400px; height: 75px; margin-bottom: 15px;'>
+                        Realizar Pago Cuota
+                    </button>
+                }
 
                 <form asp-action="CuotasCliente" asp-controller="Cuota" method="get" enctype="multipart/form-data">
                     <button type="submit" class="btn-warning" style='width: 400px; height: 75px;'>Cuotas Clientes</button>
                 </form>
 
                 <div>
-                    <a asp-action="Index" class="btn btn-danger" style='width: 400px; height: 40px; margin-top:30px;'>Volver</a>
+                    <a asp-action="Index" class="btn btn-danger" style='width: 400px; height: 40px; margin-top: 30px;'>Volver</a>
                 </div>
 
             </div>

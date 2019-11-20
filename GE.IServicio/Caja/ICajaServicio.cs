@@ -14,5 +14,12 @@ namespace GE.IServicio.Caja
         bool VerSiCajaEstaAbierta();
 
         CajaDto TraerCajaAbierta();
+
+        IEnumerable<CajaDto> ObtenerTodo();
+
+        IEnumerable<CajaDto> ObtenerPorFiltro(DateTime fecha);
+
+        CajaDto ObtenerPorId(long id);
+
     }
 }

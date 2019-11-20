@@ -16,5 +16,6 @@ namespace GE.IServicio.Pago_Factura
         bool ValidarMesPago(DateTime fecha , long ClienteId);
 
         IEnumerable<CuotaEntidad> MostrarDatosGenerales(long clienteId);
+
     }
 }

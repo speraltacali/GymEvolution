@@ -25,5 +25,7 @@ namespace GE.IServicio.Caja.DTO
         public decimal MontoCierre { get; set; }
 
         public long UsuarioId { get; set; }
+
+        public bool Estado { get; set; }
     }
 }

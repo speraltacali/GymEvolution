@@ -48,13 +48,30 @@ namespace GE.Presentacion.GymEvolution.Controllers
         }
 
 
-        public ActionResult CuotasCliente()
+        public ActionResult CuotasCliente(string cadena)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
-                var Cuotas = _facturaCuotaServicio.MostrarDatosGenerales(SessionActiva.ClienteId);
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+                ViewData["Busqueda"] = cadena;
 
-                return View(Cuotas);
+                var Fecha = Convert.ToDateTime(cadena);
+
+
+                if (!String.IsNullOrEmpty(cadena))
+                {
+                    var Cuotas = _facturaCuotaServicio.MostrarDatosGenerales(SessionActiva.ClienteId)
+                        .Where(x=>x.FechaVigente<=Fecha && x.FechaVencimiento>=Fecha);
+
+                    return View(Cuotas);
+                }
+                else
+                {
+                    var Cuotas = _facturaCuotaServicio.MostrarDatosGenerales(SessionActiva.ClienteId);
+
+                    return View(Cuotas);
+                }
             }
             else
             {

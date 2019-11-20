@@ -57,5 +57,34 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             return RedirectToAction("Index" ,"Home");
         }
+
+
+        [HttpGet]
+        public ActionResult ConsultaCaja(string cadena)
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+                ViewData["Busqueda"] = cadena;
+
+                var Fecha = Convert.ToDateTime(cadena);
+
+                if (!String.IsNullOrEmpty(cadena))
+                {
+                    var FiltroCaja = _cajaServicio.ObtenerPorFiltro(Fecha);
+                    return View(FiltroCaja);
+                }
+                else
+                {
+                    var TodoCaja = _cajaServicio.ObtenerTodo();
+                    return View(TodoCaja);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
     }
 }

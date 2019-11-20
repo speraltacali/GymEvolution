@@ -62,12 +62,33 @@ namespace GE.Servicio
 
         public IEnumerable<CuotaDto> ObtenerTodo()
         {
-            throw new NotImplementedException();
+            return _cuotaRepositorio.ObtenerTodo()
+                .Select(x => new CuotaDto()
+                {
+                    Numero = x.Numero,
+                    CuotaVencimiento = x.CuotaVencimiento,
+                    Cantidad = x.Cantidad,
+                    ClienteId = x.ClienteId,
+                    CuotaVigente = x.CuotaVigente,
+                    Estado = x.Estado,
+                    Id = x.Id
+                }).ToList();
         }
 
-        public IEnumerable<CuotaDto> ObtenerPorFiltro(string cadena)
+        public IEnumerable<CuotaDto> ObtenerPorFiltro(DateTime fecha)
         {
-            throw new NotImplementedException();
+            return _cuotaRepositorio.ObtenerPorFiltro(x => x.CuotaVigente >= fecha
+                                                           && x.CuotaVencimiento <= fecha)
+                .Select(x => new CuotaDto()
+                {
+                    Numero = x.Numero,
+                    CuotaVencimiento = x.CuotaVencimiento,
+                    Cantidad = x.Cantidad,
+                    ClienteId = x.ClienteId,
+                    CuotaVigente = x.CuotaVigente,
+                    Estado = x.Estado,
+                    Id = x.Id
+                }).ToList();
         }
 
         public IEnumerable<CuotaDto> ObtenerCuotasPorClienteId(long clienteId)
