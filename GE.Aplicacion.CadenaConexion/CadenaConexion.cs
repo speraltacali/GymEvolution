@@ -6,13 +6,13 @@ namespace GE.Aplicacion.CadenaConexion
     {
 
 
-        public const string DataBase = "GymEvolution";
+        public const string DataBase = "XXX7";
 
 
-        public const string Server = @"DESKTOP-NK0OJF1";
+        public const string Server = @"DESKTOP-066FGIK\SQLEXPRESS";
 
 
-        public const string User = "softgym@gymevolutiondbserver";
+        public const string User = "softgym";
 
         public const string Password = " GYM2019soft";
 
@@ -21,6 +21,5 @@ namespace GE.Aplicacion.CadenaConexion
                                                      $"Initial Catalog={DataBase};" +
                                                      $"Integrated Security=true";
     }
-
 }
 
