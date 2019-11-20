@@ -12,6 +12,7 @@ using GE.IServicio.Cliente.DTO;
 using GE.IServicio.Cuota;
 using GE.IServicio.Cuota.DTO;
 using GE.IServicio.DTOEntidades;
+using GE.IServicio.Empleado;
 using GE.IServicio.Factura;
 using GE.IServicio.Factura.DTO;
 using GE.IServicio.Movimiento;

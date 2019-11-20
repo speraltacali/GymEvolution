@@ -7,12 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GE.Dominio.Repositorio.Caja;
+using GE.Infraestructura.Repositorio.Caja;
+using GE.IServicio.Caja;
 
 namespace GE.Servicio
 {
     public class MovimientoServicio : IMovimientoServicio
     {
         private readonly IMovimientoRepositorio _movimientoServicio;
+
+        private readonly  ICajaRepositorio _cajaRepositorio = new CajaRepositorio();
 
         public IEnumerable<MovimientoDto> ListaTodosLosMovimientos()
         {
@@ -97,6 +102,23 @@ namespace GE.Servicio
         public IEnumerable<MovimientoDto> ObtenerPorEmpleado(long id)
         {
             return _movimientoServicio.ObtenerPorFiltro(x => x.EmpleadoId == id)
+                .Select(x => new MovimientoDto()
+                {
+                    Id = x.Id,
+                    Descripcion = x.Descripcion,
+                    EmpleadoId = x.EmpleadoId,
+                    FechaActualizacion = x.FechaActualizacion,
+                    TipoMovimiento = x.TipoMovimiento,
+                    Monto = x.Monto
+                }).ToList();
+        }
+
+        public IEnumerable<MovimientoDto> ObtenerPorCaja(long id)
+        {
+            var Caja = _cajaRepositorio.ObtenerPorId(id);
+
+            return _movimientoServicio.ObtenerPorFiltro(x => x.FechaActualizacion >= Caja.FechaApertura
+                                                             && x.FechaActualizacion <= Caja.FechaCierre)
                 .Select(x => new MovimientoDto()
                 {
                     Id = x.Id,

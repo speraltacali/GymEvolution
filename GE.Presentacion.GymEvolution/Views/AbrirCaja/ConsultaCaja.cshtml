@@ -66,6 +66,11 @@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.MontoCierre)
                                                 </td>
+                                                
+                                                <td>
+                                               
+                                                    <a asp-action="Perfil" asp-controller="AbrirCaja" asp-route-id="@item.Id" class="btn btn-primary">Perfil</a>
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>

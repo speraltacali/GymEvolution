@@ -86,5 +86,21 @@ namespace GE.Presentacion.GymEvolution.Controllers
                 return RedirectToAction("Login", "Usuario");
             }
         }
+
+        public ActionResult Perfil(long id)
+        {
+            if (HttpContext.Session.GetString("Session") != null)
+            {
+                ViewBag.Session = HttpContext.Session.GetString("Session");
+                TempData["Session"] = HttpContext.Session.GetString("Session");
+                var Caja = _cajaServicio.ObtenerPorId(id);
+
+                return View(Caja);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+        }
     }
 }

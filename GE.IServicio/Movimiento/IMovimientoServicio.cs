@@ -20,5 +20,7 @@ namespace GE.IServicio.Movimiento
 
         IEnumerable<MovimientoDto> ObtenerPorEmpleado(long id);
 
+        IEnumerable<MovimientoDto> ObtenerPorCaja(long id);
+
     }
 }
