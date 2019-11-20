@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <form asp-action="Perfil">
-                        <img src="@Model.FotoLink" alt="imgText" class="avatar" />
+                        <img src="@Model.FotoLink" alt="imgText" class="avatar" style="width:200px;height:auto" />
 
                         <h1>
                             @Model.Apellido , @Model.Nombre
@@ -192,73 +192,17 @@
                 <div>
                     <a asp-action="Index" class="btn btn-danger" style='width: 400px; height: 40px; margin-top: 30px;'>Volver</a>
                 </div>
-
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
 
-            <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
-                
-                <div class="col-md-12">
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="col-md-12">
-
-                                <table class="col-md-7">
-                                    <thead>
-                                        <tr>
-                                            <th width="22px">
-                                                Numero
-                                            </th>
-                                            <th width="22px">
-                                                Meses
-                                            </th>
-                                            <th width="60px">
-                                                Fecha Vigente
-                                            </th>
-                                            <th width="60px">
-                                                Fecha Vencimiento
-                                            </th>
-                                            <th width="25px">
-                                                Total
-                                            </th>
-                                            <th width="60px">
-                                                Fecha Pago
-                                            </th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Lista)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Numero)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.CantidadMeses)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.FechaVigente)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.FechaVencimiento)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.MontoTotal)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.FechaOperacion)
-                                                </td>
-                                                <td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
 </body>

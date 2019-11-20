@@ -179,7 +179,7 @@
                                             Foto
                                         </th>
                                         <th width="20px">
-                                            FechaDeIngreso
+                                            FechaIngreso
                                         </th>
                                         <th></th>
                                     </tr>
@@ -219,8 +219,8 @@
                                                 @Html.DisplayFor(modelItem => item.FechaDeIngreso)
                                             </td>
                                             <td>
-                                                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Update</a>
-                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                                <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary">Modificar</a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Borrar</a>
                                                 <a asp-action="Perfil" asp-route-id="@item.Id" class="btn btn-secondary">Perfil</a>
                                             </td>
                                         </tr>
