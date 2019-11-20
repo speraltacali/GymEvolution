@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="@rutina.Descripcion" class="col-md-2 control-label"></label>
-                                    <input asp-for="@rutina.Descripcion" placeholder="Descripcion" class="form-control" />
+                                    <textarea asp-for="@rutina.Descripcion" placeholder="Descripcion" style="height:150px;" class="form-control" /></textarea>
                                     <span asp-validation-for="@rutina.Descripcion" class="text-danger"></span>
                                 </div>
 
@@ -106,3 +106,7 @@
     </div>
 
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

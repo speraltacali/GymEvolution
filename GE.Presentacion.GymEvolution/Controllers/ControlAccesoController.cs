@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GE.IServicio.Cliente;
 using GE.IServicio.Cuota;
+using GE.IServicio.Pago_Factura;
 using GE.Servicio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
     {
         private ICuotaServicio _cuotaRepositorio = new CuotaServicio();
         private IClienteServicio _clienteRepositorio = new ClienteServicio();
+        private IPago_FacturaServicio _facturaServicio = new Pago_FacturaServicio();
 
         public IActionResult Index()
         {
@@ -42,16 +44,18 @@ namespace GE.Presentacion.GymEvolution.Controllers
                         return View(clienteResultado);
                     }
 
-                    if (_cuotaRepositorio.PuedePasar(cadena))
+                    if (_facturaServicio.ValidarMesPago(DateTime.Now, clienteResultado.Id))
                     {
                         ViewBag.sms = "Puede Pasar";
 
                         return View(clienteResultado);
                     }
+                    else
+                    {
+                        ViewBag.sms = "error";
 
-                    ViewBag.sms = "error";
-
-                    return View(clienteResultado);
+                        return View(clienteResultado);
+                    }
                 }
                 return View();
 

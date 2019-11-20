@@ -17,7 +17,7 @@ namespace GE.IServicio.Caja
 
         IEnumerable<CajaDto> ObtenerTodo();
 
-        IEnumerable<CajaDto> ObtenerPorFiltro(DateTime fecha);
+        IEnumerable<CajaDto> ObtenerPorFiltro(DateTime Desde, DateTime Hasta);
 
         CajaDto ObtenerPorId(long id);
 

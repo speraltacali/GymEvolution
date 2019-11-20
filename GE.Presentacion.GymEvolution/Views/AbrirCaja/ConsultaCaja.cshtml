@@ -17,10 +17,11 @@
                 <form asp-action="ConsultaCaja" method="get">
                     <div class="buscar" style="font-size:x-large">
                         <p class="search">
-                            Buscar Caja <input type="date" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
-                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;" />
+                            Desde <input type="date" name="Desde" value="@ViewData["Desde"]" style="width:500px;height:40px;" /><br />
+                            Hasta <input type="date" name="Hasta" value="@ViewData["Hasta"]" style="width:500px;height:40px;" /><br />
+                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:500px;height:40px;background-color:teal;" />
                         </p>
-
+                        
                     </div>
                 </form>
                 <br />
@@ -35,19 +36,19 @@
                                 <table class="col-md-12">
                                     <thead>
                                         <tr class="table100-head">
-                                            <th width="20px">
+                                            <th>
                                                 Fecha Apertura
                                             </th>
-                                            <th width="20px">
+                                            <th >
                                                 Monto Apertura
                                             </th>
-                                            <th width="20px">
+                                            <th >
                                                 Fecha Cierre
                                             </th>
-                                            <th width="20px">
+                                            <th >
                                                 Monto Cierre
                                             </th>
-
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,10 +67,8 @@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.MontoCierre)
                                                 </td>
-                                                
                                                 <td>
-                                               
-                                                    <a asp-action="Perfil" asp-controller="AbrirCaja" asp-route-id="@item.Id" class="btn btn-primary">Perfil</a>
+                                                    <a asp-action="Perfil" asp-controller="AbrirCaja" asp-route-id="@item.Id" class="btn badge-primary">Perfil</a>
                                                 </td>
                                             </tr>
                                         }

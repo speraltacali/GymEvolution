@@ -49,7 +49,7 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             _cajaServicio.CerrarCaja(cajaacerrar);
 
-            return RedirectToAction("Index", "CerrarCaja");
+            return RedirectToAction("ConsultaCaja", "AbrirCaja");
 
         }
     }

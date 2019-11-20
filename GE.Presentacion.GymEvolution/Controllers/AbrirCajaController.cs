@@ -55,24 +55,26 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
              _cajaServicio.AbrirCaja(caja);
 
-            return RedirectToAction("Index" ,"Home");
+            return RedirectToAction("Index" ,"AbrirCaja");
         }
 
 
         [HttpGet]
-        public ActionResult ConsultaCaja(string cadena)
+        public ActionResult ConsultaCaja(string Desde , string Hasta)
         {
             if (HttpContext.Session.GetString("Session") != null)
             {
                 ViewBag.Session = HttpContext.Session.GetString("Session");
                 TempData["Session"] = HttpContext.Session.GetString("Session");
-                ViewData["Busqueda"] = cadena;
+                ViewData["Desde"] = Desde;
+                ViewData["Hasta"] = Hasta;
 
-                var Fecha = Convert.ToDateTime(cadena);
+                var desde = Convert.ToDateTime(Desde);
+                var hasta = Convert.ToDateTime(Hasta);
 
-                if (!String.IsNullOrEmpty(cadena))
+                if (!String.IsNullOrEmpty(Desde) || !String.IsNullOrEmpty(Hasta))
                 {
-                    var FiltroCaja = _cajaServicio.ObtenerPorFiltro(Fecha);
+                    var FiltroCaja = _cajaServicio.ObtenerPorFiltro(desde,hasta);
                     return View(FiltroCaja);
                 }
                 else

@@ -80,6 +80,10 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
                     <h4><i class="fa-navicon fa-stop"></i>No Puede Pasar Debe Cuota</h4>
                     Vea el estado de cuenta del cliente
+                    
+                    <form asp-action="Perfil" asp-controller="Cliente" asp-route-id="@Model.Id" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-primary" style='width: 985px; height: 65px; margin-bottom:6px;'>Verificar Cuotas</button>
+                    </form>
 
                 </div>
 
@@ -98,10 +102,7 @@
                     No Tiene Cuotas Pendientes
 
                 </div>
-                
-                <form asp-action="CuotasCliente" asp-controller="Cuota" method="post" enctype="multipart/form-data">
-                    <button type="submit" class="btn btn-primary" style='width: 975px; height: 65px; margin-bottom:6px;'>Acceso Cliente</button>
-                </form>
+
 
             </div>
         }

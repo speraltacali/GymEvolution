@@ -39,8 +39,8 @@
                 <form asp-action="Index" method="get">
                     <div class="buscar" style="font-size:x-large">
                         <p class="search">
-                            Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:220px;height:40px;" /><br />
-                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:220px;height:40px;background-color:teal;" />
+                            Buscar Cliente <input type="text" name="cadena" value="@ViewData["Busqueda"]" style="width:500px;height:40px;" /><br />
+                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style="width:500px;height:40px;background-color:teal;" />
                         </p>
 
                     </div>
@@ -92,12 +92,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="@cliente.Domicilio" class="h6"></label>
-                                            <input asp-for="@cliente.Domicilio" placeholder="Domicilio" class="form-control" />
+                                            <textarea asp-for="@cliente.Domicilio" placeholder="Domicilio" style="height:150px;" class="form-control" /></textarea>
                                             <span asp-validation-for="@cliente.Domicilio" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="@cliente.FechaNacimiento" class="h6"></label>
-                                            <input asp-for="@cliente.FechaNacimiento" class="form-control" />
+                                            <input asp-for="@cliente.FechaNacimiento" value ="@DateTime.Now" class="form-control" />
                                             <span asp-validation-for="@cliente.FechaNacimiento" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="@cliente.FechaDeIngreso" class="h6"></label>
-                                            <input asp-for="@cliente.FechaDeIngreso" class="form-control" />
+                                            <input asp-for="@cliente.FechaDeIngreso" value ="@DateTime.Now" class="form-control" />
                                             <span asp-validation-for="@cliente.FechaDeIngreso" class="text-danger"></span>
                                         </div>
 

@@ -15,9 +15,9 @@ namespace GE.IServicio.Factura.DTO
         [DataType(DataType.Date)]
         public DateTime FechaOperacion { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(1, Int32.MaxValue,
-            ErrorMessage = "La {0} Debe ser mayor a 0")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Range(1, Double.MaxValue,
+            ErrorMessage = "El {0} Debe ser mayor a 0")]
         public decimal SubTotal { get; set; }
 
         public decimal Total { get; set; }

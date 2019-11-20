@@ -65,7 +65,7 @@ namespace GE.Servicio
 
         public IEnumerable<CajaDto> ObtenerTodo()
         {
-            return _cajaRepositorio.ObtenerTodo()
+            return _cajaRepositorio.ObtenerPorFiltro(x=>!x.Estado)
                 .Select(x => new CajaDto()
                 {
                     Id = x.Id,
@@ -78,11 +78,10 @@ namespace GE.Servicio
                 });
         }
 
-        public IEnumerable<CajaDto> ObtenerPorFiltro(DateTime fecha)
+        public IEnumerable<CajaDto> ObtenerPorFiltro(DateTime Desde , DateTime Hasta)
         {
-            return _cajaRepositorio.ObtenerPorFiltro(x=>x.FechaApertura >= fecha 
-                                                        && x.FechaCierre <= fecha
-                                                        && x.Estado)
+            return _cajaRepositorio.ObtenerPorFiltro(x=>x.FechaApertura.Date >= Desde.Date
+                                                                       && x.FechaCierre.Date <= Hasta.Date)
                 .Select(x => new CajaDto()
                 {
                     Id = x.Id,

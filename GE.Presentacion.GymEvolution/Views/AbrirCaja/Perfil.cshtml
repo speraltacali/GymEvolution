@@ -5,7 +5,11 @@
 @{
     IMovimientoServicio _movimientoServicio = new MovimientoServicio();
 
-    var Lista = _movimientoServicio.ObtenerPorEmpleado(Model.Id);
+    var Lista = _movimientoServicio.ObtenerPorCaja(Model.Id);
+
+    decimal Diferencia = 0;
+
+    decimal Total = 0;
 
     ViewData["Title"] = "Perfil";
 }
@@ -42,6 +46,11 @@
                             <span asp-validation-for="MontoCierre" class="text-danger"></span>
 
                         </div>
+                        
+                        <div>
+                            <a asp-action="ConsultaCaja" asp-controller="AbrirCaja" class="btn btn-danger" style='width: 500px; height: 40px; margin-top: 30px;'>Volver</a>
+                        </div>
+                        <br/>
                     </form>
                 </div>
 
@@ -50,14 +59,6 @@
         </div>
 
         <div class="derechaPerfil" style="padding-right:50px;padding-top:30px;">
-
-            <div align="right" style="float: right">
-
-                <div>
-                    <a asp-action="Index" class="btn btn-danger" style='width: 400px; height: 40px; margin-top: 30px;'>Volver</a>
-                </div>
-
-            </div>
 
             <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
 
@@ -99,12 +100,25 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Monto)
                                             </td>
-
+                                            @{
+                                                Total += item.Monto;
+                                            }
                                         </tr>
                                         }
+                                    
+                                    @{
+                                        Diferencia = Model.MontoCierre-(Total + Model.MontoApertura);
+                                    }
                                     </tbody>
                                 </table>
-
+                                
+                                <div class="form-group">
+                                    <label asp-for="@Total" class="control-label"></label>
+                                    <input asp-for="@Total" class="form-control" style='width: 490px; height: 50px;' readonly="readonly" />
+                                    
+                                    <label asp-for="@Diferencia" class="control-label"></label>
+                                    <input asp-for="@Diferencia" class="form-control" style='width: 490px; height: 50px;' readonly="readonly" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +128,4 @@
     </section>
 </body>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 

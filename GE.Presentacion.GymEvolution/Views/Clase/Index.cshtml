@@ -41,8 +41,8 @@
                 <form asp-action="Index" method="get">
                     <div class="buscar">
                         <p class="search">
-                            Buscar Clase <input type="text" name="cadena" value="@ViewData["Busqueda"]" style='width:200px; height: 40px; margin-bottom:5px;' />
-                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style='width:200px; height: 40px;background-color:teal;' />
+                            Buscar Clase <input type="text" name="cadena" value="@ViewData["Busqueda"]" style='width:500px; height: 40px; margin-bottom:5px;' />
+                            <input type="submit" value="Buscar" btn="btn btn-default" class="btn btn-primary" style='width:500px; height: 40px;background-color:teal;' />
                         </p>
 
                     </div>
@@ -80,12 +80,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label asp-for="@clase.Descripcion" class="col-md-2 control-label"></label>
-                                            <input asp-for="@clase.Descripcion" placeholder="Descripcion" class="form-control" />
+                                            <textarea asp-for="@clase.Descripcion" placeholder="Descripcion" style="height:150px;" class="form-control" /></textarea>
                                             <span asp-validation-for="@clase.Descripcion" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
 
-                                            <label asp-for="@clase.Foto" class="h6">Foto Empleado</label>
+                                            <label asp-for="@clase.Foto" class="h6">Foto Clase</label>
                                             <input asp-for="@clase.Foto" type="file" class="form-control" accept="image/*" />
 
                                         </div>
@@ -114,13 +114,13 @@
                             <table class="col-md-4">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th width="40px">
+                                        <th width="150px">
                                             Nombre
                                         </th>
-                                        <th width="40px">
+                                        <th width="150px">
                                             Descripcion
                                         </th>
-                                        <th width="40px">
+                                        <th width="50px">
                                             Foto
                                         </th>
                                         <th></th>
