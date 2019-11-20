@@ -188,7 +188,6 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
             if (ModelState.IsValid)
             {
-                _empleadoServicio.Modificar(empleadoDto);
 
                 if (empleadoDto.Foto != null)
                 {
@@ -202,6 +201,10 @@ namespace GE.Presentacion.GymEvolution.Controllers
 
                     //guarda en la base de datos
                     empleadoDto.FotoLink = $"/imgsistema/{empleadoDto.Foto.FileName}";
+                }
+                if (empleadoDto.Foto == null)
+                {
+                    empleadoDto.FotoLink = _empleadoServicio.ObtenerPorId(empleadoDto.Id).FotoLink;
                 }
 
                 _empleadoServicio.Modificar(empleadoDto);

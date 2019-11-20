@@ -163,6 +163,10 @@ namespace GE.Presentacion.GymEvolution.Controllers
                     clienteDto.FotoLink = $"/imgsistema/{clienteDto.Foto.FileName}";
                 }
                 ///---///
+                if (clienteDto.Foto == null)
+                {
+                    clienteDto.FotoLink = _clienteRepositorio.ObtenerPorId(clienteDto.Id).FotoLink;
+                }
 
                 _clienteRepositorio.Modificar(clienteDto);
 

@@ -127,6 +127,10 @@ namespace GE.Presentacion.GymEvolution.Controllers
                     dto.FotoLink = $"/imgsistema/{dto.Foto.FileName}";
                 }
                 ///---///
+                if (dto.Foto == null)
+                {
+                    dto.FotoLink = _claseServicio.ObtenerPorId(dto.Id).FotoLink;
+                }
 
                 _claseServicio.Modificar(dto);
 

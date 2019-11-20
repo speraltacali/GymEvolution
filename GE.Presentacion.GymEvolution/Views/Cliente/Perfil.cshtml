@@ -199,69 +199,7 @@
                 <br />
                 <br />
             </div>
-            <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
-
-                <div class="col-md-12">
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="col-md-7">
-
-                                <table class="col-md-7">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th width="50px">
-                                                Numero
-                                            </th>
-                                            <th width="50px">
-                                                Cantidad
-                                            </th>
-                                            <th width="50px">
-                                                Fecha Vigente
-                                            </th>
-                                            <th width="50px">
-                                                Fecha Vencimiento
-                                            </th>
-                                            <th width="50px">
-                                                Fecha Operacion
-                                            </th>
-                                            <th width="50px">
-                                                Monto
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Lista)
-                                        {
-                                        <tr padding-bottom="2px">
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Numero)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.CantidadMeses)
-                                            </td>
-                                            <td class="tdgrupo">
-                                                @Html.DisplayFor(modelItem => item.FechaVigente)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FechaVencimiento)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.FechaOperacion)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.MontoTotal)
-                                            </td>
-
-                                        </tr>
-                                        }
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
 
         </div>
     </section>
