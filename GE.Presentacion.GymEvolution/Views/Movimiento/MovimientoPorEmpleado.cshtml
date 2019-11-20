@@ -75,57 +75,57 @@
 
             </div>
 
-            <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
+                <div class="cuotaPerfil" style="padding-top:20px;padding-left:55px;">
 
-                <div class="col-md-12">
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="col-md-7">
+                    <div class="col-md-12">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="col-md-7">
 
-                                <table class="col-md-7">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th width="50px">
-                                                Descripcion
-                                            </th>
-                                            <th width="50px">
-                                                FechaActualizacion
-                                            </th>
-                                            <th width="50px">
-                                                TipoMovimiento
-                                            </th>
-                                            <th width="50px">
-                                                Monto
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Lista)
-                                        {
-                                            <tr padding-bottom="2px">
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Descripcion)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.FechaActualizacion)
-                                                </td>
-                                                <td class="tdgrupo">
-                                                    @Html.DisplayFor(modelItem => item.TipoMovimiento)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Monto)
-                                                </td>
-
+                                    <table class="col-md-7">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th width="50px">
+                                                    Descripcion
+                                                </th>
+                                                <th width="50px">
+                                                    FechaActualizacion
+                                                </th>
+                                                <th width="50px">
+                                                    TipoMovimiento
+                                                </th>
+                                                <th width="50px">
+                                                    Monto
+                                                </th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Lista)
+                                            {
+                                                <tr padding-bottom="2px">
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.FechaActualizacion)
+                                                    </td>
+                                                    <td class="tdgrupo">
+                                                        @Html.DisplayFor(modelItem => item.TipoMovimiento)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Monto)
+                                                    </td>
 
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 </body>
